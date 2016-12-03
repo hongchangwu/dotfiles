@@ -24,7 +24,6 @@ export PATH=/usr/local/bin:$PATH
 
 [[ $(uname -s) = Darwin ]] && setjdk 1.8
 
-
 # OPAM configuration
 [[ -s "$HOME/.opam/opam-init/init.sh" ]] && $HOME/.opam/opam-init/init.sh >/dev/null 2>&1 || true
 exists opam && eval $(opam config env)

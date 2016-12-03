@@ -1,5 +1,33 @@
 #!/usr/bin/env bash
 
+copy()
+{
+  local src=$1
+  local dst=$2
+  [[ $NO_BACKUP != true ]] && [[ -f "$2" ]] && mv "$2" "$2.bak"
+  cp "$1" "$2"
+}
+
+usage()
+{
+  echo "Usage: $0 [-n] [-h]"
+}
+
+while getopts "nh" arg
+do
+  case $arg in
+    n) NO_BACKUP=true
+       ;;
+    h) usage
+       exit 0
+       ;;
+    *) usage >&2
+       exit 1
+       ;;
+  esac
+done
+shift $((OPTIND-1))
+
 ROOT=$(dirname $0)
 
 DOT_FILES=(
@@ -12,19 +40,11 @@ DOT_FILES=(
   .vimrc
   )
 
-copy()
-{
-  local src=$1
-  local dst=$2
-  [[ -f "$2" ]] && mv "$2" "$2.bak"
-  cp "$1" "$2"
-}
-
 source "$ROOT/.functions"
 
 if ! exists git
 then
-  echo "Couldn't find git!" 1>&2
+  echo "Couldn't find git!" >&2
   exit 1
 fi
 
@@ -33,7 +53,7 @@ git clean -fdx &>/dev/null
 declare -i failed
 
 echo 'Installing dotfiles...'
-echo '(Your old files will be backed up with the suffix .bak)'
+[[ $NO_BACKUP != true ]] && echo '(Your old files will be backed up with the suffix .bak)'
 for f in "${DOT_FILES[@]}"
 do
   copy "$ROOT/$f" "$HOME/$f" || ((failed++))
@@ -49,6 +69,6 @@ if [[ -z $failed ]]
 then
   echo "All done!"
 else
-  echo "Some commands have failed!" 1>&2
+  echo "Some commands have failed!" >&2
   exit 1
 fi

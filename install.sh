@@ -20,13 +20,23 @@ copy()
   cp "$1" "$2"
 }
 
+source "$ROOT/.functions"
+
+if ! exists git
+then
+  echo "Couldn't find git!" 1>&2
+  exit 1
+fi
+
+git clean -f
+
 declare -i failed
 
 echo 'Installing dotfiles...'
 echo '(Your old files will be backed up with the suffix .bak)'
 for f in "${DOT_FILES[@]}"
 do
-  copy "$ROOT/$f" "$HOME/$f" ||((failed++))
+  copy "$ROOT/$f" "$HOME/$f" || ((failed++))
 done
 
 [[ ! -d "$HOME/bin" ]] && mkdir "$HOME/bin"
@@ -35,4 +45,10 @@ do
   copy "$f" "$HOME/$f" || ((failed++))
 done
 
-[[ -z $failed ]] && echo "All done!" || (echo "Some commands have failed!" && exit 1)
+if [[ -z $failed ]]
+then
+  echo "All done!"
+else
+  echo "Some commands have failed!"
+  exit 1
+fi

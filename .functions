@@ -1,0 +1,35 @@
+#!/usr/bin/env bash
+
+parse_git_branch()
+{
+  git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/[\1]/'
+}
+
+prompt()
+{
+  echo "\[\e[32;1m\]\u\[\e[0m\]@\[\e[35;1m\]\h\[\e[0m\]:\[\e[34;1m\]\W\[\e[32;1m\]\$(parse_git_branch)\[\e[0m\]\$ "  
+}
+
+exists()
+{
+  command -v "$1" >/dev/null 2>&1
+}
+
+remove_from_path()
+{
+  export PATH=$(echo $PATH | sed -E -e "s;:$1;;" -e "s;$1:?;;")
+}
+
+setjdk()
+{
+  if [ $# -ne 0 ]
+  then
+    remove_from_path '/System/Library/Frameworks/JavaVM.framework/Home/bin'
+    if [ -n "${JAVA_HOME+x}" ]
+    then
+      remove_from_path $JAVA_HOME
+    fi
+    export JAVA_HOME=$(/usr/libexec/java_home -v $@)
+    export PATH=$JAVA_HOME/bin:$PATH
+  fi
+}

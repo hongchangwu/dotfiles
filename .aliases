@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
+alias ll='ls -l'
+alias la='ls -la'
+alias duchs='du -chs'
+alias ducks='du -cks'
+alias ocaml='rlwrap ocaml'
+alias q='rlwrap q'
+
+[[ $(uname -s) = Darwin ]] && alias emacs='/Applications/Emacs.app/Contents/MacOS/Emacs'

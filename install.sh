@@ -26,13 +26,13 @@ echo 'Installing dotfiles...'
 echo '(Your old files will be backed up with the suffix .bak)'
 for f in "${DOT_FILES[@]}"
 do
-  copy "$ROOT/$f" "$HOME/$f" || $((failed++))
+  copy "$ROOT/$f" "$HOME/$f" ||((failed++))
 done
 
 [[ ! -d "$HOME/bin" ]] && mkdir "$HOME/bin"
 for f in $(find $ROOT/bin -type f -perm +111 -maxdepth 1)
 do
-  copy "$f" "$HOME/$f" || $((failed++))
+  copy "$f" "$HOME/$f" || ((failed++))
 done
 
 [[ -z $failed ]] && echo "All done!" || (echo "Some commands have failed!" && exit 1)

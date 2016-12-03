@@ -49,6 +49,6 @@ if [[ -z $failed ]]
 then
   echo "All done!"
 else
-  echo "Some commands have failed!"
+  echo "Some commands have failed!" 1>&2
   exit 1
 fi

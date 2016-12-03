@@ -1,7 +1,7 @@
 ;; Disable the splash screen
 (setq inhibit-splash-screen t)
 
-;; Line numbers and columnm numbers
+;; Line numbers and column numbers
 (column-number-mode t)
 (line-number-mode t)
 (global-linum-mode t)

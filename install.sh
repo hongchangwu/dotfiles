@@ -28,7 +28,7 @@ then
   exit 1
 fi
 
-git clean -f
+git clean -fdx &>/dev/null
 
 declare -i failed
 

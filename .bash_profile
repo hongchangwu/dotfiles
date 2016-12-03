@@ -24,8 +24,6 @@ export PATH=/usr/local/bin:$PATH
 
 [[ $(uname -s) = Darwin ]] && setjdk 1.8
 
-# rvm
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM function
 
 # OPAM configuration
 [[ -s "$HOME/.opam/opam-init/init.sh" ]] && $HOME/.opam/opam-init/init.sh >/dev/null 2>&1 || true
@@ -36,3 +34,6 @@ exists opam && eval $(opam config env)
 [[ -d "$HOME/Library/Python/2.7/lib/python/site-packages/powerline" ]] && export POWERLINE_HOME="$HOME/Library/Python/2.7/lib/python/site-packages/powerline"
 
 export PATH=$HOME/bin:$PATH
+
+# rvm
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*

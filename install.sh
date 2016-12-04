@@ -7,6 +7,7 @@ copy()
   [[ $NO_BACKUP != true ]] && [[ -f "$2" ]] && mv "$2" "$2$BACKUP_SUFFIX"
   cp "$1" "$2"
 }
+export -f copy
 
 usage()
 {
@@ -16,7 +17,7 @@ usage()
 while getopts "nh" arg
 do
   case $arg in
-    n) NO_BACKUP=true
+    n) export NO_BACKUP=true
        ;;
     h) usage
        exit 0
@@ -28,9 +29,9 @@ do
 done
 shift $((OPTIND-1))
 
-ARCH=$(uname -s)
+export ARCH=$(uname -s)
 
-ROOT=$(dirname $0)
+export ROOT=$(dirname $0)
 
 DOT_FILES=(
   .aliases
@@ -42,7 +43,7 @@ DOT_FILES=(
   .vimrc
   )
 
-BACKUP_SUFFIX=".bak.$(date -u '+%Y-%m-%dT%H:%M:%SZ')"
+export BACKUP_SUFFIX=".bak.$(date -u '+%Y-%m-%dT%H:%M:%SZ')"
 
 source "$ROOT/.functions"
 
@@ -61,23 +62,6 @@ echo 'Installing dotfiles...'
 for f in "${DOT_FILES[@]}"
 do
   copy "$ROOT/$f" "$HOME/$f" || ((failed++))
-done
-
-[[ ! -d "$HOME/bin" ]] && mkdir "$HOME/bin"
-
-if [[ $ARCH = Darwin ]]
-then
-  find_command="find $ROOT/bin -maxdepth 1 -type f -perm +111 -print"
-elif [[ $ARCH = Linux ]]
-then
-  find_command="find $ROOT/bin -maxdepth 1 -type f -executable -print"
-else
-  find_command="find $ROOT/bin -type f -exec test -x {} \; -print"
-fi
-
-for f in $($find_command)
-do
-  copy "$f" "$HOME/$f" || ((failed++))
 done
 
 # Recursively install all components

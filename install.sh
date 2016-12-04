@@ -80,6 +80,13 @@ do
   copy "$f" "$HOME/$f" || ((failed++))
 done
 
+# Recursively install all components
+for f in $(find "$ROOT" -mindepth 2 -maxdepth 2 -name install.sh -print)
+do
+  [[ -x "$f" ]] && "$f"
+  [[ $? -ne 0 ]] && ((failed++))
+done
+
 if [[ -z $failed ]]
 then
   echo "All done!"

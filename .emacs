@@ -170,8 +170,6 @@
 (setq nrepl-log-messages t)
 (setq nrepl-hide-special-buffers t)
 (setq cider-show-error-buffer 'except-in-repl)
-(require 'midje-mode)
-(add-hook 'clojure-mode-hook 'midje-mode)
 
 ;; Ruby mode
 (push 'company-robe company-backends)

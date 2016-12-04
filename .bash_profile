@@ -1,3 +1,5 @@
+[[ -s "$HOME/.bashrc" ]] && source "$HOME/.bashrc"
+
 # Aliases
 [[ -s "$HOME/.aliases" ]] && source "$HOME/.aliases"
 

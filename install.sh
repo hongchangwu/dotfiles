@@ -4,7 +4,7 @@ copy()
 {
   local src=$1
   local dst=$2
-  [[ $NO_BACKUP != true ]] && [[ -f "$2" ]] && mv "$2" "$2.bak"
+  [[ $NO_BACKUP != true ]] && [[ -f "$2" ]] && mv "$2" "$2$BACKUP_SUFFIX"
   cp "$1" "$2"
 }
 
@@ -40,6 +40,8 @@ DOT_FILES=(
   .vimrc
   )
 
+BACKUP_SUFFIX=".bak.$(date -u '+%Y-%m-%dT%H:%M:%SZ')"
+
 source "$ROOT/.functions"
 
 if ! exists git
@@ -53,7 +55,7 @@ git clean -fdx &>/dev/null
 declare -i failed
 
 echo 'Installing dotfiles...'
-[[ $NO_BACKUP != true ]] && echo '(Your old files will be backed up with the suffix .bak)'
+[[ $NO_BACKUP != true ]] && echo "(Your old files will be backed up with the suffix $BACKUP_SUFFIX)"
 for f in "${DOT_FILES[@]}"
 do
   copy "$ROOT/$f" "$HOME/$f" || ((failed++))

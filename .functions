@@ -23,7 +23,7 @@ git_is_repository()
 
 prompt()
 {
-  echo "\[\e[32;1m\]\u\[\e[0m\]@\[\e[35;1m\]\h\[\e[0m\]:\[\e[34;1m\]\W\[\e[32;1m\]\$(git_branch_for_prompt)\[\e[0m\]\$ "
+  export PS1="\[\e[32;1m\]\u\[\e[0m\]@\[\e[35;1m\]\h\[\e[0m\]:\[\e[34;1m\]\W\[\e[32;1m\]\$(git_branch_for_prompt)\[\e[0m\]\$ "
 }
 
 exists()

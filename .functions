@@ -2,12 +2,18 @@
 
 parse_git_branch()
 {
-  git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/[\1]/'
+  git symbolic-ref --short HEAD 2>/dev/null
+}
+
+parse_git_branch_for_prompt()
+{
+  local branch=$(parse_git_branch)
+  [[ -z $branch ]] || echo "[$branch]"
 }
 
 prompt()
 {
-  echo "\[\e[32;1m\]\u\[\e[0m\]@\[\e[35;1m\]\h\[\e[0m\]:\[\e[34;1m\]\W\[\e[32;1m\]\$(parse_git_branch)\[\e[0m\]\$ "  
+  echo "\[\e[32;1m\]\u\[\e[0m\]@\[\e[35;1m\]\h\[\e[0m\]:\[\e[34;1m\]\W\[\e[32;1m\]\$(parse_git_branch_for_prompt)\[\e[0m\]\$ "
 }
 
 exists()

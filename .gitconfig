@@ -1,11 +1,13 @@
 [user]
-	name = Hongchang Wu
-	email = wuhc85@gmail.com
+        name = Hongchang Wu
+        email = wuhc85@gmail.com
 [color]
-	status = auto
-	diff = auto
-	branch = auto
+        branch = auto
+        diff = auto
+        interactive = auto
+        status = auto
+        ui = auto
 [push]
-	default = simple
+        default = current
 [mergetool]
-	keepBackup = false
+        keepBackup = false

@@ -1,0 +1,38 @@
+#!/usr/bin/env bash
+
+copy()
+{
+  local src=$1
+  local dst=$2
+  [[ $NO_BACKUP != true ]] && [[ -f $dst ]] && mv "$dst" "$dst$BACKUP_SUFFIX"
+  cp "$src" "$dst"
+}
+export -f copy
+
+download()
+{
+  local url=$1
+  local file=$2
+  curl -LSso "$file" "$url"
+}
+export -f download
+
+# Clone the repository, or update if it already exists
+git_clone_or_update()
+{
+  local url=$1
+  local dir=$2
+  local rc=0
+  if [[ -d "$dir" ]]
+  then
+    pushd "$dir" >/dev/null
+    git pull --quiet
+    rc=$?
+    popd >/dev/null
+  else
+    git clone "$url" "$dir" &>/dev/null
+    rc=$?
+  fi
+  return $rc
+}
+export -f git_clone_or_update

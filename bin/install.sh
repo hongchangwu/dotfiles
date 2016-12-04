@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+source ${ROOT=$(dirname $0)/..}/functions
+
 declare -i failed
 
 echo 'Installing bin...'

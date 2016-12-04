@@ -1,13 +1,6 @@
 #!/usr/bin/env bash
 
-copy()
-{
-  local src=$1
-  local dst=$2
-  [[ $NO_BACKUP != true ]] && [[ -f "$2" ]] && mv "$2" "$2$BACKUP_SUFFIX"
-  cp "$1" "$2"
-}
-export -f copy
+source "./functions"
 
 usage()
 {

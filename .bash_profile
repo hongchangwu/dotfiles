@@ -1,10 +1,12 @@
-[[ -s "$HOME/.bashrc" ]] && source "$HOME/.bashrc"
+# Source common and interactive profiles
+[[ -r "$HOME/.profile" ]] && source "$HOME/.profile"
+[[ -r "$HOME/.bashrc" ]] && source "$HOME/.bashrc"
 
 # Aliases
-[[ -s "$HOME/.aliases" ]] && source "$HOME/.aliases"
+[[ -r "$HOME/.aliases" ]] && source "$HOME/.aliases"
 
 # Functions
-[[ -s "$HOME/.functions" ]] && source "$HOME/.functions"
+[[ -r "$HOME/.functions" ]] && source "$HOME/.functions"
 
 # tmux will set its terminal
 [[ -z "$TMUX" ]] && export TERM=xterm-256color

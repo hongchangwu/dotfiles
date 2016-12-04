@@ -18,6 +18,7 @@ fi
 
 for f in $($find_command)
 do
+  [[ $(basename "$f") = install.sh ]] && continue
   copy "$f" "$HOME/$f" || ((failed++))
 done
 

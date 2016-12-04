@@ -28,12 +28,36 @@
 
 ;; Package
 (require 'package)
-(setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
-                         ("marmalade" . "https://marmalade-repo.org/packages/")
-                         ("melpa-stable" . "http://stable.melpa.org/packages/")))
+ ;; list of package repositories
+(setq package-archives
+      '(("gnu" . "http://elpa.gnu.org/packages/")
+        ("marmalade" . "https://marmalade-repo.org/packages/")
+        ("melpa" . "http://melpa.org/packages/")))
+;; activate all packages
 (package-initialize)
-(when (not package-archive-contents)
+;; fetch the list of packages available
+(unless package-archive-contents
   (package-refresh-contents))
+;; install all required packages
+(setq package-list
+      '(clojure-mode
+        clojure-mode-extra-font-locking
+        company
+        company-ghc
+        ess
+        evil
+        ghc
+        haskell-mode
+        merlin
+        paredit
+        powerline
+        robe
+        tangotango-theme
+        tuareg
+        utop))
+(dolist (package package-list)
+  (unless (package-installed-p package)
+    (package-install package)))
 
 ;; Load path
 (let ((default-directory "~/.emacs.d/site-lisp/"))

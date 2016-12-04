@@ -7,6 +7,8 @@ alias ll='ls -l'
 alias la='ls -la'
 alias duchs='du -chs'
 alias ducks='du -cks'
+alias less='less -N'
+alias tmux='tmux -u'
 alias ocaml='rlwrap ocaml'
 alias q='rlwrap q'
 

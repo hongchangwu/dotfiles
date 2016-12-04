@@ -62,7 +62,7 @@ do
 done
 
 [[ ! -d "$HOME/bin" ]] && mkdir "$HOME/bin"
-for f in $(find $ROOT/bin -type f -perm +111 -maxdepth 1)
+for f in $(find $ROOT/bin -maxdepth 1 -type f -perm +111)
 do
   copy "$f" "$HOME/$f" || ((failed++))
 done

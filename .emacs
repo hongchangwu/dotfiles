@@ -15,6 +15,17 @@
 ;; Font
 (set-default-font "Inconsolata-g for Powerline 14")
 
+;; Insert spaces instead of tabs
+(setq-default indent-tabs-mode nil)
+
+;; Set line width to 78 columns...
+(setq fill-column 78)
+(setq auto-fill-mode t)
+
+;; Trailing whitespaces
+(setq-default show-trailing-whitespace t)
+;; (add-hook 'before-save-hook 'delete-trailing-whitespace)
+
 ;; Package
 (require 'package)
 (setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
@@ -28,7 +39,7 @@
 (let ((default-directory "~/.emacs.d/site-lisp/"))
   (normal-top-level-add-subdirs-to-load-path))
 
-;; Color themep
+;; Color theme
 (load-theme 'tangotango t)
 
 ;; Sh Mode
@@ -36,6 +47,13 @@
           (lambda ()
             (setq sh-basic-offset 2
                   sh-indentation 2)))
+
+;; CTags
+(defun create-tags (dir-name)
+  "Create tags file."
+  (interactive "DDirectory: ")
+  (shell-command
+   (format "%s -f TAGS -e -R %s" path-to-ctags (directory-file-name dir-name))))
 
 ;; Company mode
 (add-hook 'after-init-hook 'global-company-mode)
@@ -60,6 +78,11 @@
 
 ;; Switch between two most recent buffers
 (global-set-key (kbd "M-o")  'mode-line-other-buffer)
+
+(global-set-key (kbd "C-x <up>") 'windmove-up)
+(global-set-key (kbd "C-x <down>") 'windmove-down)
+(global-set-key (kbd "C-x <right>") 'windmove-right)
+(global-set-key (kbd "C-x <left>") 'windmove-left)
 
 ;; insert before current line and indent
 (defun insert-before-and-indent ()
@@ -95,12 +118,10 @@
  '(cperl-tab-always-indent t)
  '(custom-safe-themes (quote ("52d707d93c3cd09ce0485a70b7bf52fbd7966d46144e05c2c3bcc5b70b07825f" default))))
 
-;; Insert spaces instead of tabs
-(setq-default indent-tabs-mode nil)
-
-;; Set line width to 78 columns...
-(setq fill-column 78)
-(setq auto-fill-mode t)
+;; Vim like word search
+(require 'evil)
+(global-set-key (kbd "C-*") 'evil-search-word-forward)
+(global-set-key (kbd "C-#") 'evil-search-word-backward)
 
 ;; Use % to match various kinds of brackets...
 ;; See: http://www.lifl.fr/~hodique/uploads/Perso/patches.el
@@ -170,7 +191,8 @@
 
 ;; Powerline
 (require 'powerline)
-(powerline-default-theme)
+(when window-system
+  (powerline-default-theme))
 
 ;; OCaml
 ;; Use the opam installed utop

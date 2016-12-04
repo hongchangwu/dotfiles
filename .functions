@@ -1,19 +1,29 @@
 #!/usr/bin/env bash
 
-parse_git_branch()
+git_branch()
 {
   git symbolic-ref --short HEAD 2>/dev/null
 }
 
-parse_git_branch_for_prompt()
+git_branch_exists()
 {
-  local branch=$(parse_git_branch)
+  git show-ref refs/heads/$1 --quiet --verify
+}
+
+git_branch_for_prompt()
+{
+  local branch=$(git_branch)
   [[ -z $branch ]] || echo "[$branch]"
+}
+
+git_is_repository()
+{
+  git rev-parse --is-inside-work-tree 1>/dev/null
 }
 
 prompt()
 {
-  echo "\[\e[32;1m\]\u\[\e[0m\]@\[\e[35;1m\]\h\[\e[0m\]:\[\e[34;1m\]\W\[\e[32;1m\]\$(parse_git_branch_for_prompt)\[\e[0m\]\$ "
+  echo "\[\e[32;1m\]\u\[\e[0m\]@\[\e[35;1m\]\h\[\e[0m\]:\[\e[34;1m\]\W\[\e[32;1m\]\$(git_branch_for_prompt)\[\e[0m\]\$ "
 }
 
 exists()

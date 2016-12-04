@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+
+source "$HOME/.functions"
+
+git_is_repository || exit $?
+
+branch=$(git_branch)
+if git_branch_exists master
+then
+  [[ $branch != master ]] && git checkout master
+else
+  echo "branch 'master' nout found" >&2
+  exit 1
+fi
+
+if git remote | fgrep -q upstream
+then
+  git pull upstream master
+  exit_code=0
+else
+  echo "remote 'upstream' not found" >&2
+  exit_code=1
+fi
+
+[[ $(git_branch) != $branch ]] && git checkout $branch
+exit $exit_code

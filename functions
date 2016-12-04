@@ -30,7 +30,7 @@ git_clone_or_update()
     rc=$?
     popd >/dev/null
   else
-    git clone "$url" "$dir" &>/dev/null
+    git clone --depth 1 "$url" "$dir" &>/dev/null
     rc=$?
   fi
   return $rc

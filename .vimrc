@@ -1,7 +1,13 @@
 execute pathogen#infect()
 
 syntax on
-set guifont=Inconsolata:h14
+if has('unix')
+  if system('uname') =~ 'Darwin'
+    set guifont=Inconsolata-g\ for\ Powerline:h14
+  else
+    set guifont=Inconsolata-g\ for\ Powerline\ Medium\ 14
+  endif
+endif
 set encoding=utf-8
 colorscheme grb256
 

@@ -11,4 +11,7 @@ echo 'Installing tmux...'
 # Tmux Plugin Manager
 git_clone_or_update https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm || ((failed++))
 
+# Install plugins
+~/.tmux/plugins/tpm/bin/install_plugins >/dev/null || (failed++)
+
 exit $failed

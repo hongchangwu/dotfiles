@@ -15,6 +15,8 @@ prompt
 [[ $(uname -s) = Darwin ]] && export CLICOLOR=1
 [[ $(uname -s) = Darwin ]] && export LSCOLORS=ExGxCxDxCxegedabagaced
 
+export EDITOR=vim
+
 # Homebrew
 PATH=$(sed -e 's#/usr/local/bin:##' <<<$PATH)
 export PATH=/usr/local/bin:$PATH

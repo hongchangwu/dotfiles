@@ -6,7 +6,7 @@ declare -i failed
 
 echo 'Installing bin...'
 
-[[ ! -d "$HOME/bin" ]] && mkdir "$HOME/bin"
+[[ ! -d "$HOME/.local/bin" ]] && mkdir -p "$HOME/.local/bin"
 
 if [[ $ARCH = Darwin ]]
 then
@@ -21,7 +21,7 @@ fi
 for f in $($find_command)
 do
   [[ $(basename "$f") = install.sh ]] && continue
-  copy "$f" "$HOME/$f" || ((failed++))
+  copy "$f" "$HOME/.local/$f" || ((failed++))
 done
 
 exit $failed

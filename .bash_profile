@@ -37,11 +37,12 @@ export PATH=/usr/local/bin:$PATH
 [[ -s "$HOME/.opam/opam-init/init.sh" ]] && $HOME/.opam/opam-init/init.sh >/dev/null 2>&1 || true
 exists opam && eval $(opam config env)
 
-# Powerline
-[[ -d "$HOME/Library/Python/2.7/bin" ]] && export PATH="$PATH:$HOME/Library/Python/2.7/bin"
-[[ -d "$HOME/Library/Python/2.7/lib/python/site-packages/powerline" ]] && export POWERLINE_HOME="$HOME/Library/Python/2.7/lib/python/site-packages/powerline"
-
 export PATH=$HOME/.local/bin:$PATH
+
+# Powerline
+[[ -d $(python -m site --user-base)/bin ]] &&
+  [[ ! $PATH =~ $(python -m site --user-base)/bin ]] &&
+  export PATH="$PATH:$(python -m site --user-base)/bin"
 
 # rvm
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*

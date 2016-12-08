@@ -18,5 +18,3 @@ alias q='rlwrap q'
 [[ $(uname -s) = Linux ]] && alias ls='ls --color=auto'
 [[ $(uname -s) = Linux ]] && alias ll='ls -l --color=auto'
 [[ $(uname -s) = Linux ]] && alias la='ls -la --color=auto'
-
-[[ $(uname -s) = Darwin ]] && alias emacs='/Applications/Emacs.app/Contents/MacOS/Emacs'

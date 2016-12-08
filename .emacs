@@ -213,8 +213,7 @@
 
 ;; Powerline
 (require 'powerline)
-(when window-system
-  (powerline-default-theme))
+(powerline-center-evil-theme)
 
 ;; OCaml
 ;; Use the opam installed utop

@@ -23,7 +23,12 @@ git_is_repository()
 
 prompt()
 {
-  export PS1="\[\e[32;1m\]\u\[\e[0m\]@\[\e[35;1m\]\h\[\e[0m\]:\[\e[34;1m\]\W\[\e[32;1m\]\$(git_branch_for_prompt)\[\e[0m\]\$ "
+  if exists powerline-shell.py
+  then
+    PS1="$(powerline-shell.py $? 2> /dev/null)"
+  else
+    PS1="\[\e[32;1m\]\u\[\e[0m\]@\[\e[35;1m\]\h\[\e[0m\]:\[\e[34;1m\]\W\[\e[32;1m\]\$(git_branch_for_prompt)\[\e[0m\]\$ "
+  fi
 }
 
 exists()

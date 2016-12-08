@@ -11,7 +11,7 @@
 # tmux will set its terminal
 [[ -z "$TMUX" ]] && export TERM=xterm-256color
 
-prompt
+[[ "$TERM" != linux ]] && PROMPT_COMMAND="prompt; $PROMPT_COMMAND"
 [[ $(uname -s) = Darwin ]] && export CLICOLOR=1
 [[ $(uname -s) = Darwin ]] && export LSCOLORS=ExGxCxDxCxegedabagaced
 

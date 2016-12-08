@@ -17,6 +17,9 @@ prompt
 
 export EDITOR=vim
 
+# Git auto-completion
+source "$HOME/.git-completion.bash"
+
 # Homebrew
 PATH=$(sed -e 's#/usr/local/bin:##' <<<$PATH)
 export PATH=/usr/local/bin:$PATH

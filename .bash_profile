@@ -41,7 +41,7 @@ exists opam && eval $(opam config env)
 [[ -d "$HOME/Library/Python/2.7/bin" ]] && export PATH="$PATH:$HOME/Library/Python/2.7/bin"
 [[ -d "$HOME/Library/Python/2.7/lib/python/site-packages/powerline" ]] && export POWERLINE_HOME="$HOME/Library/Python/2.7/lib/python/site-packages/powerline"
 
-export PATH=$HOME/bin:$PATH
+export PATH=$HOME/.local/bin:$PATH
 
 # rvm
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*

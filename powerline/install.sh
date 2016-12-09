@@ -6,7 +6,8 @@ declare -i failed
 
 echo 'Installing powerline...'
 
-[[ ! -d "$HOME/.tmux" ]] && mkdir -p "$HOME/.tmux"
+[[ ! -d "$HOME/.local/bin" ]] && mkdir -p "$HOME/.local/bin"
+[[ ! -d "$HOME/.local/etc" ]] && mkdir -p "$HOME/.local/etc"
 
 pip install --user powerline-status >/dev/null || ((failed++))
 

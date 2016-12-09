@@ -73,6 +73,8 @@
                   sh-indentation 2)))
 
 ;; CTags
+(require 'subr-x)
+(setq path-to-ctags (string-trim-right (shell-command-to-string "which ctags")))
 (defun create-tags (dir-name)
   "Create tags file."
   (interactive "DDirectory: ")

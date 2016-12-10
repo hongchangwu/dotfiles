@@ -22,7 +22,8 @@
 	amend = commit -a --amend --no-edit
 	reword = commit --amend
 	wipe = !git add -A && git commit -qm "WIPE SAVEPOINT" && git reset --hard HEAD~
-	l = log --pretty=oneline HEAD
+	l = log --oneline --decorate HEAD
 	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit HEAD
+	lu = log -u HEAD
 	last = show --name-only --oneline HEAD
 	st = status --short

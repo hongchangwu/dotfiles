@@ -30,3 +30,4 @@
 	lu = !git lg -u HEAD
 	last = show --name-only --oneline HEAD
 	st = status --short
+	ls = ls-files

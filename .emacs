@@ -106,10 +106,10 @@
 ;; Switch between two most recent buffers
 (global-set-key (kbd "M-o")  'mode-line-other-buffer)
 
-(global-set-key (kbd "C-x k") 'windmove-up)
-(global-set-key (kbd "C-x j") 'windmove-down)
-(global-set-key (kbd "C-x l") 'windmove-right)
-(global-set-key (kbd "C-x h") 'windmove-left)
+;; (global-set-key (kbd "C-x K") 'windmove-up)
+;; (global-set-key (kbd "C-x J") 'windmove-down)
+;; (global-set-key (kbd "C-x L") 'windmove-right)
+;; (global-set-key (kbd "C-x H") 'windmove-left)
 
 ;; insert before current line and indent
 (defun insert-before-and-indent ()

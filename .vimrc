@@ -9,7 +9,7 @@ if has('unix')
   endif
 endif
 set encoding=utf-8
-colorscheme grb256
+colorscheme jellybeans
 
 " Show line numbers
 set number

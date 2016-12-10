@@ -36,7 +36,7 @@ DOT_FILES=(
   .vimrc
   )
 
-export BACKUP_SUFFIX=".bak.$(date -u '+%Y-%m-%dT%H:%M:%SZ')"
+export BACKUP_SUFFIX=".bak.$(date -u +%s)"
 
 source "$ROOT/.functions"
 

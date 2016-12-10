@@ -9,7 +9,7 @@ if git_branch_exists master
 then
   [[ $branch != master ]] && git checkout master
 else
-  echo "branch 'master' nout found" >&2
+  echo "branch 'master' not found" >&2
   exit 1
 fi
 

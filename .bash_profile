@@ -37,6 +37,15 @@ export PATH=/usr/local/bin:$PATH
 [[ -s "$HOME/.opam/opam-init/init.sh" ]] && $HOME/.opam/opam-init/init.sh >/dev/null 2>&1 || true
 exists opam && eval $(opam config env)
 
+# Haskell
+if [[ $(uname -s) = Linux ]]
+then
+  export PATH="$PATH:$HOME/.cabal/bin"
+elif [[ $(uname -s) = Darwin ]]
+then
+  export PATH="$PATH:$HOME/Library/Haskell/bin"
+fi
+
 export PATH=$HOME/.local/bin:$PATH
 
 # Powerline

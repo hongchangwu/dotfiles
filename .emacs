@@ -28,7 +28,7 @@
 
 ;; Package
 (require 'package)
- ;; list of package repositories
+;; list of package repositories
 (setq package-archives
       '(("gnu" . "http://elpa.gnu.org/packages/")
         ("marmalade" . "https://marmalade-repo.org/packages/")
@@ -49,6 +49,7 @@
         evil
         ghc
         haskell-mode
+        hindent
         merlin
         paredit
         powerline
@@ -123,7 +124,7 @@
 (defun backward-kill-line (arg)
   "Kill ARG lines backward."
   (interactive "p")
-    (kill-line (- 1 arg)))
+  (kill-line (- 1 arg)))
 (global-set-key (kbd "M-k") 'backward-kill-line)
 
 ;; Use cperl mode instead of the default perl mode
@@ -163,30 +164,34 @@
           (t (self-insert-command (or arg 1))))))
 
 ;; Haskell mode
+(require 'haskell-mode)
 (autoload 'ghc-init "ghc" nil t)
 (autoload 'ghc-debug "ghc" nil t)
 (add-hook 'haskell-mode-hook (lambda () (ghc-init)))
+(add-hook 'haskell-mode-hook 'interactive-haskell-mode)
+(add-hook 'haskell-mode-hook 'turn-on-haskell-doc-mode)
+(eval-after-load 'haskell-mode
+  '(define-key haskell-mode-map [f8] 'haskell-navigate-imports))
+(custom-set-variables
+ '(haskell-interactive-popup-errors nil)
+ '(haskell-process-suggest-remove-import-lines t)
+ '(haskell-process-auto-import-loaded-modules t)
+ '(haskell-process-log t)
+ '(haskell-process-type 'cabal-repl)
+ '(haskell-tags-on-save t))
+
+(require 'hindent)
+(add-hook 'haskell-mode-hook #'hindent-mode)
 
 (require 'company-ghc)
 (add-to-list 'company-backends 'company-ghc)
 (custom-set-variables '(company-ghc-show-info t))
-
-(add-hook 'haskell-mode-hook 'interactive-haskell-mode)
-(add-hook 'haskell-mode-hook 'turn-on-haskell-doc-mode)
-(add-hook 'haskell-mode-hook 'turn-on-haskell-indentation)
 
 ;; (require 'shm)
 ;; (add-hook 'haskell-mode-hook 'structured-haskell-mode)
 ;; (add-hook 'haskell-mode-hook
 ;;           '(lambda ()
 ;;              (local-set-key (kbd "RET") 'shm/newline-indent-proxy)))
-
-(custom-set-variables
- '(haskell-interactive-popup-errors nil)
- '(haskell-process-suggest-remove-import-lines t)
- '(haskell-process-auto-import-loaded-modules t)
- '(haskell-process-log t)
- '(haskell-process-type 'cabal-repl))
 
 ;; Clojure mode
 (require 'clojure-mode)

@@ -33,3 +33,4 @@
 	ls = ls-files
 	sync-merge = !git fetch upstream master && git merge FETCH_HEAD
 	sync-rebase = !git fetch upstream master && git rebase FETCH_HEAD
+	review = diff --cached

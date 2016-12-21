@@ -24,7 +24,7 @@
 	undo = reset --mixed HEAD~
 	amend = commit -a --amend --no-edit
 	reword = commit --amend
-	wipe = !git add -A && git commit -qm "WIPE SAVEPOINT" && git reset --hard HEAD~
+	abandon = !git add -A && git commit -qm "Abandoned" && git reset --hard HEAD~
 	l = log --oneline --decorate HEAD
 	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit HEAD
 	lu = !git lg -u HEAD

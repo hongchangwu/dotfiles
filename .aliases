@@ -11,7 +11,7 @@ alias fgrep='fgrep --color=auto'
 alias duchs='du -chs'
 alias ducks='du -cks'
 alias less='less -N'
-alias tmux='tmux -u'
+alias tmux='tmux -u -2'
 alias ocaml='rlwrap ocaml'
 alias q='rlwrap q'
 

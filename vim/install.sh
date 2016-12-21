@@ -22,6 +22,9 @@ download https://raw.githubusercontent.com/tomasr/molokai/master/colors/molokai.
 # Jellybeans color theme
 download https://raw.githubusercontent.com/nanotech/jellybeans.vim/master/colors/jellybeans.vim ~/.vim/colors/jellybeans.vim || ((failed++))
 
+# Base16 tomorrow theme
+download https://raw.githubusercontent.com/chriskempson/base16-vim/master/colors/base16-tomorrow-night.vim ~/.vim/colors/base16-tomorrow-night.vim || ((failed++))
+
 # Tag List
 git_clone_or_update https://github.com/vim-scripts/taglist.vim.git ~/.vim/bundle/taglist || ((failed++))
 

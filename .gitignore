@@ -4,6 +4,7 @@
 
 # Vim
 *~
+*.swp
 
 # Tags
 TAGS

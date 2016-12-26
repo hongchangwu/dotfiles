@@ -18,7 +18,10 @@
 export EDITOR=vim
 
 # Git auto-completion
-source "$HOME/.git-completion.bash"
+[[ -r "$HOME/.git-completion.bash" ]] && source "$HOME/.git-completion.bash"
+
+# Tmuxinator auto-completion
+[[ -r "$HOME/.tmuxinator.bash" ]] && source "$HOME/.tmuxinator.bash"
 
 # Homebrew
 PATH=$(sed -e 's#/usr/local/bin:##' <<<$PATH)

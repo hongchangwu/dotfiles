@@ -14,4 +14,7 @@ git_clone_or_update https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm || (
 # Install plugins
 ~/.tmux/plugins/tpm/bin/install_plugins >/dev/null || ((failed++))
 
+# Tmuxinator auto-completion
+download https://raw.githubusercontent.com/tmuxinator/tmuxinator/master/completion/tmuxinator.bash ~/.tmuxinator.bash
+
 exit $failed

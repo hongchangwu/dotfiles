@@ -9,7 +9,9 @@ if has('unix')
   endif
 endif
 set encoding=utf-8
-set term=screen-256color
+if exists('$TMUX')
+  set term=screen-256color
+endif
 colorscheme jellybeans
 
 " Show line numbers

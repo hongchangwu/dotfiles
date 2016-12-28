@@ -63,3 +63,7 @@ python powerline_setup()
 python del powerline_setup
 " Always show statusline
 set laststatus=2
+
+if has('autocmd')
+  autocmd BufReadPost fugitive://* set bufhidden=delete
+endif

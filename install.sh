@@ -57,9 +57,6 @@ do
   copy "$ROOT/$f" "$HOME/$f" || ((failed++))
 done
 
-# Download Git auto-completion
-download https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash ~/.git-completion.bash
-
 # Recursively install all components
 for f in $(find "$ROOT" -mindepth 2 -maxdepth 2 -name install.sh -print)
 do

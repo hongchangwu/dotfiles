@@ -34,4 +34,8 @@ git_clone_or_update https://github.com/scrooloose/nerdtree.git ~/.vim/bundle/ner
 # Syntastic
 git_clone_or_update https://github.com/vim-syntastic/syntastic.git ~/.vim/bundle/syntastic || ((failed++))
 
+# fugitive.vim
+git_clone_or_update https://github.com/tpope/vim-fugitive.git ~/.vim/bundle/vim-fugitive || ((failed++))
+vim -u NONE -c "helptags ~/.vim/bundle/vim-fugitive/doc" -c q || ((failed++))
+
 exit $failed

@@ -50,6 +50,7 @@
         ghc
         haskell-mode
         hindent
+        magit
         merlin
         paredit
         powerline
@@ -233,3 +234,6 @@
 ;; Start merlin on ocaml files
 (add-hook 'tuareg-mode-hook 'merlin-mode t)
 (add-hook 'caml-mode-hook 'merlin-mode t)
+
+;; Magit
+(global-set-key (kbd "C-x g") 'magit-status)

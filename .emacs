@@ -40,7 +40,7 @@
   (package-refresh-contents))
 ;; install all required packages
 (setq package-list
-      '(ack
+      '(ag
         clojure-mode
         clojure-mode-extra-font-locking
         company

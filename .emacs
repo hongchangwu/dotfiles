@@ -57,7 +57,8 @@
         robe
         tangotango-theme
         tuareg
-        utop))
+        utop
+        yaml-mode))
 (dolist (package package-list)
   (unless (package-installed-p package)
     (package-install package)))

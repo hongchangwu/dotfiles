@@ -56,5 +56,5 @@ export PATH=$HOME/.local/bin:$PATH
   [[ ! $PATH =~ $(python -m site --user-base)/bin ]] &&
   export PATH="$PATH:$(python -m site --user-base)/bin"
 
-# rvm
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+# rbenv
+eval "$(rbenv init -)"

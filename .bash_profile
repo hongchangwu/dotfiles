@@ -27,6 +27,9 @@ export EDITOR=vim
 PATH=$(sed -e 's#/usr/local/bin:##' <<<$PATH)
 export PATH=/usr/local/bin:$PATH
 
+# rbenv
+exists rbenv && eval "$(rbenv init -)"
+
 # Node js
 [[ -d /usr/local/lib/node_modules/ ]] && export NODE_PATH=/usr/local/lib/node_modules/
 
@@ -55,6 +58,3 @@ export PATH=$HOME/.local/bin:$PATH
 [[ -d $(python -m site --user-base)/bin ]] &&
   [[ ! $PATH =~ $(python -m site --user-base)/bin ]] &&
   export PATH="$PATH:$(python -m site --user-base)/bin"
-
-# rbenv
-eval "$(rbenv init -)"

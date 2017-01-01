@@ -189,6 +189,8 @@
 (add-to-list 'company-backends 'company-ghc)
 (custom-set-variables '(company-ghc-show-info t))
 
+(require 'hs-lint)
+
 ;; (require 'shm)
 ;; (add-hook 'haskell-mode-hook 'structured-haskell-mode)
 ;; (add-hook 'haskell-mode-hook

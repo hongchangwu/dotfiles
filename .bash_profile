@@ -41,10 +41,10 @@ export PATH=/usr/local/bin:$PATH
 exists opam && eval $(opam config env)
 
 # Haskell
-if [[ $(uname -s) = Linux ]]
+if [[ -d "$HOME/.cabal/bin" ]]
 then
   export PATH="$PATH:$HOME/.cabal/bin"
-elif [[ $(uname -s) = Darwin ]]
+elif [[ -d "$HOME/Library/Haskell/bin" ]]
 then
   export PATH="$PATH:$HOME/Library/Haskell/bin"
 fi

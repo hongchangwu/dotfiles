@@ -173,7 +173,9 @@
 (add-hook 'haskell-mode-hook 'interactive-haskell-mode)
 (add-hook 'haskell-mode-hook 'turn-on-haskell-doc-mode)
 (eval-after-load 'haskell-mode
-  '(define-key haskell-mode-map [f8] 'haskell-navigate-imports))
+  '(progn
+     (define-key haskell-mode-map [f8] 'haskell-navigate-imports)
+     (add-hook 'before-save-hook 'haskell-mode-stylish-buffer)))
 (custom-set-variables
  '(haskell-interactive-popup-errors nil)
  '(haskell-process-suggest-remove-import-lines t)

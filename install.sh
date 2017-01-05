@@ -33,6 +33,7 @@ DOT_FILES=(
   .functions
   .gitconfig
   .tmux.conf
+  .tmux.conf.osx
   .vimrc
   )
 

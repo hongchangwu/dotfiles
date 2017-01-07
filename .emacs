@@ -182,7 +182,8 @@
  '(haskell-process-auto-import-loaded-modules t)
  '(haskell-process-log t)
  '(haskell-process-type 'auto)
- '(haskell-tags-on-save t))
+ '(haskell-tags-on-save t)
+ '(haskell-font-lock-symbols t))
 
 (require 'hindent)
 (add-hook 'haskell-mode-hook #'hindent-mode)

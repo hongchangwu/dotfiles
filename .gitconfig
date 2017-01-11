@@ -26,7 +26,7 @@
 	amend = commit -a --amend
 	reword = commit --amend
 	abandon = !git add -A && git commit -qm "Abandoned" && git reset --hard HEAD~
-	l = log --oneline --decorate HEAD
+	l = !git --no-pager log --oneline --decorate HEAD
 	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit HEAD
 	lu = !git lg -u HEAD
 	last = show --name-only --oneline HEAD

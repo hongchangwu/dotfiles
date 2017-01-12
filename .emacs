@@ -15,6 +15,10 @@
 ;; Font
 (set-default-font "Inconsolata-g for Powerline 14")
 
+;; Colors
+(custom-set-faces
+ '(mode-line ((t (:foreground "white" :background "#6a5acd" :box nil)))))
+
 ;; Insert spaces instead of tabs
 (setq-default indent-tabs-mode nil)
 

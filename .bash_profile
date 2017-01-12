@@ -20,6 +20,9 @@ export EDITOR=vim
 # Git auto-completion
 [[ -r "$HOME/.git-completion.bash" ]] && source "$HOME/.git-completion.bash"
 
+# Tmux auto-completion
+[[ -r "$HOME/.tmux.completion.bash" ]] && source "$HOME/.tmux.completion.bash"
+
 # Tmuxinator auto-completion
 [[ -r "$HOME/.tmuxinator.bash" ]] && source "$HOME/.tmuxinator.bash"
 

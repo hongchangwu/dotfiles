@@ -218,9 +218,6 @@
 (add-hook 'enh-ruby-mode-hook 'robe-mode)
 (add-hook 'enh-ruby-mode-hook 'eldoc-mode)
 
-;; ESS
-(require 'ess-site)
-
 ;; Octave
 (setq auto-mode-alist
       (cons

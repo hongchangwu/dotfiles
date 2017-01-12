@@ -40,8 +40,7 @@
   (package-refresh-contents))
 ;; install all required packages
 (setq package-list
-      '(ag
-        clojure-mode
+      '(clojure-mode
         clojure-mode-extra-font-locking
         company
         company-ghc
@@ -50,6 +49,7 @@
         ghc
         haskell-mode
         helm
+        helm-ag
         hindent
         magit
         merlin

@@ -6,14 +6,14 @@
 (line-number-mode t)
 (global-linum-mode t)
 
-;; Frame size
-(setq initial-frame-alist '((left . 100)
-                            (top . 50)
-                            (height . 40)
-                            (width . 120)))
-
-;; Font
-(set-default-font "Inconsolata-g for Powerline 14")
+;; Frame size and font
+(setq initial-frame-alist
+      '((left . 100)
+        (top . 50)
+        (height . 40)
+        (width . 120)
+        (font . "Inconsolata for Powerline 16")))
+(setq default-frame-alist initial-frame-alist)
 
 ;; Colors
 (custom-set-faces

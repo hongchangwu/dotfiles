@@ -251,7 +251,6 @@
 (define-key global-map [remap find-file] 'helm-find-files)
 (define-key global-map [remap occur] 'helm-occur)
 (define-key global-map [remap list-buffers] 'helm-buffers-list)
-(define-key global-map [remap dabbrev-expand] 'helm-dabbrev)
 (define-key helm-map (kbd "<tab>") 'helm-execute-persistent-action) ; rebind tab to run persistent action
 (define-key helm-map (kbd "C-i") 'helm-execute-persistent-action) ; make TAB work in terminal
 (define-key helm-map (kbd "C-z")  'helm-select-action) ; list actions using C-z

@@ -54,11 +54,13 @@
         haskell-mode
         helm
         helm-ag
+        helm-projectile
         hindent
         magit
         merlin
         paredit
         powerline
+        projectile
         robe
         tangotango-theme
         tuareg
@@ -258,3 +260,12 @@
 (unless (boundp 'completion-in-region-function)
   (define-key lisp-interaction-mode-map [remap completion-at-point] 'helm-lisp-completion-at-point)
   (define-key emacs-lisp-mode-map       [remap completion-at-point] 'helm-lisp-completion-at-point))
+(setq helm-M-x-fuzzy-match t)
+
+;; Helm Ag
+(setq helm-ag-insert-at-point (quote symbol))
+
+;; Projectile
+(projectile-global-mode)
+(setq projectile-completion-system 'helm)
+(helm-projectile-on)

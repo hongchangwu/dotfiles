@@ -267,5 +267,6 @@
 
 ;; Projectile
 (projectile-global-mode)
+(setq projectile-use-git-grep t)
 (setq projectile-completion-system 'helm)
 (helm-projectile-on)

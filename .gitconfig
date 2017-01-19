@@ -29,8 +29,8 @@
 	l = !git --no-pager log --oneline --decorate HEAD
 	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit HEAD
 	lu = !git lg -u HEAD
-	last = show --name-only --oneline HEAD
-	st = status --short
+	last = !git --no-pager show --name-only --oneline HEAD
+	st = status --short -uno
 	ls = ls-files
 	sync-merge = !git fetch upstream master && git merge FETCH_HEAD
 	sync-rebase = !git fetch upstream master && git rebase FETCH_HEAD

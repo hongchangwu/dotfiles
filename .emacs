@@ -239,6 +239,12 @@
 (setq utop-command "opam config exec -- utop -emacs")
 (autoload 'utop-minor-mode "utop" "Minor mode for utop" t)
 (add-hook 'tuareg-mode-hook 'utop-minor-mode)
+(add-hook 'tuareg-mode-hook
+          (lambda()
+            ;; Enable the representation of some keywords using fonts
+            (when (functionp 'prettify-symbols-mode)
+              (prettify-symbols-mode))))
+(setq tuareg-match-clause-indent 0)
 ;; Load merlin-mode
 (require 'merlin)
 ;; Start merlin on ocaml files

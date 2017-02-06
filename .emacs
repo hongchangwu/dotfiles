@@ -54,6 +54,7 @@
         haskell-mode
         helm
         helm-ag
+        helm-gtags
         helm-projectile
         hindent
         magit
@@ -62,6 +63,7 @@
         powerline
         projectile
         robe
+        sr-speedbar
         tangotango-theme
         tuareg
         utop
@@ -273,6 +275,16 @@
 
 ;; Projectile
 (projectile-global-mode)
-(setq projectile-use-git-grep t)
 (setq projectile-completion-system 'helm)
+(setq projectile-use-git-grep t)
 (helm-projectile-on)
+
+;; GNU Global interface
+(add-hook 'c-mode-hook 'helm-gtags-mode)
+(add-hook 'c++-mode-hook 'helm-gtags-mode)
+(add-hook 'tuareg-mode-hook 'helm-gtags-mode)
+(custom-set-variables
+ '(helm-gtags-suggested-key-mapping t)
+ '(helm-gtags-auto-update t)
+ '(helm-gtags-use-input-at-cursor t)
+ '(helm-gtags-pulse-at-cursor t))

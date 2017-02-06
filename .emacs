@@ -284,11 +284,15 @@
 (add-hook 'c++-mode-hook 'helm-gtags-mode)
 (add-hook 'tuareg-mode-hook 'helm-gtags-mode)
 (custom-set-variables
+ '(helm-gtags-prefix-key "\C-cg")
  '(helm-gtags-suggested-key-mapping t)
  '(helm-gtags-auto-update t)
  '(helm-gtags-use-input-at-cursor t)
  '(helm-gtags-pulse-at-cursor t))
 (with-eval-after-load 'helm-gtags
-  (define-key helm-gtags-mode-map (kbd "C-c c") 'helm-gtags-create-tags)
-  (define-key helm-gtags-mode-map (kbd "C-c <") 'helm-gtags-previous-history)
-  (define-key helm-gtags-mode-map (kbd "C-c >") 'helm-gtags-next-history))
+  (define-key helm-gtags-mode-map (kbd "M-.") 'helm-gtags-dwim)
+  (define-key helm-gtags-mode-map (kbd "M-,") 'helm-gtags-pop-stack)
+  (define-key helm-gtags-mode-map (kbd "C-c g a") 'helm-gtags-tags-in-this-function)
+  (define-key helm-gtags-mode-map (kbd "C-c g c") 'helm-gtags-create-tags)
+  (define-key helm-gtags-mode-map (kbd "C-c g <") 'helm-gtags-previous-history)
+  (define-key helm-gtags-mode-map (kbd "C-c g >") 'helm-gtags-next-history))

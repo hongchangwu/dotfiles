@@ -288,3 +288,7 @@
  '(helm-gtags-auto-update t)
  '(helm-gtags-use-input-at-cursor t)
  '(helm-gtags-pulse-at-cursor t))
+(with-eval-after-load 'helm-gtags
+  (define-key helm-gtags-mode-map (kbd "C-c c") 'helm-gtags-create-tags)
+  (define-key helm-gtags-mode-map (kbd "C-c <") 'helm-gtags-previous-history)
+  (define-key helm-gtags-mode-map (kbd "C-c >") 'helm-gtags-next-history))

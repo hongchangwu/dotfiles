@@ -85,15 +85,6 @@
             (setq sh-basic-offset 2
                   sh-indentation 2)))
 
-;; CTags
-(require 'subr-x)
-(setq path-to-ctags (string-trim-right (shell-command-to-string "which ctags")))
-(defun create-tags (dir-name)
-  "Create tags file."
-  (interactive "DDirectory: ")
-  (shell-command
-   (format "%s -f TAGS -e -R %s" path-to-ctags (directory-file-name dir-name))))
-
 ;; Company mode
 (add-hook 'after-init-hook 'global-company-mode)
 
@@ -122,6 +113,10 @@
 (global-set-key (kbd "C-c j") 'windmove-down)
 (global-set-key (kbd "C-c l") 'windmove-right)
 (global-set-key (kbd "C-c h") 'windmove-left)
+
+;; Highlight matching brackets
+(show-paren-mode 1)
+(setq show-paren-delay 0)
 
 ;; insert before current line and indent
 (defun insert-before-and-indent ()
@@ -247,6 +242,10 @@
             (when (functionp 'prettify-symbols-mode)
               (prettify-symbols-mode))))
 (setq tuareg-match-clause-indent 0)
+(with-eval-after-load 'tuareg
+  (define-key tuareg-mode-map (kbd "M-n") 'tuareg-next-phrase)
+  (define-key tuareg-mode-map (kbd "M-p") 'tuareg-previous-phrase))
+
 ;; Load merlin-mode
 (require 'merlin)
 ;; Start merlin on ocaml files

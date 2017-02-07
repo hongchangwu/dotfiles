@@ -282,6 +282,7 @@
 ;; GNU Global interface
 (add-hook 'c-mode-hook 'helm-gtags-mode)
 (add-hook 'c++-mode-hook 'helm-gtags-mode)
+(add-hook 'python-mode-hook 'helm-gtags-mode)
 (add-hook 'tuareg-mode-hook 'helm-gtags-mode)
 (custom-set-variables
  '(helm-gtags-prefix-key "\C-cg")

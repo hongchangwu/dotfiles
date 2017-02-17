@@ -300,3 +300,7 @@
   (define-key helm-gtags-mode-map (kbd "C-c g c") 'helm-gtags-create-tags)
   (define-key helm-gtags-mode-map (kbd "C-c g <") 'helm-gtags-previous-history)
   (define-key helm-gtags-mode-map (kbd "C-c g >") 'helm-gtags-next-history))
+
+;; Semantic
+(add-hook 'c-mode-hook 'semantic-mode)
+(add-hook 'c++-mode-hook 'semantic-mode)

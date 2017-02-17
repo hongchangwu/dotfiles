@@ -256,7 +256,10 @@
 (global-set-key (kbd "C-x g") 'magit-status)
 
 ;; Helm
-(helm-mode 1)
+(require 'helm)
+(require 'helm-config)
+(global-unset-key (kbd "C-x c"))
+(global-set-key (kbd "C-c h") 'helm-command-prefix)
 (define-key global-map [remap find-file] 'helm-find-files)
 (define-key global-map [remap occur] 'helm-occur)
 (define-key global-map [remap list-buffers] 'helm-buffers-list)
@@ -268,6 +271,7 @@
   (define-key lisp-interaction-mode-map [remap completion-at-point] 'helm-lisp-completion-at-point)
   (define-key emacs-lisp-mode-map       [remap completion-at-point] 'helm-lisp-completion-at-point))
 (setq helm-M-x-fuzzy-match t)
+(helm-mode 1)
 
 ;; Helm Ag
 (setq helm-ag-insert-at-point (quote symbol))

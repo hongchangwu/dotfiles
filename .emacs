@@ -109,10 +109,10 @@
 ;; Switch between two most recent buffers
 (global-set-key (kbd "M-o")  'mode-line-other-buffer)
 
-(global-set-key (kbd "C-c k") 'windmove-up)
-(global-set-key (kbd "C-c j") 'windmove-down)
-(global-set-key (kbd "C-c l") 'windmove-right)
-(global-set-key (kbd "C-c h") 'windmove-left)
+(global-set-key (kbd "C-c w k") 'windmove-up)
+(global-set-key (kbd "C-c w j") 'windmove-down)
+(global-set-key (kbd "C-c w l") 'windmove-right)
+(global-set-key (kbd "C-c w h") 'windmove-left)
 
 ;; Highlight matching brackets
 (show-paren-mode 1)

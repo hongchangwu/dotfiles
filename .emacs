@@ -48,6 +48,7 @@
         clojure-mode-extra-font-locking
         company
         company-ghc
+        elm-mode
         ess
         evil
         ghc
@@ -306,3 +307,7 @@
 (add-hook 'c-mode-hook 'semantic-mode)
 (add-hook 'c++-mode-hook 'semantic-mode)
 (add-hook 'java-mode-hook 'semantic-mode)
+
+;; Elm
+(custom-set-variables '(elm-indent-offset 2))
+(add-to-list 'company-backends 'company-elm)

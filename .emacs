@@ -287,6 +287,7 @@
 (add-hook 'c-mode-hook 'helm-gtags-mode)
 (add-hook 'c++-mode-hook 'helm-gtags-mode)
 (add-hook 'java-mode-hook 'helm-gtags-mode)
+(add-hook 'js-mode-hook 'helm-gtags-mode)
 (add-hook 'python-mode-hook 'helm-gtags-mode)
 (add-hook 'tuareg-mode-hook 'helm-gtags-mode)
 (custom-set-variables

@@ -31,47 +31,48 @@
 ;; (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
 ;; Package
-(require 'package)
-;; list of package repositories
-(setq package-archives
-      '(("gnu" . "http://elpa.gnu.org/packages/")
-        ("marmalade" . "https://marmalade-repo.org/packages/")
-        ("melpa" . "http://melpa.org/packages/")))
-;; activate all packages
-(package-initialize)
-;; fetch the list of packages available
-(unless package-archive-contents
-  (package-refresh-contents))
-;; install all required packages
-(setq package-list
-      '(clojure-mode
-        clojure-mode-extra-font-locking
-        company
-        company-ghc
-        elm-mode
-        ess
-        evil
-        ghc
-        haskell-mode
-        helm
-        helm-ag
-        helm-gtags
-        helm-projectile
-        hindent
-        magit
-        merlin
-        paredit
-        powerline
-        projectile
-        robe
-        sr-speedbar
-        tangotango-theme
-        tuareg
-        utop
-        yaml-mode))
-(dolist (package package-list)
-  (unless (package-installed-p package)
-    (package-install package)))
+(when (>= emacs-major-version 24)
+  (require 'package)
+  ;; list of package repositories
+  (setq package-archives
+        '(("gnu" . "http://elpa.gnu.org/packages/")
+          ("marmalade" . "https://marmalade-repo.org/packages/")
+          ("melpa" . "http://melpa.org/packages/")))
+  ;; activate all packages
+  (package-initialize)
+  ;; fetch the list of packages available
+  (unless package-archive-contents
+    (package-refresh-contents))
+  ;; install all required packages
+  (setq package-list
+        '(clojure-mode
+          clojure-mode-extra-font-locking
+          company
+          company-ghc
+          elm-mode
+          ess
+          evil
+          ghc
+          haskell-mode
+          helm
+          helm-ag
+          helm-gtags
+          helm-projectile
+          hindent
+          magit
+          merlin
+          paredit
+          powerline
+          projectile
+          robe
+          sr-speedbar
+          tangotango-theme
+          tuareg
+          utop
+          yaml-mode))
+  (dolist (package package-list)
+    (unless (package-installed-p package)
+      (package-install package))))
 
 ;; Load path
 (let ((default-directory "~/.emacs.d/site-lisp/"))
@@ -154,9 +155,9 @@
  '(custom-safe-themes (quote ("52d707d93c3cd09ce0485a70b7bf52fbd7966d46144e05c2c3bcc5b70b07825f" default))))
 
 ;; Vim like word search
-(require 'evil)
-(global-set-key (kbd "C-*") 'evil-search-word-forward)
-(global-set-key (kbd "C-#") 'evil-search-word-backward)
+(when (require 'evil nil t)
+  (global-set-key (kbd "C-*") 'evil-search-word-forward)
+  (global-set-key (kbd "C-#") 'evil-search-word-backward))
 
 ;; Use % to match various kinds of brackets...
 ;; See: http://www.lifl.fr/~hodique/uploads/Perso/patches.el
@@ -171,33 +172,33 @@
           (t (self-insert-command (or arg 1))))))
 
 ;; Haskell mode
-(require 'haskell-mode)
-(autoload 'ghc-init "ghc" nil t)
-(autoload 'ghc-debug "ghc" nil t)
-(add-hook 'haskell-mode-hook (lambda () (ghc-init)))
-(add-hook 'haskell-mode-hook 'interactive-haskell-mode)
-(add-hook 'haskell-mode-hook 'turn-on-haskell-doc-mode)
-(eval-after-load 'haskell-mode
-  '(progn
-     (define-key haskell-mode-map [f8] 'haskell-navigate-imports)
-     (add-hook 'before-save-hook 'haskell-mode-stylish-buffer)))
-(custom-set-variables
- '(haskell-interactive-popup-errors nil)
- '(haskell-process-suggest-remove-import-lines t)
- '(haskell-process-auto-import-loaded-modules t)
- '(haskell-process-log t)
- '(haskell-process-type 'auto)
- '(haskell-tags-on-save t)
- '(haskell-font-lock-symbols t))
+(when (require 'haskell-mode nil t)
+  (autoload 'ghc-init "ghc" nil t)
+  (autoload 'ghc-debug "ghc" nil t)
+  (add-hook 'haskell-mode-hook (lambda () (ghc-init)))
+  (add-hook 'haskell-mode-hook 'interactive-haskell-mode)
+  (add-hook 'haskell-mode-hook 'turn-on-haskell-doc-mode)
+  (eval-after-load 'haskell-mode
+    '(progn
+       (define-key haskell-mode-map [f8] 'haskell-navigate-imports)
+       (add-hook 'before-save-hook 'haskell-mode-stylish-buffer)))
+  (custom-set-variables
+   '(haskell-interactive-popup-errors nil)
+   '(haskell-process-suggest-remove-import-lines t)
+   '(haskell-process-auto-import-loaded-modules t)
+   '(haskell-process-log t)
+   '(haskell-process-type 'auto)
+   '(haskell-tags-on-save t)
+   '(haskell-font-lock-symbols t)))
 
-(require 'hindent)
-(add-hook 'haskell-mode-hook #'hindent-mode)
+(when (require 'hindent nil t)
+  (add-hook 'haskell-mode-hook #'hindent-mode))
 
-(require 'company-ghc)
-(add-to-list 'company-backends 'company-ghc)
-(custom-set-variables '(company-ghc-show-info t))
+(when (require 'company-ghc nil t)
+  (add-to-list 'company-backends 'company-ghc)
+  (custom-set-variables '(company-ghc-show-info t)))
 
-(require 'hs-lint)
+(require 'hs-lint nil t)
 
 ;; (require 'shm)
 ;; (add-hook 'haskell-mode-hook 'structured-haskell-mode)
@@ -206,21 +207,22 @@
 ;;              (local-set-key (kbd "RET") 'shm/newline-indent-proxy)))
 
 ;; Clojure mode
-(require 'clojure-mode)
-(add-hook 'clojure-mode-hook 'paredit-mode)
-(add-hook 'cider-mode-hook 'cider-turn-on-eldoc-mode)
-(add-hook 'nrepl-mode-hook 'paredit-mode)
-(require 'clojure-mode-extra-font-locking)
-(setq nrepl-log-messages t)
-(setq nrepl-hide-special-buffers t)
-(setq cider-show-error-buffer 'except-in-repl)
+(when (require 'clojure-mode nil t)
+  (add-hook 'clojure-mode-hook 'paredit-mode)
+  (add-hook 'cider-mode-hook 'cider-turn-on-eldoc-mode)
+  (add-hook 'nrepl-mode-hook 'paredit-mode))
+(when (require 'clojure-mode-extra-font-locking nil t)
+  (setq nrepl-log-messages t)
+  (setq nrepl-hide-special-buffers t)
+  (setq cider-show-error-buffer 'except-in-repl))
 
 ;; Ruby mode
-(push 'company-robe company-backends)
-(add-hook 'ruby-mode-hook 'robe-mode)
-(add-hook 'ruby-mode-hook 'eldoc-mode)
-(add-hook 'enh-ruby-mode-hook 'robe-mode)
-(add-hook 'enh-ruby-mode-hook 'eldoc-mode)
+(when (require 'robe nil t)
+  (push 'company-robe company-backends)
+  (add-hook 'ruby-mode-hook 'robe-mode)
+  (add-hook 'ruby-mode-hook 'eldoc-mode)
+  (add-hook 'enh-ruby-mode-hook 'robe-mode)
+  (add-hook 'enh-ruby-mode-hook 'eldoc-mode))
 
 ;; Octave
 (setq auto-mode-alist
@@ -229,8 +231,8 @@
        auto-mode-alist))
 
 ;; Powerline
-(require 'powerline)
-(powerline-center-evil-theme)
+(when (require 'powerline nil t)
+  (powerline-center-evil-theme))
 
 ;; OCaml
 ;; Use the opam installed utop
@@ -248,61 +250,66 @@
   (define-key tuareg-mode-map (kbd "M-p") 'tuareg-previous-phrase))
 
 ;; Load merlin-mode
-(require 'merlin)
-;; Start merlin on ocaml files
+(when (require 'merlin nil t)
+  ;; Start merlin on ocaml files
 (add-hook 'tuareg-mode-hook 'merlin-mode t)
-(add-hook 'caml-mode-hook 'merlin-mode t)
+(add-hook 'caml-mode-hook 'merlin-mode t))
 
 ;; Magit
-(global-set-key (kbd "C-x g") 'magit-status)
+(when (require 'magit nil t)
+  (global-set-key (kbd "C-x g") 'magit-status))
 
 ;; Helm
-(require 'helm)
-(require 'helm-config)
-(global-unset-key (kbd "C-x c"))
-(global-set-key (kbd "C-c h") 'helm-command-prefix)
-(global-set-key (kbd "C-x C-f") 'helm-find-files)
-(global-set-key (kbd "C-c h o") 'helm-occur)
-(define-key global-map [remap list-buffers] 'helm-buffers-list)
-(define-key helm-map (kbd "<tab>") 'helm-execute-persistent-action) ; rebind tab to run persistent action
-(define-key helm-map (kbd "C-i") 'helm-execute-persistent-action) ; make TAB work in terminal
-(define-key helm-map (kbd "C-z")  'helm-select-action) ; list actions using C-z
-(global-set-key (kbd "M-x") 'helm-M-x)
-(unless (boundp 'completion-in-region-function)
-  (define-key lisp-interaction-mode-map [remap completion-at-point] 'helm-lisp-completion-at-point)
-  (define-key emacs-lisp-mode-map       [remap completion-at-point] 'helm-lisp-completion-at-point))
-(setq helm-M-x-fuzzy-match t)
-(helm-mode 1)
+(when (and (require 'helm nil t)
+           (require 'helm-config nil t))
+  (global-unset-key (kbd "C-x c"))
+  (global-set-key (kbd "C-c h") 'helm-command-prefix)
+  (global-set-key (kbd "C-x C-f") 'helm-find-files)
+  (global-set-key (kbd "C-c h o") 'helm-occur)
+  (define-key global-map [remap list-buffers] 'helm-buffers-list)
+  (define-key helm-map (kbd "<tab>") 'helm-execute-persistent-action) ; rebind tab to run persistent action
+  (define-key helm-map (kbd "C-i") 'helm-execute-persistent-action) ; make TAB work in terminal
+  (define-key helm-map (kbd "C-z")  'helm-select-action) ; list actions using C-z
+  (global-set-key (kbd "M-x") 'helm-M-x)
+  (unless (boundp 'completion-in-region-function)
+    (define-key lisp-interaction-mode-map [remap completion-at-point] 'helm-lisp-completion-at-point)
+    (define-key emacs-lisp-mode-map       [remap completion-at-point] 'helm-lisp-completion-at-point))
+  (setq helm-M-x-fuzzy-match t)
+  (helm-mode 1))
 
 ;; Helm Ag
-(setq helm-ag-insert-at-point (quote symbol))
+(when (require 'helm-ag nil t)
+  (setq helm-ag-insert-at-point (quote symbol)))
 
 ;; Projectile
-(projectile-global-mode)
-(setq projectile-completion-system 'helm)
-(setq projectile-use-git-grep t)
-(helm-projectile-on)
+(when (and (require 'projectile nil t)
+           (require 'helm-projectile nil t))
+  (projectile-global-mode)
+  (setq projectile-completion-system 'helm)
+  (setq projectile-use-git-grep t)
+  (helm-projectile-on))
 
 ;; GNU Global interface
-(add-hook 'c-mode-hook 'helm-gtags-mode)
-(add-hook 'c++-mode-hook 'helm-gtags-mode)
-(add-hook 'java-mode-hook 'helm-gtags-mode)
-(add-hook 'js-mode-hook 'helm-gtags-mode)
-(add-hook 'python-mode-hook 'helm-gtags-mode)
-(add-hook 'tuareg-mode-hook 'helm-gtags-mode)
-(custom-set-variables
- '(helm-gtags-prefix-key "\C-cg")
- '(helm-gtags-suggested-key-mapping t)
- '(helm-gtags-auto-update t)
- '(helm-gtags-use-input-at-cursor t)
- '(helm-gtags-pulse-at-cursor t))
-(with-eval-after-load 'helm-gtags
-  (define-key helm-gtags-mode-map (kbd "M-.") 'helm-gtags-dwim)
-  (define-key helm-gtags-mode-map (kbd "M-,") 'helm-gtags-pop-stack)
-  (define-key helm-gtags-mode-map (kbd "C-c g a") 'helm-gtags-tags-in-this-function)
-  (define-key helm-gtags-mode-map (kbd "C-c g c") 'helm-gtags-create-tags)
-  (define-key helm-gtags-mode-map (kbd "C-c g <") 'helm-gtags-previous-history)
-  (define-key helm-gtags-mode-map (kbd "C-c g >") 'helm-gtags-next-history))
+(when (require 'helm-gtags nil t)
+  (add-hook 'c-mode-hook 'helm-gtags-mode)
+  (add-hook 'c++-mode-hook 'helm-gtags-mode)
+  (add-hook 'java-mode-hook 'helm-gtags-mode)
+  (add-hook 'js-mode-hook 'helm-gtags-mode)
+  (add-hook 'python-mode-hook 'helm-gtags-mode)
+  (add-hook 'tuareg-mode-hook 'helm-gtags-mode)
+  (custom-set-variables
+   '(helm-gtags-prefix-key "\C-cg")
+   '(helm-gtags-suggested-key-mapping t)
+   '(helm-gtags-auto-update t)
+   '(helm-gtags-use-input-at-cursor t)
+   '(helm-gtags-pulse-at-cursor t))
+  (with-eval-after-load 'helm-gtags
+    (define-key helm-gtags-mode-map (kbd "M-.") 'helm-gtags-dwim)
+    (define-key helm-gtags-mode-map (kbd "M-,") 'helm-gtags-pop-stack)
+    (define-key helm-gtags-mode-map (kbd "C-c g a") 'helm-gtags-tags-in-this-function)
+    (define-key helm-gtags-mode-map (kbd "C-c g c") 'helm-gtags-create-tags)
+    (define-key helm-gtags-mode-map (kbd "C-c g <") 'helm-gtags-previous-history)
+    (define-key helm-gtags-mode-map (kbd "C-c g >") 'helm-gtags-next-history)))
 
 ;; Semantic
 (add-hook 'c-mode-hook 'semantic-mode)
@@ -310,5 +317,6 @@
 (add-hook 'java-mode-hook 'semantic-mode)
 
 ;; Elm
-(custom-set-variables '(elm-indent-offset 2))
-(add-to-list 'company-backends 'company-elm)
+(when (require 'elm nil t)
+  (custom-set-variables '(elm-indent-offset 2))
+  (add-to-list 'company-backends 'company-elm))

@@ -31,6 +31,7 @@ PATH=$(sed -e 's#/usr/local/bin:##' <<<$PATH)
 export PATH=/usr/local/bin:$PATH
 
 # rbenv
+export PATH="$HOME/.rbenv/bin:$PATH"
 exists rbenv && eval "$(rbenv init -)"
 
 # Node js

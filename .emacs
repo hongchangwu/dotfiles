@@ -45,8 +45,7 @@
     (package-refresh-contents))
   ;; install all required packages
   (setq package-list
-        '(ac-js2
-          clojure-mode
+        '(clojure-mode
           clojure-mode-extra-font-locking
           company
           company-ghc
@@ -61,7 +60,6 @@
           helm-gtags
           helm-projectile
           hindent
-          js2-mode
           json-mode
           magit
           merlin
@@ -74,6 +72,7 @@
           tangotango-theme
           tuareg
           utop
+          web-beautify
           web-mode
           yaml-mode))
   (dolist (package package-list)
@@ -328,14 +327,11 @@
   (add-to-list 'company-backends 'company-elm))
 
 ;; JavaScript
-(when (require 'js2-mode nil t)
-  (add-hook 'js-mode-hook 'js2-minor-mode)
-  (add-hook 'js2-mode-hook 'ac-js2-mode))
-  ;; (add-hook 'js-mode-hook
-  ;;           (lambda () (flycheck-mode t)))
 (when (require 'flycheck nil t)
+  (add-hook 'js-mode-hook
+            (lambda () (flycheck-mode t)))
   ;; turn on flychecking globally
-  (add-hook 'after-init-hook #'global-flycheck-mode)
+  ;; (add-hook 'after-init-hook #'global-flycheck-mode)
   ;; disable jshint since we prefer eslint checking
   (setq-default flycheck-disabled-checkers
                 (append flycheck-disabled-checkers
@@ -376,3 +372,17 @@
         (let ((web-mode-enable-part-face nil))
           ad-do-it)
       ad-do-it)))
+(when (require 'web-beautify nil t)
+  (eval-after-load 'js2-mode
+    '(define-key js2-mode-map (kbd "C-c b") 'web-beautify-js))
+  ;; Or if you're using 'js-mode' (a.k.a 'javascript-mode')
+  (eval-after-load 'js
+    '(define-key js-mode-map (kbd "C-c b") 'web-beautify-js))
+  (eval-after-load 'json-mode
+    '(define-key json-mode-map (kbd "C-c b") 'web-beautify-js))
+  (eval-after-load 'sgml-mode
+    '(define-key html-mode-map (kbd "C-c b") 'web-beautify-html))
+  (eval-after-load 'web-mode
+    '(define-key web-mode-map (kbd "C-c b") 'web-beautify-html))
+  (eval-after-load 'css-mode
+    '(define-key css-mode-map (kbd "C-c b") 'web-beautify-css)))

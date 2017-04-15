@@ -30,6 +30,7 @@ DOT_FILES=(
   .aliases
   .bash_profile
   .emacs
+  .eslintrc
   .functions
   .gitconfig
   .tmux.conf

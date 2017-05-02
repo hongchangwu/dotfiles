@@ -74,7 +74,8 @@
           utop
           web-beautify
           web-mode
-          yaml-mode))
+          yaml-mode
+          yasnippet))
   (dolist (package package-list)
     (unless (package-installed-p package)
       (package-install package))))
@@ -145,6 +146,10 @@
   (interactive "p")
   (kill-line (- 1 arg)))
 (global-set-key (kbd "M-k") 'backward-kill-line)
+
+;; Yasnippet
+(when (require 'yasnippet nil t)
+  (yas-global-mode 1))
 
 ;; Use cperl mode instead of the default perl mode
 (defalias 'perl-mode 'cperl-mode)

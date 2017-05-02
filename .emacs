@@ -109,6 +109,12 @@
 (add-hook 'lisp-interaction-mode-hook #'enable-paredit-mode)
 (add-hook 'scheme-mode-hook           #'enable-paredit-mode)
 (add-hook 'racket-mode-hook           #'enable-paredit-mode)
+(defun paredit-nonlisp ()
+  "Turn on paredit mode for non-lisps."
+  (interactive)
+  (set (make-local-variable 'paredit-space-for-delimiter-predicates)
+       '((lambda (endp delimiter) nil)))
+  (paredit-mode 1))
 
 ;; For easier regex search/replace
 (defalias 'qrr 'query-replace-regexp)
@@ -251,6 +257,13 @@
               (prettify-symbols-mode))))
 (setq tuareg-match-clause-indent 0)
 (with-eval-after-load 'tuareg
+  (define-key tuareg-mode-map "(" 'paredit-open-round)
+  (define-key tuareg-mode-map ")" 'paredit-close-round)
+  (define-key tuareg-mode-map "{" 'paredit-open-curly)
+  (define-key tuareg-mode-map "}" 'paredit-close-curly-and-newline)
+  (define-key tuareg-mode-map "[" 'paredit-open-square)
+  (define-key tuareg-mode-map "]" 'paredit-close-square)
+  (define-key tuareg-mode-map "\"" 'paredit-doublequote)
   (define-key tuareg-mode-map (kbd "M-n") 'tuareg-next-phrase)
   (define-key tuareg-mode-map (kbd "M-p") 'tuareg-previous-phrase))
 
@@ -327,6 +340,13 @@
   (add-to-list 'company-backends 'company-elm))
 
 ;; JavaScript
+(add-hook 'js-mode-hook 'paredit-nonlisp)
+(with-eval-after-load 'js
+  (define-key js-mode-map "(" 'paredit-open-round)
+  (define-key js-mode-map ")" 'paredit-close-round)
+  (define-key js-mode-map "{" 'paredit-open-curly)
+  (define-key js-mode-map "}" 'paredit-close-curly-and-newline))
+(setq css-indent-offset 2)
 (when (require 'flycheck nil t)
   (add-hook 'js-mode-hook
             (lambda () (flycheck-mode t)))

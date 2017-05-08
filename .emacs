@@ -49,6 +49,7 @@
           clojure-mode-extra-font-locking
           company
           company-ghc
+          elixir-mode
           elm-mode
           ensime
           ess

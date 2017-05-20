@@ -59,6 +59,7 @@
           helm
           helm-ag
           helm-gtags
+          helm-hoogle
           helm-idris
           helm-projectile
           hindent

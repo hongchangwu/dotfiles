@@ -59,8 +59,10 @@
           helm
           helm-ag
           helm-gtags
+          helm-idris
           helm-projectile
           hindent
+          idris-mode
           json-mode
           magit
           merlin

@@ -8,6 +8,9 @@
 # Functions
 [[ -r "$HOME/.functions" ]] && source "$HOME/.functions"
 
+# Completions
+[[ -r "$HOME/.local/etc/profile.d/bash_completion.sh" ]] && source "$HOME/.local/etc/profile.d/bash_completion.sh"
+
 # tmux will set its terminal
 [[ -z "$TMUX" ]] && export TERM=xterm-256color
 

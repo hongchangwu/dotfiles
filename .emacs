@@ -80,6 +80,7 @@
           terraform-mode
           tuareg
           utop
+          w3m
           web-beautify
           web-mode
           yaml-mode

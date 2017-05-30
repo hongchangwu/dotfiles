@@ -36,6 +36,7 @@ DOT_FILES=(
   .tmux.conf
   .tmux.conf.osx
   .vimrc
+  .zshrc
   )
 
 export BACKUP_SUFFIX=".bak.$(date -u +%s)"

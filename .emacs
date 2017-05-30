@@ -49,6 +49,8 @@
           clojure-mode-extra-font-locking
           company
           company-ghc
+          docker
+          dockerfile-mode
           elixir-mode
           elm-mode
           ensime
@@ -74,6 +76,7 @@
           robe
           sr-speedbar
           tangotango-theme
+          terraform-mode
           tuareg
           utop
           web-beautify

@@ -69,6 +69,7 @@
           json-mode
           magit
           merlin
+          org-bullets
           paredit
           powerline
           projectile
@@ -193,6 +194,10 @@
     (cond ((string-match "[[{(<]" next-char) (forward-sexp 1))
           ((string-match "[\]})>]" prev-char) (backward-sexp 1))
           (t (self-insert-command (or arg 1))))))
+
+;; Org mode
+(when (require 'org-bullets nil t)
+  (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
 
 ;; w3m
 (setq w3m-mode-map (make-sparse-keymap))

@@ -80,6 +80,9 @@ export SSH_KEY_PATH="~/.ssh/rsa_id"
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+# Source common profile
+[[ -r "$HOME/.profile" ]] && source "$HOME/.profile"
+
 # Aliases
 [[ -r "$HOME/.aliases" ]] && source "$HOME/.aliases"
 

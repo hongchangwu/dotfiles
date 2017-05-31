@@ -6,6 +6,6 @@ declare -i failed
 
 echo 'Installing zsh...'
 
-git_clone_or_update https://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh || ((failed++))
+git_clone_or_update https://github.com/hongchangwu/oh-my-zsh.git ~/.oh-my-zsh || ((failed++))
 
 exit $failed

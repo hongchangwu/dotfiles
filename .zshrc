@@ -50,6 +50,7 @@ CASE_SENSITIVE="true"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(bundler cabal docker emacs gem git mix npm osx sbt scala stack tmux tmuxinator)
 
+export LS_COLORS="di=1;34:ln=1;36:so=1;32:pi=1;33:ex=1;32:bd=34;46:cd=34;43:su=30;41:sg=30;46:tw=30;42:ow=34;43"
 source $ZSH/oh-my-zsh.sh
 
 # User configuration

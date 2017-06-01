@@ -33,6 +33,7 @@ DOT_FILES=(
   .eslintrc
   .functions
   .gitconfig
+  .profile
   .tmux.conf
   .tmux.conf.osx
   .vimrc

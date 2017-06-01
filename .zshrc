@@ -1,6 +1,3 @@
-# If you come from bash you might have to change your $PATH.
-export PATH=$HOME/.local/bin:$PATH
-
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
 
@@ -63,7 +60,7 @@ source $ZSH/oh-my-zsh.sh
 # export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
-export EDITOR='vim'
+# export EDITOR='vim'
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
@@ -82,23 +79,6 @@ export SSH_KEY_PATH="~/.ssh/rsa_id"
 
 # Source common profile
 [[ -r "$HOME/.profile" ]] && source "$HOME/.profile"
-
-# Aliases
-[[ -r "$HOME/.aliases" ]] && source "$HOME/.aliases"
-
-# Functions
-[[ -r "$HOME/.functions" ]] && source "$HOME/.functions"
-
-# tmux will set its terminal
-[[ -z "$TMUX" ]] && export TERM=xterm-256color
-
-[[ $(uname -s) = Darwin ]] && export CLICOLOR=1
-[[ $(uname -s) = Darwin ]] && export LSCOLORS=ExGxCxDxCxegedabagaced
-
-# Powerline
-[[ -d $(python -m site --user-base)/bin ]] &&
-  [[ ! $PATH =~ $(python -m site --user-base)/bin ]] &&
-  export PATH="$PATH:$(python -m site --user-base)/bin"
 
 # Powerline shell
 function powerline_precmd() {

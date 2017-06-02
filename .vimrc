@@ -37,6 +37,7 @@ set matchpairs+=<:>
 
 " Enable filetype detection, plugin and indent
 filetype plugin indent on
+au BufRead,BufNewFile *.ml,*.mli,*.mf,*.mfi compiler ocaml
 
 " Omni completion
 set ofu=syntaxcomplete#Complete
@@ -67,3 +68,6 @@ set laststatus=2
 if has('autocmd')
   autocmd BufReadPost fugitive://* set bufhidden=delete
 endif
+
+" Automatically update diff
+autocmd BufWritePost * if &diff == 1 | diffupdate | endif

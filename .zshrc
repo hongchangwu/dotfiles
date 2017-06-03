@@ -73,10 +73,17 @@ export SSH_KEY_PATH="~/.ssh/rsa_id"
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
-#
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
+emacs="$ZSH/plugins/emacs/emacsclient.sh -nw"
+alias -s conf=vim
+alias -s exs="$emacs"
+alias -s hs="$emacs"
+alias -s js="$emacs"
+alias -s log="less -MN"
+alias -s md=vim
+alias -s ml="$emacs"
+alias -s rb="$emacs"
+alias -s tf="$emacs"
+unset emacs
 
 # Source common profile
 [[ -r "$HOME/.profile" ]] && source "$HOME/.profile"

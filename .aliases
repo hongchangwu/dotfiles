@@ -1,13 +1,15 @@
 #!/usr/bin/env bash
 
+os=$(uname -s)
+
 alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
 alias ll='ls -l'
 alias la='ls -la'
-[[ $(uname -s) != SunOS ]] && alias grep='grep --color=auto'
-[[ $(uname -s) != SunOS ]] && alias egrep='egrep --color=auto'
-[[ $(uname -s) != SunOS ]] && alias fgrep='fgrep --color=auto'
+[[ $os != SunOS ]] && alias grep='grep --color=auto'
+[[ $os != SunOS ]] && alias egrep='egrep --color=auto'
+[[ $os != SunOS ]] && alias fgrep='fgrep --color=auto'
 alias duchs='du -chs'
 alias ducks='du -cks'
 alias less='less -RN'
@@ -15,6 +17,14 @@ alias tmux='tmux -u -2'
 command -v rlwrap &>/dev/null && alias ocaml='rlwrap ocaml'
 command -v rlwrap &>/dev/null && alias q='rlwrap q'
 
-[[ $(uname -s) != Darwin ]] && alias ls='ls --color=auto'
-[[ $(uname -s) != Darwin ]] && alias ll='ls -l --color=auto'
-[[ $(uname -s) != Darwin ]] && alias la='ls -la --color=auto'
+[[ $os != Darwin ]] && alias ls='ls --color=auto'
+[[ $os != Darwin ]] && alias ll='ls -l --color=auto'
+[[ $os != Darwin ]] && alias la='ls -la --color=auto'
+
+if [[ $os = Linux ]]; then
+  alias docker-cleanup='docker ps -a -q --filter status=exited | xargs --no-run-if-empty docker rm'
+elif [[ $os = Darwin ]]; then
+  alias docker-cleanup='docker ps -a -q --filter status=exited | xargs docker rm'
+fi
+
+unset os

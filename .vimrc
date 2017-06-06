@@ -7,6 +7,8 @@ if has('unix')
   else
     set guifont=Inconsolata-g\ for\ Powerline\ Medium\ 14
   endif
+elseif has('windows')
+  set guifont=Inconsolata-g_for_Powerline:h12
 endif
 set encoding=utf-8
 if exists('$TMUX')

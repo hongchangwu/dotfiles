@@ -242,15 +242,13 @@
   (add-hook 'haskell-mode-hook 'turn-on-haskell-doc-mode)
   (require 'w3m-haddock)
   (add-hook 'w3m-display-hook 'w3m-haddock-display)
+  (add-hook 'haskell-mode-hook 'paredit-nonlisp)
   (eval-after-load 'haskell-mode
     '(progn
-       (define-key haskell-mode-map "(" 'paredit-open-round)
-       (define-key haskell-mode-map ")" 'paredit-close-round)
+       (define-key paredit-mode-map ";" nil)
        (define-key haskell-mode-map "{" 'paredit-open-curly)
        (define-key haskell-mode-map "}" 'paredit-close-curly-and-newline)
-       (define-key haskell-mode-map "[" 'paredit-open-square)
-       (define-key haskell-mode-map "]" 'paredit-close-square)
-       (define-key haskell-mode-map "\"" 'paredit-doublequote)
+       (define-key haskell-mode-map "\'" 'paredit-singlequote)
        (define-key haskell-mode-map [f8] 'haskell-navigate-imports)
        (define-key haskell-mode-map (kbd "C-c C-d") 'haskell-w3m-open-haddock)
        (define-key haskell-mode-map (kbd "C-c C-h") 'helm-hoogle)
@@ -318,14 +316,12 @@
             (when (functionp 'prettify-symbols-mode)
               (prettify-symbols-mode))))
 (setq tuareg-match-clause-indent 0)
+(add-hook 'tuareg-mode-hook 'paredit-nonlisp)
 (with-eval-after-load 'tuareg
-  (define-key tuareg-mode-map "(" 'paredit-open-round)
-  (define-key tuareg-mode-map ")" 'paredit-close-round)
+  (define-key paredit-mode-map ";" nil)
   (define-key tuareg-mode-map "{" 'paredit-open-curly)
   (define-key tuareg-mode-map "}" 'paredit-close-curly-and-newline)
-  (define-key tuareg-mode-map "[" 'paredit-open-square)
-  (define-key tuareg-mode-map "]" 'paredit-close-square)
-  (define-key tuareg-mode-map "\"" 'paredit-doublequote)
+  (define-key tuareg-mode-map "\'" 'paredit-singlequote)
   (define-key tuareg-mode-map (kbd "M-n") 'tuareg-next-phrase)
   (define-key tuareg-mode-map (kbd "M-p") 'tuareg-previous-phrase))
 
@@ -404,8 +400,6 @@
 ;; JavaScript
 (add-hook 'js-mode-hook 'paredit-nonlisp)
 (with-eval-after-load 'js
-  (define-key js-mode-map "(" 'paredit-open-round)
-  (define-key js-mode-map ")" 'paredit-close-round)
   (define-key js-mode-map "{" 'paredit-open-curly)
   (define-key js-mode-map "}" 'paredit-close-curly-and-newline)
   (define-key js-mode-map "\'" 'paredit-singlequote))

@@ -45,7 +45,8 @@
     (package-refresh-contents))
   ;; install all required packages
   (setq package-list
-        '(clojure-mode
+        '(alchemist
+          clojure-mode
           clojure-mode-extra-font-locking
           company
           company-ghc

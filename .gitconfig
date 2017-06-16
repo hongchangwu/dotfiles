@@ -10,15 +10,15 @@
 [push]
 	default = current
 [diff]
-  tool = vimdiff
-  guitool = gvimdiff
+	tool = vimdiff
+	guitool = gvimdiff
 [difftool]
-  prompt = false
+	prompt = false
 [merge]
-  tool = vimdiff
-  guitool = gvimdiff
+	tool = vimdiff
+	guitool = gvimdiff
 [mergetool]
-  prompt = false
+	prompt = false
 	keepBackup = false
 [alias]
 	co = checkout

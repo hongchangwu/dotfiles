@@ -246,16 +246,14 @@
   (require 'w3m-haddock)
   (add-hook 'w3m-display-hook 'w3m-haddock-display)
   (add-hook 'haskell-mode-hook 'paredit-nonlisp)
-  (eval-after-load 'haskell-mode
-    '(progn
-       (define-key paredit-mode-map ";" nil)
-       (define-key haskell-mode-map "{" 'paredit-open-curly)
-       (define-key haskell-mode-map "}" 'paredit-close-curly-and-newline)
-       (define-key haskell-mode-map "\'" 'paredit-singlequote)
-       (define-key haskell-mode-map [f8] 'haskell-navigate-imports)
-       (define-key haskell-mode-map (kbd "C-c C-d") 'haskell-w3m-open-haddock)
-       (define-key haskell-mode-map (kbd "C-c C-h") 'helm-hoogle)
-       (add-hook 'before-save-hook 'haskell-mode-stylish-buffer)))
+  (with-eval-after-load 'haskell
+    (define-key haskell-mode-map "{" 'paredit-open-curly)
+    (define-key haskell-mode-map "}" 'paredit-close-curly-and-newline)
+    (define-key haskell-mode-map "\'" 'paredit-singlequote)
+    (define-key haskell-mode-map [f8] 'haskell-navigate-imports)
+    (define-key haskell-mode-map (kbd "C-c C-d") 'haskell-w3m-open-haddock)
+    (define-key haskell-mode-map (kbd "C-c C-h") 'helm-hoogle)
+    (add-hook 'before-save-hook 'haskell-mode-stylish-buffer))
   (custom-set-variables
    '(haskell-interactive-popup-errors nil)
    '(haskell-process-suggest-remove-import-lines t)

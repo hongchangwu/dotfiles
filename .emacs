@@ -272,12 +272,6 @@
 
 (require 'hs-lint nil t)
 
-;; (require 'shm)
-;; (add-hook 'haskell-mode-hook 'structured-haskell-mode)
-;; (add-hook 'haskell-mode-hook
-;;           '(lambda ()
-;;              (local-set-key (kbd "RET") 'shm/newline-indent-proxy)))
-
 ;; Clojure mode
 (when (require 'clojure-mode nil t)
   (add-hook 'clojure-mode-hook 'paredit-mode)

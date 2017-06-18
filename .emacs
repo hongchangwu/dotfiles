@@ -120,6 +120,8 @@
 (add-hook 'lisp-interaction-mode-hook #'enable-paredit-mode)
 (add-hook 'scheme-mode-hook           #'enable-paredit-mode)
 (add-hook 'racket-mode-hook           #'enable-paredit-mode)
+(with-eval-after-load 'paredit
+  (define-key paredit-mode-map ";" nil))
 
 (defun paredit-singlequote (&optional n)
   "Insert a pair of single-quotes."
@@ -313,7 +315,6 @@
 (setq tuareg-match-clause-indent 0)
 (add-hook 'tuareg-mode-hook 'paredit-nonlisp)
 (with-eval-after-load 'tuareg
-  (define-key paredit-mode-map ";" nil)
   (define-key tuareg-mode-map "{" 'paredit-open-curly)
   (define-key tuareg-mode-map "}" 'paredit-close-curly-and-newline)
   (define-key tuareg-mode-map "\'" 'paredit-singlequote)

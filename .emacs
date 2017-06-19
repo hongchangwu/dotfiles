@@ -315,7 +315,6 @@
 (with-eval-after-load 'tuareg
   (define-key tuareg-mode-map "{" 'paredit-open-curly)
   (define-key tuareg-mode-map "}" 'paredit-close-curly-and-newline)
-  (define-key tuareg-mode-map "\'" 'paredit-singlequote)
   (define-key tuareg-mode-map (kbd "M-n") 'tuareg-next-phrase)
   (define-key tuareg-mode-map (kbd "M-p") 'tuareg-previous-phrase))
 

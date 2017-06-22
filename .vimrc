@@ -3,7 +3,7 @@ execute pathogen#infect()
 syntax on
 if has('unix')
   if system('uname') =~ 'Darwin'
-    set guifont=Inconsolata-g\ for\ Powerline:h14
+    set guifont=Inconsolata-g\ for\ Powerline:h16
   else
     set guifont=Inconsolata-g\ for\ Powerline\ Medium\ 14
   endif

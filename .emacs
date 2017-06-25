@@ -70,6 +70,7 @@
           json-mode
           magit
           merlin
+          neotree
           org-bullets
           paredit
           powerline
@@ -469,3 +470,7 @@
 ;; Elixir
 (add-hook 'elixir-mode-hook 'alchemist-mode)
 (setq alchemist-hooks-test-on-save t)
+
+;; Neotree
+(when (require 'neotree nil t)
+  (global-set-key [f8] 'neotree-toggle))

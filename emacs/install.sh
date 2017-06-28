@@ -10,11 +10,7 @@ echo 'Installing emacs...'
 [[ ! -d "$HOME/.emacs.d/site-lisp" ]] && mkdir -p "$HOME/.emacs.d/site-lisp"
 cp $(dirname $0)/Cask "$HOME/.emacs.d" || ((failed++))
 for file in $(dirname $0)/*.el; do
-  if [[ "$file" =~ init.el$ ]]; then
-    cp "$file" "$HOME/.emacs.d" || ((failed++))
-  else
-    cp "$file" "$HOME/.emacs.d/site-lisp" || ((failed++))
-  fi
+  cp "$file" "$HOME/.emacs.d/site-lisp" || ((failed++))
 done
 
 if [[ ! -d "$HOME/.cask" ]]; then

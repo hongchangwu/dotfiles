@@ -44,6 +44,9 @@ then
   export PATH="$PATH:$HOME/Library/Haskell/bin"
 fi
 
+# Cask
+export PATH="/Users/hongchangwu/.cask/bin:$PATH"
+
 export PATH=$HOME/.local/bin:$PATH
 
 # Powerline

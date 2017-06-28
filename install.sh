@@ -29,7 +29,6 @@ export ROOT=$(dirname $0)
 DOT_FILES=(
   .aliases
   .bash_profile
-  .emacs
   .eslintrc
   .functions
   .gitconfig

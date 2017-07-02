@@ -31,4 +31,5 @@
 (load "octave-custom")
 (load "ocaml-custom")
 (load "elm-custom")
+(load "elixir-custom")
 (load "javascript-custom")

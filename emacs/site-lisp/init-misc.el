@@ -42,3 +42,5 @@
     (cond ((string-match "[[{(<]" next-char) (forward-sexp 1))
           ((string-match "[\]})>]" prev-char) (backward-sexp 1))
           (t (self-insert-command (or arg 1))))))
+
+(provide 'init-misc)

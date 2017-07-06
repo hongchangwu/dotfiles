@@ -32,3 +32,5 @@
 
 ;; Color theme
 (load-theme 'tangotango t)
+
+(provide 'init-appearance)

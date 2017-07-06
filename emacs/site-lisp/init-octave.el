@@ -3,3 +3,5 @@
       (cons
        '("\\.m$" . octave-mode)
        auto-mode-alist))
+
+(provide 'init-octave)

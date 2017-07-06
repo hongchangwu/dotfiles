@@ -7,3 +7,5 @@
 (setq nrepl-log-messages t)
 (setq nrepl-hide-special-buffers t)
 (setq cider-show-error-buffer 'except-in-repl)
+
+(provide 'init-clojure)

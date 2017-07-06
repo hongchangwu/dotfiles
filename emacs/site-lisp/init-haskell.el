@@ -28,3 +28,5 @@
 (require 'company-ghc)
 (add-to-list 'company-backends 'company-ghc)
 (custom-set-variables '(company-ghc-show-info t))
+
+(provide 'init-haskell)

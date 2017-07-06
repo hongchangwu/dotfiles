@@ -19,3 +19,5 @@
 ;; Helm Ag
 (require 'helm-ag)
 (setq helm-ag-insert-at-point (quote symbol))
+
+(provide 'init-helm)

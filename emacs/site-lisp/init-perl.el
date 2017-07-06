@@ -13,3 +13,5 @@
  '(cperl-indent-parens-as-block t)
  '(cperl-tab-always-indent t)
  '(custom-safe-themes (quote ("52d707d93c3cd09ce0485a70b7bf52fbd7966d46144e05c2c3bcc5b70b07825f" default))))
+
+(provide 'init-perl)

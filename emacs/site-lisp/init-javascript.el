@@ -71,3 +71,5 @@
   '(define-key web-mode-map (kbd "C-c b") 'web-beautify-html))
 (eval-after-load 'css-mode
   '(define-key css-mode-map (kbd "C-c b") 'web-beautify-css))
+
+(provide 'init-javascript)

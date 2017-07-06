@@ -20,3 +20,5 @@
 (require 'merlin)
 (add-hook 'tuareg-mode-hook 'merlin-mode t)
 (add-hook 'caml-mode-hook 'merlin-mode t)
+
+(provide 'init-ocaml)

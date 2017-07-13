@@ -22,9 +22,19 @@
 ;; Insert spaces instead of tabs
 (setq-default indent-tabs-mode nil)
 
-;; Set line width to 78 columns...
-(setq fill-column 78)
+;; Set line width to 80 columns...
+(setq fill-column 80)
 (setq auto-fill-mode t)
+
+;; Visually show the fill column
+(require 'fill-column-indicator)
+(setq fci-rule-column 100)
+(add-hook 'prog-mode-hook 'fci-mode)
+
+(require 'whitespace)
+(setq whitespace-line-column 80) ;; limit line length
+(setq whitespace-style '(face lines-tail))
+(add-hook 'prog-mode-hook 'whitespace-mode)
 
 ;; Trailing whitespaces
 (setq-default show-trailing-whitespace t)

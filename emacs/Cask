@@ -15,6 +15,7 @@
 (depends-on "ensime")
 (depends-on "ess")
 (depends-on "evil")
+(depends-on "fill-column-indicator")
 (depends-on "flycheck")
 (depends-on "ghc")
 (depends-on "haskell-mode")

@@ -28,7 +28,7 @@
 
 ;; Visually show the fill column
 (require 'fill-column-indicator)
-(setq fci-rule-column 100)
+(setq fci-rule-column 90)
 (add-hook 'prog-mode-hook 'fci-mode)
 
 (require 'whitespace)

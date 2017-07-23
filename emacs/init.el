@@ -33,3 +33,4 @@
 (require 'init-elm)
 (require 'init-elixir)
 (require 'init-javascript)
+(require 'init-diminish)

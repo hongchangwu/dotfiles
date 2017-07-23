@@ -8,6 +8,7 @@
 (depends-on "clojure-mode-extra-font-locking")
 (depends-on "company")
 (depends-on "company-ghc")
+(depends-on "diminish")
 (depends-on "docker")
 (depends-on "dockerfile-mode")
 (depends-on "elixir-mode")

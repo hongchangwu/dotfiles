@@ -1,15 +1,23 @@
 ;; JavaScript
+
+(require 'flycheck)
+(require 'nodejs-repl)
+
 (add-hook 'js-mode-hook 'paredit-nonlisp)
+(add-hook 'js-mode-hook (lambda () (flycheck-mode t)))
+
 (with-eval-after-load 'js
   (define-key js-mode-map "{" 'paredit-open-curly)
   (define-key js-mode-map "}" 'paredit-close-curly-and-newline)
-  (define-key js-mode-map "\'" 'paredit-singlequote))
+  (define-key js-mode-map "\'" 'paredit-singlequote)
+  (define-key js-mode-map (kbd "C-x C-e") 'nodejs-repl-send-last-expression)
+  (define-key js-mode-map (kbd "C-c C-j") 'nodejs-repl-send-line)
+  (define-key js-mode-map (kbd "C-c C-r") 'nodejs-repl-send-region)
+  (define-key js-mode-map (kbd "C-c C-l") 'nodejs-repl-load-file)
+  (define-key js-mode-map (kbd "C-c C-z") 'nodejs-repl-switch-to-repl))
+
 (setq css-indent-offset 2)
-(require 'flycheck)
-(add-hook 'js-mode-hook
-          (lambda () (flycheck-mode t)))
-;; turn on flychecking globally
-;; (add-hook 'after-init-hook #'global-flycheck-mode)
+
 ;; disable jshint since we prefer eslint checking
 (setq-default flycheck-disabled-checkers
               (append flycheck-disabled-checkers

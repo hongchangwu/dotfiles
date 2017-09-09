@@ -22,9 +22,11 @@ command -v rlwrap &>/dev/null && alias q='rlwrap q'
 [[ $os != Darwin ]] && alias la='ls -la --color=auto'
 
 if [[ $os = Linux ]]; then
-  alias docker-cleanup='docker ps -a -q --filter status=exited | xargs --no-run-if-empty docker rm'
+  alias docker-rm='docker ps -a -q --filter status=exited | xargs --no-run-if-empty docker rm'
+  alias docker-rmi="docker images | grep '^<none>' | awk '{print $3}' | xargs --no-run-if-empty docker rm"
 elif [[ $os = Darwin ]]; then
-  alias docker-cleanup='docker ps -a -q --filter status=exited | xargs docker rm'
+  alias docker-rm='docker rm -f $(docker ps -a -q --filter status=exited) 2>/dev/null'
+  alias docker-rmi="docker rmi -f $(docker images | grep '^<none>' | awk '{print $3}') 2>/dev/null"
 fi
 
 unset os

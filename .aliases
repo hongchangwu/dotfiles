@@ -26,7 +26,7 @@ if [[ $os = Linux ]]; then
   alias docker-rmi="docker images | grep '^<none>' | awk '{print $3}' | xargs --no-run-if-empty docker rm"
 elif [[ $os = Darwin ]]; then
   alias docker-rm='docker rm -f $(docker ps -a -q --filter status=exited) 2>/dev/null'
-  alias docker-rmi="docker rmi -f $(docker images | grep '^<none>' | awk '{print $3}') 2>/dev/null"
+  alias docker-rmi="docker rmi -f \$(docker images | grep '^<none>' | awk '{print $3}') 2>/dev/null"
 fi
 
 unset os

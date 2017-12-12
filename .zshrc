@@ -85,6 +85,9 @@ alias -s rb="$emacs"
 alias -s tf="$emacs"
 unset emacs
 
+autoload -U zmv
+alias zmv='noglob zmv -W'
+
 # Source common profile
 [[ -r "$HOME/.profile" ]] && source "$HOME/.profile"
 

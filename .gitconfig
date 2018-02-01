@@ -46,4 +46,4 @@
 	sync-rebase = !git fetch upstream master && git rebase FETCH_HEAD
 	review = diff --cached
 	cp = cherry-pick
-	br = --no-pager branch
+	br = !git --no-pager branch

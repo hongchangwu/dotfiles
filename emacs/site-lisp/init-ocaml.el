@@ -16,6 +16,9 @@
   (define-key tuareg-mode-map (kbd "M-n") 'tuareg-next-phrase)
   (define-key tuareg-mode-map (kbd "M-p") 'tuareg-previous-phrase))
 
+;; ocp-indent
+(require 'ocp-indent)
+
 ;; Start merlin on ocaml files
 (require 'merlin)
 (add-hook 'tuareg-mode-hook 'merlin-mode t)

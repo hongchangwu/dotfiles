@@ -34,6 +34,7 @@
 (depends-on "merlin")
 (depends-on "neotree")
 (depends-on "nodejs-repl")
+(depends-on "ocp-indent")
 (depends-on "org-bullets")
 (depends-on "paredit")
 (depends-on "powerline")

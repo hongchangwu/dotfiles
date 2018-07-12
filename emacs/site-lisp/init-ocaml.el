@@ -8,6 +8,7 @@
             ;; Enable the representation of some keywords using fonts
             (when (functionp 'prettify-symbols-mode)
               (prettify-symbols-mode))))
+(setq tuareg-prettify-symbols-full t)
 (setq tuareg-match-clause-indent 0)
 (add-hook 'tuareg-mode-hook 'paredit-nonlisp)
 (with-eval-after-load 'tuareg

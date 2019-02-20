@@ -22,6 +22,7 @@
 (require 'init-neotree)
 (require 'init-powerline)
 (require 'init-sh)
+(require 'init-c)
 (require 'init-perl)
 (require 'init-evil)
 (require 'init-org)

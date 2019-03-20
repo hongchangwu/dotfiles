@@ -50,9 +50,9 @@ export PATH=$HOME/.cask/bin:$PATH
 export PATH=$HOME/.local/bin:$PATH
 
 # Powerline
-[[ -d $(python -m site --user-base)/bin ]] &&
-  [[ ! $PATH =~ $(python -m site --user-base)/bin ]] &&
-  export PATH="$PATH:$(python -m site --user-base)/bin"
+[[ -d $(python3 -m site --user-base)/bin ]] &&
+  [[ ! $PATH =~ $(python3 -m site --user-base)/bin ]] &&
+  export PATH="$PATH:$(python3 -m site --user-base)/bin"
 
 # Use ssh-agent to manage SSH keys
 # http://mah.everybody.org/docs/ssh

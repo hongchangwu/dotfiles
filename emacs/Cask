@@ -31,6 +31,7 @@
 (depends-on "idris-mode")
 (depends-on "json-mode")
 (depends-on "magit")
+(depends-on "markdown-mode")
 (depends-on "merlin")
 (depends-on "neotree")
 (depends-on "nodejs-repl")

@@ -23,6 +23,7 @@
 (depends-on "haskell-mode")
 (depends-on "helm")
 (depends-on "helm-ag")
+(depends-on "helm-dash")
 (depends-on "helm-gtags")
 (depends-on "helm-hoogle")
 (depends-on "helm-idris")

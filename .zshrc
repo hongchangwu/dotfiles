@@ -93,7 +93,7 @@ alias zmv='noglob zmv -W'
 
 # Powerline shell
 function powerline_precmd() {
-    PS1="$(powerline-shell.py $? --shell zsh 2> /dev/null)"
+    PS1="$(powerline-shell $? --shell zsh 2> /dev/null)"
 }
 
 function install_powerline_precmd() {

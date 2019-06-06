@@ -1,4 +1,10 @@
 ;; OCaml
+
+;; Add opam emacs direcotry to load path
+(let ((opam-share (ignore-errors (car (process-lines "opam" "config" "var" "share")))))
+ (when (and opam-share (file-directory-p opam-share))
+   (add-to-list 'load-path (expand-file-name "emacs/site-lisp" opam-share))))
+
 ;; Use the opam installed utop
 (setq utop-command "opam config exec -- utop -emacs")
 (autoload 'utop-minor-mode "utop" "Minor mode for utop" t)
@@ -24,5 +30,15 @@
 (require 'merlin)
 (add-hook 'tuareg-mode-hook 'merlin-mode t)
 (add-hook 'caml-mode-hook 'merlin-mode t)
+
+;; dune
+(require 'dune)
+
+;; ocamlformat
+(require 'ocamlformat)
+(add-hook 'tuareg-mode-hook
+  (lambda ()
+    (define-key tuareg-mode-map (kbd "C-M-<tab>") #'ocamlformat)
+    (add-hook 'before-save-hook #'ocamlformat-before-save)))
 
 (provide 'init-ocaml)

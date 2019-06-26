@@ -29,7 +29,7 @@ exists rbenv && eval "$(rbenv init -)"
 [[ -d "$HOME/q" ]] && export QHOME="$HOME/q"
 [[ -d "$QHOME/m32" ]] && export PATH="$PATH:$QHOME/m32"
 
-[[ $(uname -s) = Darwin ]] && setjdk 1.8
+[[ $(uname -s) = Darwin ]] && setjdk 12.0
 
 # OPAM configuration
 [[ -s "$HOME/.opam/opam-init/init.sh" ]] && $HOME/.opam/opam-init/init.sh >/dev/null 2>&1 || true

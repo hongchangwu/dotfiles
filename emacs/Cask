@@ -43,6 +43,7 @@
 (depends-on "projectile")
 (depends-on "react-snippets")
 (depends-on "robe")
+(depends-on "rust-mode")
 (depends-on "tangotango-theme")
 (depends-on "terraform-mode")
 (depends-on "tuareg")

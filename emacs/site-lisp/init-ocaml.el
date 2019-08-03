@@ -31,6 +31,11 @@
 (add-hook 'tuareg-mode-hook 'merlin-mode t)
 (add-hook 'caml-mode-hook 'merlin-mode t)
 
+;; Merlin backend for eldoc
+(require 'merlin-eldoc)
+(add-hook 'tuareg-mode-hook 'merlin-eldoc-setup)
+;; (add-hook 'reason-mode-hook 'merlin-eldoc-setup)
+
 ;; dune
 (require 'dune)
 

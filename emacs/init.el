@@ -35,3 +35,4 @@
 (require 'init-elixir)
 (require 'init-javascript)
 (require 'init-diminish)
+(require 'init-rust)

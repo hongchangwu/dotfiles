@@ -26,6 +26,13 @@
 ;; ocp-indent
 (require 'ocp-indent)
 
+;; Compilation mode
+(require 'compile)
+(setq compilation-scroll-output 'first-error)
+(setq compilation-always-kill t)
+(setq next-error-highlight t)
+(setq compile-command (format "cd %s && make" (projectile-project-root)))
+
 ;; Start merlin on ocaml files
 (require 'merlin)
 (add-hook 'tuareg-mode-hook 'merlin-mode t)

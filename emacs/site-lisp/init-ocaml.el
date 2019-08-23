@@ -31,7 +31,11 @@
 (setq compilation-scroll-output 'first-error)
 (setq compilation-always-kill t)
 (setq next-error-highlight t)
-(setq compile-command (format "cd %s && make" (projectile-project-root)))
+(add-hook
+ 'tuareg-mode-hook
+ (lambda ()
+   (set (make-local-variable 'compile-command)
+        (format "cd %s && make" (projectile-project-root)))))
 
 ;; Start merlin on ocaml files
 (require 'merlin)

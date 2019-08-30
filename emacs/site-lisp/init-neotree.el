@@ -1,7 +1,5 @@
 ;; Neotree
-(require 'neotree)
-(setq neo-theme (if (display-graphic-p) 'icons 'arrow))
-(setq projectile-switch-project-action 'neotree-projectile-action)
+
 (defun neotree-project-dir ()
   "Open NeoTree using the git root."
   (interactive)
@@ -14,6 +12,12 @@
               (neotree-dir project-dir)
               (neotree-find file-name)))
       (message "Could not find git project root."))))
-(global-set-key [f8] 'neotree-project-dir)
+
+(use-package neotree
+  :custom
+  (neo-theme (if (display-graphic-p) 'icons 'arrow))
+  (projectile-switch-project-action 'neotree-projectile-action)
+  :bind
+  ([f8] . neotree-project-dir))
 
 (provide 'init-neotree)

@@ -1,14 +1,21 @@
 ;; ParEdit
-(autoload 'enable-paredit-mode "paredit" "Turn on pseudo-structural editing of Lisp code." t)
-(add-hook 'emacs-lisp-mode-hook       #'enable-paredit-mode)
-(add-hook 'eval-expression-minibuffer-setup-hook #'enable-paredit-mode)
-(add-hook 'ielm-mode-hook             #'enable-paredit-mode)
-(add-hook 'lisp-mode-hook             #'enable-paredit-mode)
-(add-hook 'lisp-interaction-mode-hook #'enable-paredit-mode)
-(add-hook 'scheme-mode-hook           #'enable-paredit-mode)
-(add-hook 'racket-mode-hook           #'enable-paredit-mode)
-(with-eval-after-load 'paredit
-  (define-key paredit-mode-map ";" nil))
+
+(use-package paredit
+  :init
+  (autoload 'enable-paredit-mode "paredit" "Turn on pseudo-structural editing of Lisp code." t)
+  :hook
+  ((emacs-lisp-mode
+    eval-expression-minibuffer-setup
+    ielm-mode
+    lisp-mode
+    lisp-interaction-mode
+    scheme-mode
+    racket-mode)
+   .
+   enable-paredit-mode)
+  :bind
+  (:map paredit-mode-map
+        (";" . nil)))
 
 (defun paredit-singlequote (&optional n)
   "Insert a pair of single-quotes."

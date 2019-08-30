@@ -1,7 +1,11 @@
 ;; Elixir
-(require 'elixir-mode)
-(require 'alchemist)
-(add-hook 'elixir-mode-hook 'alchemist-mode)
-(setq alchemist-hooks-test-on-save t)
+
+(use-package elixir-mode)
+(use-package alchemist
+  :after elixir-mode
+  :hook
+  (elixir-mode . alchemist-mode)
+  :custom
+  (alchemist-hooks-test-on-save t))
 
 (provide 'init-elixir)

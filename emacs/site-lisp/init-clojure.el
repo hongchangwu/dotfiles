@@ -1,11 +1,14 @@
 ;; Clojure mode
-(require 'clojure-mode)
-(add-hook 'clojure-mode-hook 'paredit-mode)
-(add-hook 'cider-mode-hook 'cider-turn-on-eldoc-mode)
-(add-hook 'nrepl-mode-hook 'paredit-mode)
-(require 'clojure-mode-extra-font-locking)
-(setq nrepl-log-messages t)
-(setq nrepl-hide-special-buffers t)
-(setq cider-show-error-buffer 'except-in-repl)
+
+(use-package clojure-mode
+  :hook
+  (((clojure-mode nrepl-mode) . paredit-mode)
+   (cider-mode . cider-turn-on-eldoc-mode)))
+
+(use-package clojure-mode-extra-font-locking
+  :custom
+  (nrepl-log-messages t)
+  (nrepl-hide-special-buffers t)
+  (cider-show-error-buffer 'except-in-repl))
 
 (provide 'init-clojure)

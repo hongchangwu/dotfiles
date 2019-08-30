@@ -1,60 +1,73 @@
 ;; OCaml
 
-;; Add opam emacs direcotry to load path
-(let ((opam-share (ignore-errors (car (process-lines "opam" "config" "var" "share")))))
- (when (and opam-share (file-directory-p opam-share))
-   (add-to-list 'load-path (expand-file-name "emacs/site-lisp" opam-share))))
-
-;; Use the opam installed utop
-(setq utop-command "opam config exec -- utop -emacs")
-(autoload 'utop-minor-mode "utop" "Minor mode for utop" t)
-(add-hook 'tuareg-mode-hook 'utop-minor-mode)
-(add-hook 'tuareg-mode-hook
-          (lambda()
-            ;; Enable the representation of some keywords using fonts
-            (when (functionp 'prettify-symbols-mode)
-              (prettify-symbols-mode))))
-(setq tuareg-prettify-symbols-full t)
-(setq tuareg-match-clause-indent 0)
-(add-hook 'tuareg-mode-hook 'paredit-nonlisp)
-(with-eval-after-load 'tuareg
-  (define-key tuareg-mode-map "{" 'paredit-open-curly)
-  (define-key tuareg-mode-map "}" 'paredit-close-curly-and-newline)
-  (define-key tuareg-mode-map (kbd "M-n") 'tuareg-next-phrase)
-  (define-key tuareg-mode-map (kbd "M-p") 'tuareg-previous-phrase))
+(use-package tuareg
+  :init
+  ;; Add opam emacs direcotry to load path
+  (let ((opam-share (ignore-errors (car (process-lines "opam" "config" "var" "share")))))
+    (when (and opam-share (file-directory-p opam-share))
+      (add-to-list 'load-path (expand-file-name "emacs/site-lisp" opam-share))))
+  :hook
+  (tuareg-mode . utop-minor-mode)
+  (tuareg-mode
+   .
+   (lambda()
+     ;; Enable the representation of some keywords using fonts
+     (when (functionp 'prettify-symbols-mode)
+       (prettify-symbols-mode))))
+  (tuareg-mode . paredit-nonlisp)
+  :bind
+  (:map tuareg-mode-map
+        ("{" . paredit-open-curly)
+        ("}" . paredit-close-curly-and-newline)
+        ("M-n" . tuareg-next-phrase)
+        ("M-p" . tuareg-previous-phrase))
+  :custom
+  ;; Use the opam installed utop
+  (utop-command "opam config exec -- utop -emacs")
+  (autoload 'utop-minor-mode "utop" "Minor mode for utop" t)  
+  (tuareg-prettify-symbols-full t)
+  (tuareg-match-clause-indent 0))
 
 ;; ocp-indent
-(require 'ocp-indent)
+(use-package ocp-indent
+  :after tuareg)
 
 ;; Compilation mode
-(require 'compile)
-(setq compilation-scroll-output 'first-error)
-(setq compilation-always-kill t)
-(setq next-error-highlight t)
-(add-hook
- 'tuareg-mode-hook
- (lambda ()
-   (set (make-local-variable 'compile-command)
-        (format "cd %s && make" (projectile-project-root)))))
+(use-package compile
+  :after tuareg
+  :hook
+  (tuareg-mode
+   .
+   (lambda ()
+     (set (make-local-variable 'compile-command)
+          (format "cd %s && make" (projectile-project-root)))))
+  :custom
+  (compilation-scroll-output 'first-error)
+  (compilation-always-kill t)
+  (next-error-highlight t))
 
 ;; Start merlin on ocaml files
-(require 'merlin)
-(add-hook 'tuareg-mode-hook 'merlin-mode t)
-(add-hook 'caml-mode-hook 'merlin-mode t)
+(use-package merlin
+  :after tuareg
+  :hook
+  ((caml-mode tuareg-mode reason-mode) . merlin-mode))
 
 ;; Merlin backend for eldoc
-(require 'merlin-eldoc)
-(add-hook 'tuareg-mode-hook 'merlin-eldoc-setup)
-;; (add-hook 'reason-mode-hook 'merlin-eldoc-setup)
+(use-package merlin-eldoc
+  :after merlin
+  :hook
+  (merlin-mode . merlin-eldoc-setup))
 
-;; dune
-(require 'dune)
+;; Dune
+(use-package dune)
 
 ;; ocamlformat
-(require 'ocamlformat)
-(add-hook 'tuareg-mode-hook
-  (lambda ()
-    (define-key tuareg-mode-map (kbd "C-M-<tab>") #'ocamlformat)
-    (add-hook 'before-save-hook #'ocamlformat-before-save)))
+(use-package ocamlformat
+  :bind
+  (:map tuareg-mode-map
+        ("C-M-<tab>" . ocamlformat))
+  ;; :hook
+  ;; (before-save . ocamlformat-before-save)
+  )
 
 (provide 'init-ocaml)

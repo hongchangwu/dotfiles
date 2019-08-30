@@ -1,7 +1,7 @@
 ;; Octave
-(setq auto-mode-alist
-      (cons
-       '("\\.m$" . octave-mode)
-       auto-mode-alist))
+
+(use-package octave
+  :init
+  (add-to-list 'auto-mode-alist '("\\.m$" . octave-mode)))
 
 (provide 'init-octave)

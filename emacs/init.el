@@ -1,13 +1,16 @@
-(package-initialize)
+(eval-when-compile
+  (require 'package)
+  (package-initialize)
+  ;; Cask
+  (require 'cask "~/.cask/cask.el")
+  (cask-initialize)
+  ;; Load path
+  (add-to-list 'load-path (expand-file-name "site-lisp" user-emacs-directory))
+  (let ((default-directory "~/.emacs.d/site-lisp/"))
+    (normal-top-level-add-subdirs-to-load-path))
+  (require 'use-package))
 
-(require 'cask "~/.cask/cask.el")
-(cask-initialize)
-
-;; Load path
-(add-to-list 'load-path (expand-file-name "site-lisp" user-emacs-directory))
-(let ((default-directory "~/.emacs.d/site-lisp/"))
-  (normal-top-level-add-subdirs-to-load-path))
-
+;; Custom configurations
 (require 'init-appearance)
 (require 'init-misc)
 (require 'init-company)
@@ -34,5 +37,5 @@
 (require 'init-elm)
 (require 'init-elixir)
 (require 'init-javascript)
-(require 'init-diminish)
+(require 'init-delight)
 (require 'init-rust)

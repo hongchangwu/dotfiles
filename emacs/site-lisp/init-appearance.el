@@ -15,9 +15,9 @@
         (font . "Inconsolata for Powerline 16")))
 (setq default-frame-alist initial-frame-alist)
 
-;; Colors
-(custom-set-faces
- '(mode-line ((t (:foreground "white" :background "#6a5acd" :box nil)))))
+;; Mode line colors
+(set-face-foreground 'mode-line "white")
+(set-face-background 'mode-line "#6a5acd")
 
 ;; Insert spaces instead of tabs
 (setq-default indent-tabs-mode nil)
@@ -27,18 +27,21 @@
 (setq auto-fill-mode t)
 
 ;; Visually show the fill column
-(require 'fill-column-indicator)
-(setq fci-rule-column 90)
-(add-hook 'prog-mode-hook 'fci-mode)
+(use-package fill-column-indicator
+  :hook
+  (prog-mode . fci-mode)
+  :custom
+  (fci-rule-column 90))
 
-(require 'whitespace)
-(setq whitespace-line-column 80) ;; limit line length
-(setq whitespace-style '(face lines-tail))
-(add-hook 'prog-mode-hook 'whitespace-mode)
-
-;; Trailing whitespaces
-(setq-default show-trailing-whitespace t)
-(add-hook 'before-save-hook 'delete-trailing-whitespace)
+;; Visualize white spaces
+(use-package whitespace
+  :hook
+  ((prog-mode . whitespace-mode)
+   (before-save . delete-trailing-whitespace))
+  :custom
+  (whitespace-line-column 80) ;; limit line length
+  (whitespace-style '(face lines-tail))
+  (show-trailing-whitespace t))
 
 ;; Color theme
 (load-theme 'tangotango t)

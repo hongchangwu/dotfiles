@@ -1,19 +1,29 @@
-(require 'cargo)
-(require 'company)
-(require 'racer)
-(require 'rust-mode)
-(require 'eldoc)
-(require 'flycheck)
-(require 'flycheck-rust)
+(use-package rust-mode
+  :after company
+  :init
+  (add-to-list 'auto-mode-alist '("\\.rs\\'" . rust-mode))
+  :hook
+  (rust-mode . company-mode)
+  :bind
+  (:map rust-mode-map
+        ("<tab>" . company-indent-or-complete-common))
+  :custom
+  (company-tooltip-align-annotations t))
 
-(add-to-list 'auto-mode-alist '("\\.rs\\'" . rust-mode))
-(add-hook 'rust-mode-hook  #'company-mode)
-(add-hook 'rust-mode-hook  #'racer-mode)
-(add-hook 'racer-mode-hook #'eldoc-mode)
-(add-hook 'rust-mode-hook 'cargo-minor-mode)
-(with-eval-after-load 'rust-mode
-  (add-hook 'flycheck-mode-hook #'flycheck-rust-setup))
-(define-key rust-mode-map (kbd "TAB") #'company-indent-or-complete-common)
-(setq company-tooltip-align-annotations t)
+(use-package cargo
+  :after rust-mode
+  :hook
+  (rust-mode . cargo-minor-mode))
+
+(use-package racer
+  :after (eldoc rust-mode)
+  :hook
+  (racer-mode . eldoc-mode)  
+  (rust-mode . racer-mode))
+
+(use-package flyecheck-rust
+  :after (flycheck rust-mode)
+  :hook
+  (flycheck-mode . flycheck-rust-setup))
 
 (provide 'init-rust)

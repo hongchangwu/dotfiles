@@ -1,5 +1,8 @@
 ;; Org mode
-(require 'org-bullets)
-(add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
+
+(use-package org-bullets
+  :after org
+  :hook
+  (org-mode . (lambda () (org-bullets-mode 1))))
 
 (provide 'init-org)

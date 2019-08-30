@@ -1,9 +1,13 @@
 ;; Ruby mode
-(require 'robe)
-(push 'company-robe company-backends)
-(add-hook 'ruby-mode-hook 'robe-mode)
-(add-hook 'ruby-mode-hook 'eldoc-mode)
-(add-hook 'enh-ruby-mode-hook 'robe-mode)
-(add-hook 'enh-ruby-mode-hook 'eldoc-mode)
+
+(use-package robe
+ :after company
+ :hook
+ (ruby-mode . robe-mode)
+ (ruby-mode . eldoc-mode)
+ (enh-ruby-mode . robe-mode)
+ (enh-ruby-mode . eldoc-mode)
+ :config
+ (push 'company-robe company-backends))
 
 (provide 'init-ruby)

@@ -54,7 +54,8 @@
 
 ;; Color theme
 (use-package tangotango-theme
-  :config
+  :defer t
+  :init
   (load-theme 'tangotango t))
 
 (provide 'init-appearance)

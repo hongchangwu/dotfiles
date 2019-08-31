@@ -1,6 +1,7 @@
 ;; Haskell mode
 
 (use-package haskell-mode
+  :ensure-system-package (ghc . "curl https://get-ghcup.haskell.org -sSf | sh")
   :init
   (autoload 'ghc-init "ghc" nil t)
   (autoload 'ghc-debug "ghc" nil t)
@@ -9,7 +10,6 @@
   (haskell-mode . interactive-haskell-mode)
   (haskell-mode . turn-on-haskell-doc-mode)
   (haskell-mode . paredit-nonlisp)
-  (before-save . haskell-mode-stylish-buffer)
   :bind
   (:map haskell-mode-map
         ("{" . paredit-open-curly)
@@ -27,15 +27,17 @@
   (haskell-font-lock-symbols t))
 
 (use-package hindent
-  :requires haskell-mode
+  :ensure-system-package (hindent . "cabal install hindent")
+  :after haskell-mode
   :hook
   (haskell-mode . hindent-mode))
 
-(use-package company-ghc
-  :after (company haskell-mode)
-  :custom
-  (company-ghc-show-info t)
-  :config
-  (push 'company-ghc company-backends))
+;; (use-package company-ghc
+;;   :ensure-system-package (ghc-mode . "cabal install ghc-mod")
+;;   :after (company haskell-mode)
+;;   :custom
+;;   (company-ghc-show-info t)
+;;   :config
+;;   (push 'company-ghc company-backends))
 
 (provide 'init-haskell)

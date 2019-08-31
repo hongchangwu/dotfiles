@@ -51,3 +51,4 @@
 (require 'init-javascript)
 (require 'init-delight)
 (require 'init-rust)
+(require 'init-undo-tree)

@@ -16,6 +16,7 @@
 (straight-use-package 'use-package)
 (setq straight-use-package-by-default t)
 (use-package use-package-ensure-system-package)
+(use-package delight)
 
 ;; Configure load path
 (add-to-list 'load-path (expand-file-name "site-lisp" user-emacs-directory))
@@ -49,6 +50,6 @@
 (require 'init-elm)
 (require 'init-elixir)
 (require 'init-javascript)
-(require 'init-delight)
 (require 'init-rust)
 (require 'init-undo-tree)
+(require 'init-yaml)

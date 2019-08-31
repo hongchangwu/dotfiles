@@ -33,8 +33,17 @@
   :custom
   (fci-rule-column 90))
 
+;; Abbrev mode
+(use-package abbrev
+  :straight nil
+  :delight abbrev-mode
+  :config
+  (if (file-exists-p abbrev-file-name)
+      (quietly-read-abbrev-file)))
+
 ;; Visualize white spaces
 (use-package whitespace
+  :delight whitespace-mode
   :hook
   (prog-mode . whitespace-mode)
   (before-save . delete-trailing-whitespace)

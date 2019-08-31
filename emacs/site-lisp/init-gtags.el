@@ -1,7 +1,8 @@
 ;; GNU Global interface
 
 (use-package helm-gtags
-  :requires helm
+  :after helm
+  :delight helm-gtags-mode
   :hook
   ((c-mode c++-mode java-mode js-mode python-mode) . helm-gtags-mode)
   :custom

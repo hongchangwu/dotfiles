@@ -1,6 +1,7 @@
 ;; Helm
 
 (use-package helm
+  :delight helm-mode
   :init
   (require 'helm-config)
   :bind
@@ -24,12 +25,15 @@
 (use-package ag
   :ensure-system-package ag)
 
-(use-package ripgrep
-  :ensure-system-package (rg . ripgrep))
-
 (use-package helm-ag
   :after (helm ag)
   :custom
   (helm-ag-insert-at-point (quote symbol)))
+
+(use-package ripgrep
+  :ensure-system-package (rg . ripgrep))
+
+(use-package helm-rg
+  :after (helm ripgrep))
 
 (provide 'init-helm)

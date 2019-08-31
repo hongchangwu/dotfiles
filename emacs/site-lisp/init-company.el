@@ -8,6 +8,7 @@
     (turn-on-fci-mode)))
 
 (use-package company
+  :delight company-mode
   :hook
   (after-init . global-company-mode)
   :config

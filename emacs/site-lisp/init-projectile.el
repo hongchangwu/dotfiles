@@ -4,6 +4,7 @@
 
 (use-package projectile
   :after helm-projectile
+  :delight '(:eval (concat " [" (projectile-project-name) "]"))
   :init
   (projectile-mode +1)
   (helm-projectile-on)

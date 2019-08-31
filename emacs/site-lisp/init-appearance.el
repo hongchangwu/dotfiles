@@ -36,14 +36,16 @@
 ;; Visualize white spaces
 (use-package whitespace
   :hook
-  ((prog-mode . whitespace-mode)
-   (before-save . delete-trailing-whitespace))
+  (prog-mode . whitespace-mode)
+  (before-save . delete-trailing-whitespace)
   :custom
   (whitespace-line-column 80) ;; limit line length
   (whitespace-style '(face lines-tail))
   (show-trailing-whitespace t))
 
 ;; Color theme
-(load-theme 'tangotango t)
+(use-package tangotango-theme
+  :custom
+  (load-theme 'tangotango t))
 
 (provide 'init-appearance)

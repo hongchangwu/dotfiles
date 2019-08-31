@@ -1,6 +1,9 @@
 ;; Projectile
 
+(use-package helm-projectile)
+
 (use-package projectile
+  :after helm-projectile
   :init
   (projectile-mode +1)
   (helm-projectile-on)

@@ -1,11 +1,13 @@
 ;; OCaml
 
 (use-package tuareg
+  :ensure-system-package (opam (utop . "opam install utop"))
   :init
   ;; Add opam emacs direcotry to load path
   (let ((opam-share (ignore-errors (car (process-lines "opam" "config" "var" "share")))))
     (when (and opam-share (file-directory-p opam-share))
       (add-to-list 'load-path (expand-file-name "emacs/site-lisp" opam-share))))
+  (autoload 'utop-minor-mode "utop" "Minor mode for utop" t)
   :hook
   (tuareg-mode . utop-minor-mode)
   (tuareg-mode
@@ -24,17 +26,17 @@
   :custom
   ;; Use the opam installed utop
   (utop-command "opam config exec -- utop -emacs")
-  (autoload 'utop-minor-mode "utop" "Minor mode for utop" t)  
   (tuareg-prettify-symbols-full t)
   (tuareg-match-clause-indent 0))
 
 ;; ocp-indent
 (use-package ocp-indent
+  :ensure-system-package (ocp-indent . "opam install ocp-indent")
   :after tuareg)
 
 ;; Compilation mode
 (use-package compile
-  :after tuareg
+  :after (tuareg projectile)
   :hook
   (tuareg-mode
    .
@@ -48,6 +50,8 @@
 
 ;; Start merlin on ocaml files
 (use-package merlin
+  :straight nil
+  :ensure-system-package (ocamlmerlin . "opam install merlin")
   :after tuareg
   :hook
   ((caml-mode tuareg-mode reason-mode) . merlin-mode))
@@ -59,10 +63,15 @@
   (merlin-mode . merlin-eldoc-setup))
 
 ;; Dune
-(use-package dune)
+(use-package dune
+  :straight nil
+  :ensure-system-package (dune . "opam install dune"))
 
 ;; ocamlformat
 (use-package ocamlformat
+  :straight nil
+  :ensure-system-package (ocamlformat . "opam install ocamlformat")
+  :after tuareg
   :bind
   (:map tuareg-mode-map
         ("C-M-<tab>" . ocamlformat))

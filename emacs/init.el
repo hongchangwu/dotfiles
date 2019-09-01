@@ -53,3 +53,4 @@
 (require 'init-rust)
 (require 'init-undo-tree)
 (require 'init-yaml)
+(require 'init-format-all)

@@ -41,6 +41,11 @@
   (if (file-exists-p abbrev-file-name)
       (quietly-read-abbrev-file)))
 
+;; Auto-revert mode
+(use-package autorevert
+  :straight nil
+  :delight auto-revert-mode)
+
 ;; Visualize white spaces
 (use-package whitespace
   :delight whitespace-mode

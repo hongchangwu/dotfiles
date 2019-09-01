@@ -2,7 +2,8 @@
 
 (use-package haskell-mode
   :ensure-system-package
-  ((stack . "curl -sSL https://get.haskellstack.org/ | sh")
+  ((ghc . "curl https://get-ghcup.haskell.org -sSf | sh")
+   (stack . "curl -sSL https://get.haskellstack.org/ | sh")
    (hasktags . "stack install hasktags"))
   :init
   (autoload 'ghc-init "ghc" nil t)
@@ -26,18 +27,31 @@
   (haskell-tags-on-save t)
   (haskell-font-lock-symbols t))
 
+;; hindent
 (use-package hindent
   :ensure-system-package (hindent . "stack install hindent")
   :after haskell-mode
   :hook
-  (haskell-mode . hindent-mode))
+  (haskell-mode . hindent-mode)
+  :custom
+  (hindent-reformat-buffer-on-save t))
+
+;; HLint
+(use-package hs-lint
+  :straight nil
+  :ensure-system-package (hlint . "stack install hlint")
+  :after haskell-mode
+  :bind
+  (:map haskell-mode-map
+        ("C-c l" . hs-lint)))
 
 ;; Intero
 (use-package intero
   :after haskell-mode
   :hook
   (haskell-mode . intero-mode)
+  (haskell-mode . intero-mode-blacklist)
   :custom
-  (intero-extra-ghc-options "-i."))
+  (intero-blacklist '("projecteuler")))
 
 (provide 'init-haskell)

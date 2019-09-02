@@ -13,6 +13,8 @@
               (neotree-find file-name)))
       (message "Could not find git project root."))))
 
+(use-package all-the-icons)
+
 (use-package neotree
   :custom
   (neo-theme (if (display-graphic-p) 'icons 'arrow))

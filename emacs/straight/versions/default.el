@@ -19,6 +19,7 @@
  ("emacs-racer" . "ea6a09c16f8ec646195f942c12fe3ed7d65cc971")
  ("epkgs" . "c8dc32717c763661e6396d4c0b6c9201f830abc2")
  ("epl" . "78ab7a85c08222cd15582a298a364774e3282ce6")
+ ("eshell-git-prompt" . "b6bb2d7bd4e393b4170b29891cfefb72ae020aab")
  ("evil" . "874beba2cb243c325eca08fb7badff567f3c9494")
  ("f.el" . "8191672377816a1975414cc1f116fd3b94b30bd0")
  ("flycheck" . "ea176a4f6bfebd70b71a8a5e2988b49e1a58fe52")

@@ -43,6 +43,7 @@
    (lambda ()
      (set (make-local-variable 'compile-command)
           (format "cd %s && make" (projectile-project-root)))))
+  (compilation-mode . (lambda () (setq show-trailing-whitespace nil)))
   :custom
   (compilation-scroll-output 'first-error)
   (compilation-always-kill t)

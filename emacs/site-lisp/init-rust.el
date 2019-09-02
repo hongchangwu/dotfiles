@@ -13,6 +13,8 @@
   (company-tooltip-align-annotations t))
 
 (use-package cargo
+  :ensure-system-package
+  (rustfmt . "rustup component add rustfmt")
   :after rust-mode
   :hook
   (rust-mode . cargo-minor-mode))
@@ -24,8 +26,12 @@
    "rustup toolchain add nightly && rustup component add rust-src && cargo +nightly install racer")
   :after (eldoc rust-mode)
   :hook
-  (racer-mode . eldoc-mode)  
-  (rust-mode . racer-mode))
+  (rust-mode . racer-mode)
+  (racer-mode . eldoc-mode)
+  (racer-help-mode . (lambda () (setq show-trailing-whitespace nil)))
+  :bind
+  (:map racer-mode-map
+        ("C-c C-t" . racer-describe)))
 
 (use-package flycheck-rust
   :after (flycheck rust-mode)

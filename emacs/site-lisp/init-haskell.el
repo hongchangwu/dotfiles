@@ -2,7 +2,7 @@
 
 (use-package haskell-mode
   :ensure-system-package
-  ((ghc . "curl https://get-ghcup.haskell.org -sSf | sh")
+  ((ghcup . "curl https://get-ghcup.haskell.org -sSf | sh")
    (stack . "curl -sSL https://get.haskellstack.org/ | sh")
    (hasktags . "stack install hasktags"))
   :init

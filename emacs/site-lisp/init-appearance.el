@@ -12,7 +12,7 @@
         (top . 50)
         (height . 40)
         (width . 120)
-        (font . "Inconsolata for Powerline 16")))
+        (font . "Inconsolata for Powerline 18")))
 (setq default-frame-alist initial-frame-alist)
 
 ;; Mode line colors

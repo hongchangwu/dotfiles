@@ -8,6 +8,7 @@
     (when (and opam-share (file-directory-p opam-share))
       (add-to-list 'load-path (expand-file-name "emacs/site-lisp" opam-share))))
   (autoload 'utop-minor-mode "utop" "Minor mode for utop" t)
+  :delight utop-minor-mode
   :hook
   (tuareg-mode . utop-minor-mode)
   (tuareg-mode
@@ -75,7 +76,7 @@
   :after tuareg
   :bind
   (:map tuareg-mode-map
-        ("C-M-<tab>" . ocamlformat))
+        ("C-c C-f" . ocamlformat))
   ;; :hook
   ;; (before-save . ocamlformat-before-save)
   )

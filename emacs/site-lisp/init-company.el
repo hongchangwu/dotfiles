@@ -10,7 +10,9 @@
 (use-package company
   :delight company-mode
   :hook
-  (after-init . global-company-mode)
+  (prog-mode . company-mode)
+  :custom
+  (company-tooltip-align-annotations t)
   :config
   (advice-add 'company-call-frontends :before #'on-off-fci-before-company)
   ;; https://github.com/Sarcasm/.emacs.d/blob/544591c02faa019872a48ffecfe559014a43380a/theme/sarcasm-theme.el

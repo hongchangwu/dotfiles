@@ -32,6 +32,7 @@
 (require 'init-yasnippet)
 (require 'init-magit)
 (require 'init-helm)
+(require 'init-lsp)
 (require 'init-projectile)
 (require 'init-gtags)
 (require 'init-semantic)

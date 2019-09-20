@@ -15,7 +15,8 @@
    enable-paredit-mode)
   :bind
   (:map paredit-mode-map
-        (";" . nil)))
+        (";" . nil)
+        ("M-?" . nil)))
 
 (defun paredit-singlequote (&optional n)
   "Insert a pair of single-quotes."

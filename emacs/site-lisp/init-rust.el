@@ -3,8 +3,8 @@
   ((rustup . "curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh")
    (rls . "rustup component add rls rust-analysis rust-src"))
   :hook
-  (rust-mode . flycheck-mode)
   (rust-mode . lsp)
+  (rust-mode . flycheck-mode)
   :bind
   (:map rust-mode-map
         ("<tab>" . company-indent-or-complete-common))

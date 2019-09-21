@@ -54,6 +54,7 @@
  ("popup-el" . "80829dd46381754639fb764da11c67235fe63282")
  ("powerline" . "6ef4a06c3c583045accbc957b6f449b7c0c57cd8")
  ("projectile" . "71a01f409a319d57eb3832e93e8a412fbc9d7a65")
+ ("reason-mode" . "5e6205cfede8c10c6821dfd9f9757a9d8035ec04")
  ("reformatter.el" . "8372cc425967f055ba8a26f6098649467e776c5e")
  ("ripgrep.el" . "40e871dcc4519a70981e9f28acea304692a60978")
  ("robe" . "8190cb7c7beb8385dd3abf6ea357f33d8981ae8a")

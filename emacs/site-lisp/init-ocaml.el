@@ -81,4 +81,20 @@
   ;; (before-save . ocamlformat-before-save)
   )
 
+(use-package reason-mode
+  :init
+  (autoload 'utop-minor-mode "utop" "Minor mode for utop" t)
+  :hook
+  (reason-mode . utop-minor-mode)
+  (reason-mode . flycheck-mode)
+  (before-save . refmt-before-save)
+  :config
+  (lsp-register-client
+   (make-lsp-client
+    :new-connection (lsp-stdio-connection "reason-language-server")
+    :major-modes '(reason-mode)
+    :notification-handlers (ht ("client/registerCapability" 'ignore))
+    :priority 1
+    :server-id 'reason-ls)))
+
 (provide 'init-ocaml)

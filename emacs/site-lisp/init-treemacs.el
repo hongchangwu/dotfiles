@@ -6,9 +6,9 @@
   (("M-0" . treemacs-select-window)
    ("C-x 1" . treemacs-delete-other-windows)
    ("<f5>" . treemacs)
-   ("C-x t b" . treemacs-bookmark)
-   ("C-x t f" . treemacs-find-file)
-   ("C-x t t" . treemacs-find-tag)))
+   ("C-c t b" . treemacs-bookmark)
+   ("C-c t f" . treemacs-find-file)
+   ("C-c t t" . treemacs-find-tag)))
 
 (use-package treemacs-projectile
   :after treemacs projectile)

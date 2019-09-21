@@ -85,6 +85,7 @@
   :init
   (autoload 'utop-minor-mode "utop" "Minor mode for utop" t)
   :hook
+  (reason-mode . lsp)
   (reason-mode . utop-minor-mode)
   (reason-mode . flycheck-mode)
   (before-save . refmt-before-save)

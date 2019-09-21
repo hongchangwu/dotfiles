@@ -1,5 +1,5 @@
 (use-package lsp-mode
-  :commands lsp)
+  :commands (lsp lsp-register-client))
 
 (use-package lsp-ui
   :commands lsp-ui-mode

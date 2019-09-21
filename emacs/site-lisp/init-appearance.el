@@ -63,4 +63,12 @@
   :init
   (load-theme 'tangotango t))
 
+;; Colorize compilation buffers
+(require 'ansi-color)
+(defun colorize-buffer ()
+  (let ((inhibit-read-only t))
+    (ansi-color-apply-on-region (point-min) (point-max))))
+(add-hook 'compilation-mode-hook (lambda () (setq show-trailing-whitespace nil)))
+(add-hook 'compilation-filter-hook 'colorize-buffer)
+
 (provide 'init-appearance)

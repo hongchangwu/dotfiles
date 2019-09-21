@@ -12,9 +12,13 @@
     (when (and eslint (file-executable-p eslint))
       (setq-local flycheck-javascript-eslint-executable eslint))))
 
+(use-package npm-mode)
+
 (use-package js
   :after (flycheck nodejs-repl)
+  :delight npm-mode
   :hook
+  (js-mode . npm-mode)
   (js-mode . paredit-nonlisp)
   (js-mode . (lambda () (flycheck-mode t)))
   (flycheck-mode . my/use-eslint-from-node-modules)

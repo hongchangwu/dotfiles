@@ -84,8 +84,10 @@
 (use-package reason-mode
   :init
   (autoload 'utop-minor-mode "utop" "Minor mode for utop" t)
+  :delight npm-mode
   :hook
   (reason-mode . lsp)
+  (reason-mode . npm-mode)
   (reason-mode . utop-minor-mode)
   (reason-mode . flycheck-mode)
   (before-save . refmt-before-save)

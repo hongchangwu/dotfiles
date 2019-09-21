@@ -45,13 +45,22 @@
   (:map haskell-mode-map
         ("C-c l" . hs-lint)))
 
-;; Intero
-(use-package intero
-  :after haskell-mode
+(use-package lsp-haskell
+  :init
+  (setq lsp-haskell-process-path-hie "hie-wrapper")
   :hook
-  (haskell-mode . intero-mode)
-  (haskell-mode . intero-mode-blacklist)
+  (haskell-mode . lsp)
+  (haskell-mode . flycheck-mode)
   :custom
-  (intero-blacklist '("projecteuler")))
+  (lsp-haskell-process-path-hie "hie-wrapper"))
+
+;; ;; Intero
+;; (use-package intero
+;;   :after haskell-mode
+;;   :hook
+;;   (haskell-mode . intero-mode)
+;;   (haskell-mode . intero-mode-blacklist)
+;;   :custom
+;;   (intero-blacklist '("projecteuler")))
 
 (provide 'init-haskell)

@@ -2,7 +2,7 @@
 (defalias 'qrr 'query-replace-regexp)
 
 ;; Switch between two most recent buffers
-(global-set-key (kbd "M-o")  'mode-line-other-buffer)
+(global-set-key (kbd "M-`") 'mode-line-other-buffer)
 
 (global-set-key (kbd "C-c w k") 'windmove-up)
 (global-set-key (kbd "C-c w j") 'windmove-down)

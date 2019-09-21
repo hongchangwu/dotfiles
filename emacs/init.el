@@ -27,6 +27,7 @@
 
 (require 'init-appearance)
 (require 'init-misc)
+(require 'init-ace)
 (require 'init-company)
 (require 'init-eldoc)
 (require 'init-flycheck)

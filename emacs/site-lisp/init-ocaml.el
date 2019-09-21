@@ -88,6 +88,9 @@
   (reason-mode . utop-minor-mode)
   (reason-mode . flycheck-mode)
   (before-save . refmt-before-save)
+  :bind
+  (:map reason-mode-map
+        ("C-c C-f" . refmt))
   :config
   (lsp-register-client
    (make-lsp-client

@@ -1,4 +1,5 @@
 (("Fill-Column-Indicator" . "a284bb50789c97d7ef9021214260b3ce7cc220e3")
+ ("ace-jump-mode" . "8351e2df4fbbeb2a4003f2fb39f46d33803f3dac")
  ("ace-window" . "a5344925e399e1f015721cda6cf5db03c90ab87a")
  ("ag.el" . "bd81d68466e44301505629454dfc689b6c17d94b")
  ("alchemist.el" . "6f99367511ae209f8fe2c990779764bbb4ccb6ed")

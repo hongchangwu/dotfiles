@@ -1,5 +1,6 @@
 (use-package lsp-mode
-  :commands (lsp lsp-register-client))
+  :commands (lsp lsp-register-client)
+  :bind ("<f2>" . lsp-rename))
 
 (use-package lsp-ui
   :commands lsp-ui-mode
@@ -16,8 +17,7 @@
   (push 'company-lsp company-backends))
 
 (use-package helm-lsp
-  :commands helm-lsp-workspace-symbol
-  )
+  :commands helm-lsp-workspace-symbol)
 
 (use-package lsp-treemacs
   :commands lsp-treemacs-errors-list)

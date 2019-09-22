@@ -8,10 +8,7 @@
 
 ;; Frame size and font
 (setq initial-frame-alist
-      '((left . 100)
-        (top . 50)
-        (height . 40)
-        (width . 120)
+      '((fullscreen . maximized)
         (font . "Inconsolata for Powerline 18")))
 (setq default-frame-alist initial-frame-alist)
 

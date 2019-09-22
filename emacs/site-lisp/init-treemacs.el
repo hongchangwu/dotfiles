@@ -6,6 +6,7 @@
   (("M-0" . treemacs-select-window)
    ("C-x 1" . treemacs-delete-other-windows)
    ("<f5>" . treemacs)
+   ("C-c t 0" . treemacs-add-and-display-current-project)
    ("C-c t b" . treemacs-bookmark)
    ("C-c t f" . treemacs-find-file)
    ("C-c t t" . treemacs-find-tag)))

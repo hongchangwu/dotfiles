@@ -47,6 +47,7 @@
  ("merlin" . "a2fff37a09159ce94a3229ce137bb4e6e552339f")
  ("merlin-eldoc" . "db7fab1eddfe34781b7e79694f8923b285698032")
  ("nadvice" . "2dfcf614dc5472fb21e48f93d0ebb4546276377f")
+ ("npm-mode" . "3ee7c0bad5b7a041d4739ef3aaa06a3dc764e5eb")
  ("ocp-indent" . "bdd84a71da8eac87447e35b55782ec07f0d2aead")
  ("org-bullets" . "c19b13be00df8d8dc596e4f1aef4a094b08ac801")
  ("paredit" . "acbe10fdd85d2e91831adf70b6a828bc7e900da0")
@@ -74,5 +75,6 @@
  ("web-mode" . "a723d3ecd3606d1c1948871f46fc8c8d7f879fe4")
  ("with-editor" . "45c29f9bfb7f2df93426ce1571e2f4f41ed4e492")
  ("yaml-mode" . "5b4a0db384f996554454b5642e4531c502421de8")
- ("yasnippet" . "d91dd66f2aed9bbaef32813a68b105ea77e83890"))
+ ("yasnippet" . "d91dd66f2aed9bbaef32813a68b105ea77e83890")
+ ("yasnippet-snippets" . "676a6ddc190fb957dca3c42a777e34a623f15cbd"))
 :pluto

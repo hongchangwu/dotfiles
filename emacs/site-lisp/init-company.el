@@ -11,6 +11,8 @@
   :delight company-mode
   :hook
   (prog-mode . company-mode)
+  :bind
+  ("C-c y" . company-yasnippet)
   :custom
   (company-tooltip-align-annotations t)
   :config

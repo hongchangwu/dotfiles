@@ -1,6 +1,8 @@
 (use-package lsp-mode
   :commands (lsp lsp-register-client)
-  :bind ("<f2>" . lsp-rename))
+  :bind ("<f2>" . lsp-rename)
+  :config
+  (setq lsp-prefer-flymake nil))
 
 (use-package lsp-ui
   :commands lsp-ui-mode

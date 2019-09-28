@@ -59,3 +59,4 @@
 (require 'init-yaml)
 (require 'init-format-all)
 (require 'init-eshell)
+(require 'init-scala)

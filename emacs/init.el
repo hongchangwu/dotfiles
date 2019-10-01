@@ -60,3 +60,4 @@
 (require 'init-format-all)
 (require 'init-eshell)
 (require 'init-scala)
+(require 'init-common-lisp)

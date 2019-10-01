@@ -2,6 +2,14 @@
 
 (use-package treemacs
   :defer t
+  :hook
+  (prog-mode
+   .
+   (lambda ()
+     (progn
+       (treemacs-select-window)
+       (find-file (car (last command-line-args)))
+       (treemacs-delete-other-windows))))
   :bind
   (("M-0" . treemacs-select-window)
    ("C-x 1" . treemacs-delete-other-windows)

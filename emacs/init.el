@@ -61,3 +61,4 @@
 (require 'init-eshell)
 (require 'init-scala)
 (require 'init-lisp)
+(require 'init-go)

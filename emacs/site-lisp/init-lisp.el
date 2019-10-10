@@ -1,16 +1,10 @@
-(use-package slime-company)
-
-(use-package slime
-  :after slime-company
+(use-package sly
   :custom
   (inferior-lisp-program "sbcl")
   :custom
-  (require 'slime-autoloads)
-  ;; Also setup the slime-fancy contrib
-  (slime-setup '(slime-fancy slime-company))
-  ;; (add-to-list 'slime-contribs 'slime-fancy)
+  (require 'sly-autoloads)
   :bind
-  (:map slime-mode-map
-        ("M-h" . slime-documentation-lookup)))
+  (:map sly-mode-map
+        ("M-h" . sly-documentation-lookup)))
 
 (provide 'init-lisp)

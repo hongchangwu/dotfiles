@@ -23,9 +23,20 @@
         (font . "Inconsolata for Powerline 14")))
 (setq default-frame-alist initial-frame-alist)
 
-;; Mode line colors
-(set-face-foreground 'mode-line "white")
-(set-face-background 'mode-line "#6a5acd")
+;; Doom modeline
+(use-package doom-modeline
+  :init (doom-modeline-mode 1)
+  :config
+  (setq doom-modeline-project-detection 'project))
+
+(use-package doom-themes
+  :config
+  ;; Global settings (defaults)
+  (setq doom-themes-enable-bold t    ; if nil, bold is universally disabled
+        doom-themes-enable-italic t) ; if nil, italics is universally disabled
+  (load-theme 'doom-vibrant t)
+  ;; Corrects (and improves) org-mode's native fontification.
+  (doom-themes-org-config))
 
 ;; Insert spaces instead of tabs
 (setq-default indent-tabs-mode nil)

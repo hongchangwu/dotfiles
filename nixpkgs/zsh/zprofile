@@ -1,0 +1,2 @@
+# Source common profile
+[[ -r "$HOME/.profile" ]] && source "$HOME/.profile"

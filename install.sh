@@ -1,76 +1,15 @@
 #!/usr/bin/env bash
 
-source "./functions"
+set -euo pipefail
 
-usage()
-{
-  echo "Usage: $0 [-n] [-h]"
-}
+# Install Nix
+curl -L https://nixos.org/nix/install | sh
+. "$HOME/.nix-profile/etc/profile.d/nix.sh"
 
-while getopts "nh" arg
-do
-  case $arg in
-    n) export NO_BACKUP=true
-       ;;
-    h) usage
-       exit 0
-       ;;
-    *) usage >&2
-       exit 1
-       ;;
-  esac
-done
-shift $((OPTIND-1))
+mkdir -p ~/.config/
+cp -r nixpkgs/ ~/.config/
 
-export ARCH=$(uname -s)
+nix-shell ./default.nix -A install
 
-export ROOT=$(dirname $0)
-
-DOT_FILES=(
-  .aliases
-  .bash_profile
-  .eslintrc
-  .functions
-  .gitconfig
-  .profile
-  .tmux.conf
-  .tmux.conf.osx
-  .vimrc
-  .zshrc
-  )
-
-export BACKUP_SUFFIX=".bak.$(date -u +%s)"
-
-source "$ROOT/.functions"
-
-if ! exists git
-then
-  echo "Couldn't find git!" >&2
-  exit 1
-fi
-
-git clean -fdx &>/dev/null
-
-declare -i failed
-
-echo 'Installing dotfiles...'
-[[ $NO_BACKUP != true ]] && echo "(Your old files will be backed up with the suffix $BACKUP_SUFFIX)"
-for f in "${DOT_FILES[@]}"
-do
-  copy "$ROOT/$f" "$HOME/$f" || ((failed++))
-done
-
-# Recursively install all components
-for f in $(find "$ROOT" -mindepth 2 -maxdepth 2 -name install.sh -print)
-do
-  [[ -x "$f" ]] && "$f"
-  [[ $? -ne 0 ]] && ((failed++))
-done
-
-if [[ -z $failed ]]
-then
-  echo "All done!"
-else
-  echo "Some commands have failed!" >&2
-  exit 1
-fi
+sudo echo "$HOME/.nix-profile/bin/bash" >> /etc/shells
+sudo echo "$HOME/.nix-profile/bin/zsh" >> /etc/shells

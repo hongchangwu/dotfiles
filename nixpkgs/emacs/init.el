@@ -62,7 +62,6 @@
 (require 'init-org)
 (require 'init-paredit)
 (require 'init-perl)
-(require 'init-powerline)
 (require 'init-projectile)
 (require 'init-python)
 (require 'init-ruby)

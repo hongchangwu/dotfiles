@@ -2,11 +2,13 @@
 	name = Hongchang Wu
 	email = wuhc85@gmail.com
 [color]
-	branch = always
-	diff = always
-	interactive = always
-	status = always
-	ui = always
+	branch = auto
+	diff = auto
+	interactive = auto
+	status = auto
+	ui = auto
+[pull]
+	ff = only
 [push]
 	default = current
 [diff]

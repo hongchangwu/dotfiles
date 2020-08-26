@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+usage() {
+  echo "Usage: `basename $0` ORIGIN UPSTREAM [DIRECTORY]" >&2
+}
+
+main() {
+  local origin=$1
+  shift
+  local upstream=$1
+  shift
+  local name=$(git clone "$origin" "$@" 2> >(sed -n "s/^Cloning into '\(.*\)'.*$/\1/p"))
+  pushd "$name" >/dev/null
+  git remote add upstream "$upstream"
+  git fetch -q upstream
+  popd >/dev/null
+}
+
+if [ "$#" -ge 2 ]; then
+  main "$@"
+else
+  usage
+  exit 2
+fi

@@ -1,4 +1,12 @@
-;; Enable scala-mode and sbt-mode
+;;; init-rust.el --- init file for Scala
+
+;;; Commentary:
+
+;; Scala and SBT support.  Note: the setup here is out of date.
+;; Should use Metals for LSP support.
+
+;;; Code:
+
 (use-package scala-mode
   :mode "\\.s\\(cala\\|bt\\)$"
   :hook
@@ -16,3 +24,5 @@
    minibuffer-local-completion-map))
 
 (provide 'init-scala)
+
+;;; init-scala.el ends here

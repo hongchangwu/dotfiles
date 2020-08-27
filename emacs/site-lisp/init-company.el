@@ -1,4 +1,10 @@
-;; Company mode
+;;; init-company.el --- init file for Company
+
+;;; Commentary:
+
+;; Turn on `company-mode` for all `prog-mode` and customize the faces.
+
+;;; Code:
 
 ;; Fix compatibility issue with fill-column-indicator
 (defun on-off-fci-before-company(command)
@@ -34,3 +40,5 @@
    `(company-tooltip-selection ((t (:inherit company-tooltip :background "LightSteelBlue3"))))))
 
 (provide 'init-company)
+
+;;; init-company.el ends here

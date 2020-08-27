@@ -1,3 +1,11 @@
+;;; init-perl.el --- init file for Perl
+
+;;; Commentary:
+
+;; The settings here are copied from the book "Perl Best Practices".
+
+;;; Code:
+
 (use-package cperl-mode
   :init
   ;; Use cperl mode instead of the default perl mode
@@ -11,3 +19,5 @@
   (cperl-tab-always-indent t))
 
 (provide 'init-perl)
+
+;;; init-perl.el ends here

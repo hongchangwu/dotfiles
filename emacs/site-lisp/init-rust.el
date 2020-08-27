@@ -1,3 +1,11 @@
+;;; init-rust.el --- init file for Rust
+
+;;; Commentary:
+
+;; Use the official Rust mode with RLS.
+
+;;; Code:
+
 (use-package rust-mode
   :ensure-system-package
   ((rustup . "curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh")
@@ -16,3 +24,5 @@
   (rust-mode . cargo-minor-mode))
 
 (provide 'init-rust)
+
+;;; init-rust.el ends here

@@ -1,4 +1,10 @@
-;; Ruby mode
+;;; init-ruby.el --- init file for Ruby
+
+;;; Commentary:
+
+;; Use Robe mode with company for completion.
+
+;;; Code:
 
 (use-package robe
  :after company
@@ -11,3 +17,5 @@
  (push 'company-robe company-backends))
 
 (provide 'init-ruby)
+
+;;; init-ruby.el ends here

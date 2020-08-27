@@ -1,4 +1,11 @@
-;; Clojure mode
+;;; init-clojure.el --- init file for Clojure
+
+;;; Commentary:
+
+;; Turn on `paredit-mode`obviously and use `clojure-mode-extra-font-locking` for
+;;additional font-locking for built-in methods and macros.
+
+;;; Code:
 
 (use-package clojure-mode
   :hook
@@ -12,3 +19,5 @@
   (cider-show-error-buffer 'except-in-repl))
 
 (provide 'init-clojure)
+
+;;; init-clojure.el ends here

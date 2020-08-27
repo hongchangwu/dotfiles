@@ -1,4 +1,10 @@
-;; Yasnippet
+;;; init-yasnippet.el --- init file for Yasnippet
+
+;;; Commentary:
+
+;; Yet another template system for Emacs.
+
+;;; Code:
 
 (use-package yasnippet
   :delight yas-minor-mode
@@ -8,3 +14,5 @@
 (use-package yasnippet-snippets)
 
 (provide 'init-yasnippet)
+
+;;; init-yasnippet.el ends here

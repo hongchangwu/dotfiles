@@ -1,16 +1,24 @@
-;; ParEdit
+;;; init-paredit.el --- init file for ParEdit
+
+;;; Commentary:
+
+;; Turn on paredit for Lisp dialects.  Also define `paredit-nonlisp` for use in
+;; non-Lisp languages.
+
+;;; Code:
 
 (use-package paredit
   :init
   (autoload 'enable-paredit-mode "paredit" "Turn on pseudo-structural editing of Lisp code." t)
   :hook
-  ((emacs-lisp-mode
+  ((dune-mode
+    emacs-lisp-mode
     eval-expression-minibuffer-setup
     ielm-mode
-    lisp-mode
     lisp-interaction-mode
-    scheme-mode
-    racket-mode)
+    lisp-mode
+    racket-mode
+    scheme-mode)
    .
    enable-paredit-mode)
   :bind
@@ -40,3 +48,5 @@
   (paredit-mode 1))
 
 (provide 'init-paredit)
+
+;;; init-paredit.el ends here

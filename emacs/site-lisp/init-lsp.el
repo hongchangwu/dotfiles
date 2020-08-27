@@ -1,6 +1,16 @@
+;;; init-lsp.el --- init file for LSP
+
+;;; Commentary:
+
+;; I chose lsp-mode over eglot because it seems to be more actively developed.
+
+;;; Code:
+
 (use-package lsp-mode
   :commands (lsp lsp-register-client)
-  :bind ("<f2>" . lsp-rename)
+  :init (setq lsp-keymap-prefix "C-c l")
+  :bind
+  ("<f2>" . lsp-rename)
   :config
   (setq lsp-prefer-flymake nil))
 
@@ -25,3 +35,5 @@
   :commands lsp-treemacs-errors-list)
 
 (provide 'init-lsp)
+
+;;; init-lsp.el ends here

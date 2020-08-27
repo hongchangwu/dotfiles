@@ -1,20 +1,32 @@
-;; https://github.com/raxod502/straight.el/blob/develop/README.md#getting-started
+;;; init.el --- main init file
+
+;;; Commentary:
+
+;; I'm using straight.el together with use-package.
+;; This file simply bootstraps straight.el and adds a few common packages.
+;; The custom init files are located under ~/.emacs.d/site-lisp
+
+;;; Code:
+
+;; https://github.com/raxod502/straight.el#getting-started
+(setq straight-cache-autoloads t
+      straight-repository-branch "develop"
+      straight-use-package-by-default t)
 (defvar bootstrap-version)
 (let ((bootstrap-file
        (expand-file-name "straight/repos/straight.el/bootstrap.el" user-emacs-directory))
       (bootstrap-version 5))
   (unless (file-exists-p bootstrap-file)
     (with-current-buffer
-        (url-retrieve-synchronously
-         "https://raw.githubusercontent.com/raxod502/straight.el/develop/install.el"
-         'silent 'inhibit-cookies)
+	(url-retrieve-synchronously
+	 "https://raw.githubusercontent.com/raxod502/straight.el/develop/install.el"
+	 'silent 'inhibit-cookies)
       (goto-char (point-max))
       (eval-print-last-sexp)))
-  (load bootstrap-file nil 'nomessage))
+    (load bootstrap-file nil 'nomessage))
 
-;; https://github.com/raxod502/straight.el/blob/develop/README.md#integration-with-use-package
+;; https://github.com/raxod502/straight.el#integration-with-use-package
 (straight-use-package 'use-package)
-(setq straight-use-package-by-default t)
 (use-package use-package-ensure-system-package)
 (use-package delight)
 
@@ -23,42 +35,44 @@
 (let ((default-directory "~/.emacs.d/site-lisp/"))
   (normal-top-level-add-subdirs-to-load-path))
 
-;; Custom configurations
+;; Custom init files
 
-(require 'init-appearance)
-(require 'init-misc)
 (require 'init-ace)
+(require 'init-appearance)
+(require 'init-c)
+(require 'init-clojure)
 (require 'init-company)
 (require 'init-eldoc)
+(require 'init-elixir)
+(require 'init-elm)
+(require 'init-eshell)
 (require 'init-flycheck)
+(require 'init-go)
 (require 'init-gtags)
+(require 'init-haskell)
 (require 'init-helm)
+(require 'init-javascript)
+(require 'init-lisp)
 (require 'init-lsp)
 (require 'init-magit)
-(require 'init-paredit)
-(require 'init-projectile)
-(require 'init-semantic)
-(require 'init-treemacs)
-(require 'init-yasnippet)
-(require 'init-powerline)
-(require 'init-sh)
-(require 'init-c)
-(require 'init-perl)
-(require 'init-evil)
-(require 'init-org)
-(require 'init-haskell)
-(require 'init-clojure)
-(require 'init-ruby)
-(require 'init-octave)
+(require 'init-misc)
+(require 'init-nix)
 (require 'init-ocaml)
-(require 'init-elm)
-(require 'init-elixir)
-(require 'init-javascript)
+(require 'init-octave)
+(require 'init-org)
+(require 'init-paredit)
+(require 'init-perl)
+(require 'init-powerline)
+(require 'init-projectile)
+(require 'init-python)
+(require 'init-ruby)
 (require 'init-rust)
+(require 'init-scala)
+(require 'init-semantic)
+(require 'init-sh)
+(require 'init-treemacs)
 (require 'init-undo-tree)
 (require 'init-yaml)
-(require 'init-format-all)
-(require 'init-eshell)
-(require 'init-scala)
-(require 'init-lisp)
-(require 'init-go)
+(require 'init-yasnippet)
+
+;;; init.el ends here

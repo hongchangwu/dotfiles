@@ -1,4 +1,10 @@
-;; GNU Global interface
+;;; init-gtags.el --- init file for GNU Global
+
+;;; Commentary:
+
+;; Use `gtags` for C/C++/Java/JS/Python and set up Helm integration.
+
+;;; Code:
 
 (use-package helm-gtags
   :after helm
@@ -21,3 +27,5 @@
         ("C-c g >" . helm-gtags-next-history)))
 
 (provide 'init-gtags)
+
+;;; init-gtags.el ends here

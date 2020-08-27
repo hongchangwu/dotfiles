@@ -1,3 +1,14 @@
+;;; init-appearance.el --- init file for customizing the apperance of Emacs
+
+;;; Commentary:
+
+;; Tango color theme is hands down the best color theme for Emacs.
+;; Also use `fill-column-indicator` to visually indicate the location of the
+;; fill column, although I should switch to the native
+;; `display-fill-column-indicator-mode` at some point.
+
+;;; Code:
+
 ;; Disable the splash screen
 (setq inhibit-splash-screen t)
 
@@ -9,7 +20,7 @@
 ;; Frame size and font
 (setq initial-frame-alist
       '((fullscreen . maximized)
-        (font . "Inconsolata for Powerline 18")))
+        (font . "Inconsolata for Powerline 14")))
 (setq default-frame-alist initial-frame-alist)
 
 ;; Mode line colors
@@ -69,3 +80,5 @@
 (add-hook 'compilation-filter-hook 'colorize-buffer)
 
 (provide 'init-appearance)
+
+;;; init-appearance.el ends here

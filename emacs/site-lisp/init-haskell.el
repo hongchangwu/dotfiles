@@ -1,10 +1,18 @@
-;; Haskell mode
+;;; init-haskell.el --- init file for Haskell
+
+;;; Commentary:
+
+;; I'm still conflicted about choosing between cabal and stack.
+;; The setup here is a compromise between the two.  I use cabal to install
+;; system-wide packages and use stack for project-driven development.
+
+;;; Code:
 
 (use-package haskell-mode
   :ensure-system-package
   ((ghcup . "curl https://get-ghcup.haskell.org -sSf | sh")
    (stack . "curl -sSL https://get.haskellstack.org/ | sh")
-   (hasktags . "stack install hasktags"))
+   (hasktags . "cabal install hasktags"))
   :init
   (autoload 'ghc-init "ghc" nil t)
   (autoload 'ghc-debug "ghc" nil t)
@@ -29,7 +37,7 @@
 
 ;; hindent
 (use-package hindent
-  :ensure-system-package (hindent . "stack install hindent")
+  :ensure-system-package (hindent . "cabal install hindent")
   :after haskell-mode
   :hook
   (haskell-mode . hindent-mode)
@@ -39,7 +47,7 @@
 ;; HLint
 (use-package hs-lint
   :straight nil
-  :ensure-system-package (hlint . "stack install hlint")
+  :ensure-system-package (hlint . "cabal install hlint")
   :after haskell-mode
   :bind
   (:map haskell-mode-map
@@ -55,3 +63,5 @@
   (intero-blacklist '("projecteuler")))
 
 (provide 'init-haskell)
+
+;;; init-haskell.el ends here

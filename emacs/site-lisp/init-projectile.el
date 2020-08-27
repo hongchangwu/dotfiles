@@ -1,4 +1,10 @@
-;; Projectile
+;; init-projectile.el --- init file for Projectile
+
+;;; Commentary:
+
+;; Projectile with Helm integration.
+
+;;; Code:
 
 (use-package helm-projectile)
 
@@ -8,12 +14,16 @@
   :init
   (projectile-mode +1)
   (helm-projectile-on)
+  :bind-keymap
+  ("C-c p" . projectile-command-map)
   :bind
-  (:map projectile-mode-map
-        ("s-p" . projectile-command-map)
-        ("C-c p" . projectile-command-map))
+  (("<f5>" . projectile-run-project)
+   ("<f6>" . projectile-compile-project)
+   ("<f7>" . projectile-test-project))
   :custom
   (projectile-completion-system 'helm)
   (projectile-use-git-grep t))
 
 (provide 'init-projectile)
+
+;;; init-projectile.el ends here

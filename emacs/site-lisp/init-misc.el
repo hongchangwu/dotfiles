@@ -1,3 +1,12 @@
+;;; init-misc.el -- init file for miscellaneous configurations
+
+;;; Commentary:
+
+;; Mostly convenience bindings for text editing.
+;; Make % match brackets like Vim.
+
+;;; Code:
+
 ;; For easier regex search/replace
 (defalias 'qrr 'query-replace-regexp)
 
@@ -44,3 +53,5 @@
           (t (self-insert-command (or arg 1))))))
 
 (provide 'init-misc)
+
+;;; init-misc.el ends here

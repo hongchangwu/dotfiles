@@ -1,4 +1,11 @@
-;; JavaScript
+;;; init-helm.el --- init file for JavaScript
+
+;;; Commentary:
+
+;; There is a surprising amount of customization considering how little Web development I do.
+;; Most of them are probably copied from somewhere else.
+
+;;; Code:
 
 ;; use local eslint from node_modules before global
 ;; http://emacs.stackexchange.com/questions/21205/flycheck-with-file-relative-eslint-executable
@@ -89,3 +96,5 @@
     '(define-key css-mode-map (kbd "C-c b") 'web-beautify-css)))
 
 (provide 'init-javascript)
+
+;;; init-javascript.el ends here

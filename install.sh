@@ -11,5 +11,5 @@ cp -r nixpkgs/ ~/.config/
 
 nix-shell ./default.nix -A install
 
-sudo echo "$HOME/.nix-profile/bin/bash" >> /etc/shells
-sudo echo "$HOME/.nix-profile/bin/zsh" >> /etc/shells
+sudo sh -c 'echo "$HOME/.nix-profile/bin/bash" >> /etc/shells'
+sudo sh -c 'echo "$HOME/.nix-profile/bin/zsh" >> /etc/shells'

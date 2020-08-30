@@ -5,15 +5,14 @@ let
     black
     pandas
     pip
-    powerline
     pylint
     pytest
     python-language-server
     rope
     setuptools
     yapf
-  ];
-  python = pkgs.python3.withPackages pythonPackages;
+  ] ++ (if pkgs.stdenv.isDarwin then [] else [powerline]);
+  python = pkgs.python37.withPackages pythonPackages;
 in
 {
   fonts.fontconfig.enable = true;
@@ -73,7 +72,13 @@ in
 
     sessionVariables = {
       EDITOR = "vim";
+      LANG = "en_US.UTF-8";
+      LANGUAGE = "en_US";
+      PAGER = "less";
+      TERM = "xterm-256color";
     };
+
+    stateVersion = "20.03";
   };
 
   programs = {
@@ -92,10 +97,13 @@ in
       userName  = "Hongchang Wu";
       userEmail = "wuhc85@gmail.com";
       extraConfig = builtins.readFile ./git/config;
-      ignores = [ "*~" "*.swp" "\#*\#" "\.\#*" ];
+      ignores = [ "*~" "*.swp" "\\#*\\#" ".\\#*" ];
     };
 
-    home-manager.enable = true;
+    home-manager = {
+      enable = true;
+      path = "~/.nixpkgs";
+    };
 
     opam.enable = true;
 
@@ -150,6 +158,15 @@ in
       };
       plugins = [
         {
+          name = "nix-zsh-completions";
+          src = pkgs.fetchFromGitHub {
+            owner = "spwhitt";
+            repo = "nix-zsh-completions";
+            rev = "0.4.4";
+            sha256 = "1n9whlys95k4wc57cnz3n07p7zpkv796qkmn68a50ygkx6h3afqf";
+          };
+        }
+        {
           name = "zsh-nix-shell";
           src = pkgs.fetchFromGitHub {
             owner = "chisui";
@@ -159,16 +176,6 @@ in
           };
         }
       ];
-    };
-  };
-
-  services = {
-    emacs.enable = true;
-  };
-
-  systemd.user = {
-    sessionVariables = {
-      EDITOR = "vim";
     };
   };
 

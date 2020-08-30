@@ -1,6 +1,3 @@
-# ssh
-export SSH_KEY_PATH="~/.ssh/rsa_id"
-
 autoload -U zmv
 alias zmv='noglob zmv -W'
 

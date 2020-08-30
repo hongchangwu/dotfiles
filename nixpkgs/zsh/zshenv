@@ -1,2 +1,1 @@
-# ssh
-export SSH_KEY_PATH="~/.ssh/rsa_id"
+[[ $(uname -s) = Darwin ]] && export ZSH_DISABLE_COMPFIX=true

@@ -1,13 +1,8 @@
 let
   nixpkgs = builtins.fetchTarball (import ./nixpkgs.nix);
+  home-manager = builtins.fetchTarball (import ./home-manager.nix);
   pkgs = import "${nixpkgs}" {};
 in
-rec {
-  home-manager = pkgs.callPackage ./home-manager/home-manager {
-    path = toString ./home-manager;
-  };
-
-  install = pkgs.callPackage ./home-manager/home-manager/install.nix {
-    inherit home-manager;
-  };
+{
+  install = (import "${home-manager}" { inherit pkgs; }).install;
 }

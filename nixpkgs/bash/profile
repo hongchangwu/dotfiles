@@ -6,8 +6,14 @@ export LS_COLORS="di=1;34:ln=1;36:so=1;32:pi=1;33:ex=1;32:bd=34;46:cd=34;43:su=3
 [[ $(uname -s) = Darwin ]] && export CLICOLOR=1
 [[ $(uname -s) = Darwin ]] && export LSCOLORS=ExGxCxDxCxegedabagaced
 
+# Homebrew
+PATH=$(sed -e 's#/usr/local/bin:##' <<<$PATH)
+export PATH=/usr/local/bin:$PATH
+
+# Nix
+[[ -e "$HOME/.nix-profile/etc/profile.d/nix.sh" ]] && source "$HOME/.nix-profile/etc/profile.d/nix.sh"
+
 export PATH=$HOME/.local/bin:$PATH
-if [ -e /home/hcwu/.nix-profile/etc/profile.d/nix.sh ]; then . /home/hcwu/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
 
 # Aliases
 [[ -r "$HOME/.aliases" ]] && source "$HOME/.aliases"
@@ -50,10 +56,6 @@ unset ssh_env
 # ---------------------------------------
 # Beginning of language specific settings
 # ---------------------------------------
-
-# Homebrew
-PATH=$(sed -e 's#/usr/local/bin:##' <<<$PATH)
-export PATH=/usr/local/bin:$PATH
 
 # Ruby
 export PATH="$HOME/.rbenv/bin:$PATH"

@@ -5,19 +5,14 @@ set -euo pipefail
 # Install Nix
 sh <(curl -L https://nixos.org/nix/install) --no-channel-add
 . "$HOME/.nix-profile/etc/profile.d/nix.sh"
-nix-channel --add https://nixos.org/channels/nixos-20.03 nixpkgs
+nix-channel --add https://nixos.org/channels/nixpkgs-unstable nixpkgs
 
-if [[ $(uname -s) = Darwin ]]; then
-  READLINK=greadlink
-else
-  READLINK=readlink
-fi
-DIR=$(dirname "$($READLINK -f "$0")")
+DIR=$(dirname "$(greadlink -f "$0")")
 mkdir -p "$HOME/.config/"
 [[ ! -d "$HOME/.config/nixpkgs" ]] && ln -s "$DIR/nixpkgs/" "$HOME/.config/nixpkgs"
 
 # Install home-manager
-nix-channel --add https://github.com/rycee/home-manager/archive/release-20.03.tar.gz home-manager
+nix-channel --add https://github.com/rycee/home-manager/archive/master.tar.gz home-manager
 nix-channel --update
 nix-shell '<home-manager>' -A install
 

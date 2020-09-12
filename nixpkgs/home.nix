@@ -40,10 +40,6 @@ in
         recursive = true;
       };
       ".tmux.conf.osx".source = ./tmux/tmux.conf.osx;
-      ".vim/colors/jellybeans.vim".source = builtins.fetchurl {
-        url = "https://raw.githubusercontent.com/nanotech/jellybeans.vim/ef83bf4dc8b3eacffc97bf5c96ab2581b415c9fa/colors/jellybeans.vim";
-        sha256 = "791e387b998fecb14169601ee4e925b8d0991da6a235d2a4ef4c2b3225c58f8c";
-      };
     };
 
     packages = (with pkgs; [
@@ -140,7 +136,6 @@ in
         syntastic
         taglist-vim
         vim-airline
-        vim-airline-themes
       ];
     };
 

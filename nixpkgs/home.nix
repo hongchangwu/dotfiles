@@ -13,6 +13,16 @@ let
     yapf
   ];
   python = pkgs.python37.withPackages pythonPackages;
+  nord-tmux = pkgs.tmuxPlugins.mkDerivation {
+    pluginName = "nord";
+    version = "0.3.0";
+    src = pkgs.fetchFromGitHub {
+      owner = "arcticicestudio";
+      repo = "nord-tmux";
+      rev = "v0.3.0";
+      sha256 = "14xhh49izvjw4ycwq5gx4if7a0bcnvgsf3irywc3qps6jjcf5ymk";
+    };
+  };
 in
 {
   fonts.fontconfig.enable = true;
@@ -112,6 +122,8 @@ in
       extraConfig = builtins.readFile ./tmux/tmux.conf;
       tmuxinator.enable = true;
       plugins = with pkgs.tmuxPlugins; [
+        continuum
+        nord-tmux
         resurrect
       ];
       secureSocket = false;
@@ -122,6 +134,7 @@ in
       extraConfig = builtins.readFile vim/vimrc;
       plugins = with pkgs.vimPlugins; [
         nerdtree
+        nord-vim
         fugitive
         syntastic
         taglist-vim

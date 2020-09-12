@@ -12,7 +12,7 @@ set encoding=utf-8
 if exists('$TMUX')
   set term=screen-256color
 endif
-colorscheme jellybeans
+colorscheme nord
 
 " Show line numbers
 set number
@@ -59,7 +59,7 @@ let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
 " vim-airline
-let g:airline_theme = 'base16'
+let g:airline_theme = 'nord'
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 

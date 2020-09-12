@@ -124,6 +124,7 @@ in
       plugins = with pkgs.tmuxPlugins; [
         continuum
         nord-tmux
+        prefix-highlight
         resurrect
       ];
       secureSocket = false;

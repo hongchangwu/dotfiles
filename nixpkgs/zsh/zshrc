@@ -3,7 +3,7 @@ alias zmv='noglob zmv -W'
 
 # Powerline
 function powerline_precmd() {
-  PS1="$(powerline-go -error $? -shell zsh -hostname-only-if-ssh -cwd-max-depth 4)"
+  PS1="$(powerline-go -error $? -shell zsh -cwd-max-depth 4)"
 }
 
 function install_powerline_precmd() {

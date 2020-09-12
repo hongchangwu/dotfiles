@@ -3,8 +3,9 @@
 set -euo pipefail
 
 # Install Nix
-curl -L https://nixos.org/nix/install | sh
+sh <(curl -L https://nixos.org/nix/install) --no-channel-add
 . "$HOME/.nix-profile/etc/profile.d/nix.sh"
+nix-channel --add https://nixos.org/channels/nixos-20.03 nixpkgs
 
 if [[ $(uname -s) = Darwin ]]; then
   READLINK=greadlink
@@ -13,11 +14,12 @@ else
 fi
 DIR=$(dirname "$($READLINK -f "$0")")
 mkdir -p "$HOME/.config/"
-ln -s "$DIR/nixpkgs/" "$HOME/.config/nixpkgs"
+[[ ! -d "$HOME/.config/nixpkgs" ]] && ln -s "$DIR/nixpkgs/" "$HOME/.config/nixpkgs"
 
 # Install home-manager
-nix-shell ./default.nix -A install
-ln -s $(nix eval --raw '(builtins.fetchTarball (import ./home-manager.nix))') ~/.config/nixpkgs/home-manager
+nix-channel --add https://github.com/rycee/home-manager/archive/release-20.03.tar.gz home-manager
+nix-channel --update
+nix-shell '<home-manager>' -A install
 
 # Add system shells
 [[ ! $(grep "$HOME/.nix-profile/bin/bash" /etc/shells) ]] && sudo sh -c 'echo "$HOME/.nix-profile/bin/bash" >> /etc/shells'

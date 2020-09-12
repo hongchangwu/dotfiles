@@ -148,6 +148,7 @@ in
       oh-my-zsh = {
         enable = true;
         plugins = [
+          "brew"
           "cabal"
           "cargo"
           "docker"
@@ -156,6 +157,7 @@ in
           "git"
           "mix"
           "npm"
+          "osx"
           "ripgrep"
           "rust"
           "rustup"

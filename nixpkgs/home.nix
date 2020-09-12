@@ -113,6 +113,7 @@ in
       extraConfig = builtins.readFile ./tmux/tmux.conf;
       tmuxinator.enable = true;
       plugins = with pkgs.tmuxPlugins; [
+        continuum
         resurrect
       ];
       secureSocket = false;

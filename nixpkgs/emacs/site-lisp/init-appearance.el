@@ -20,7 +20,7 @@
 ;; Frame size and font
 (setq initial-frame-alist
       '((fullscreen . maximized)
-        (font . "Inconsolata for Powerline 14")))
+        (font . "Inconsolata-g for Powerline 14")))
 (setq default-frame-alist initial-frame-alist)
 
 ;; Doom modeline

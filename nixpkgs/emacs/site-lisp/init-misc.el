@@ -52,6 +52,14 @@
           ((string-match "[\]})>]" prev-char) (backward-sexp 1))
           (t (self-insert-command (or arg 1))))))
 
+;; Open links from WSL
+(let ((cmd-exe "/mnt/c/Windows/System32/cmd.exe")
+      (cmd-args '("/c" "start")))
+    (when (file-exists-p cmd-exe)
+      (setq browse-url-generic-program  cmd-exe
+            browse-url-generic-args     cmd-args
+            browse-url-browser-function 'browse-url-generic)))
+
 (provide 'init-misc)
 
 ;;; init-misc.el ends here

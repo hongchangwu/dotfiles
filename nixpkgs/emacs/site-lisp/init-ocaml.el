@@ -21,6 +21,7 @@
   :delight utop-minor-mode
   :hook
   (tuareg-mode . lsp)
+  (tuareg-mode . lsp-lens-mode)
   (tuareg-mode . utop-minor-mode)
   (tuareg-mode
    .

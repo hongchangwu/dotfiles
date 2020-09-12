@@ -7,12 +7,7 @@ sh <(curl -L https://nixos.org/nix/install) --no-channel-add
 . "$HOME/.nix-profile/etc/profile.d/nix.sh"
 nix-channel --add https://nixos.org/channels/nixos-20.03 nixpkgs
 
-if [[ $(uname -s) = Darwin ]]; then
-  READLINK=greadlink
-else
-  READLINK=readlink
-fi
-DIR=$(dirname "$($READLINK -f "$0")")
+DIR=$(dirname "$(readlink -f "$0")")
 mkdir -p "$HOME/.config/"
 [[ ! -d "$HOME/.config/nixpkgs" ]] && ln -s "$DIR/nixpkgs/" "$HOME/.config/nixpkgs"
 

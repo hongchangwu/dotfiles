@@ -5,13 +5,14 @@ let
     black
     pandas
     pip
+    powerline
     pylint
     pytest
     python-language-server
     rope
     setuptools
     yapf
-  ] ++ (if pkgs.stdenv.isDarwin then [] else [powerline]);
+  ];
   python = pkgs.python37.withPackages pythonPackages;
 in
 {

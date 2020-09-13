@@ -49,8 +49,10 @@ in
       curl
       fontconfig
       ghc
+      glibcLocales
       gnum4
       htop
+      locale
       nix-prefetch-scripts
       nixfmt
       nodejs
@@ -83,7 +85,8 @@ in
     sessionVariables = {
       EDITOR = "vim";
       LANG = "en_US.UTF-8";
-      LANGUAGE = "en_US:en_ES:en_FR";
+      LANGUAGE = "en_US:es_ES:fr_FR:ja_JP:pt_BR:zh_CN";
+      LOCALE_ARCHIVE = "${pkgs.glibcLocales.outPath}/lib/locale/locale-archive";
       PAGER = "less";
       TERM = "xterm-256color";
     };

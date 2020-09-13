@@ -81,6 +81,7 @@ exists opam && eval $(opam config env)
 # Python
 export PYENV_ROOT="$HOME/.pyenv"
 [[ -d $PYENV_ROOT ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+exists pyenv && eval "$(pyenv init -)"
 
 # ---------------------------------
 # End of language specific settings

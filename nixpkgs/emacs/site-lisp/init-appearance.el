@@ -18,10 +18,11 @@
 (global-linum-mode t)
 
 ;; Frame size and font
-(setq initial-frame-alist
-      '((fullscreen . maximized)
-        (font . "Inconsolata-g for Powerline 14")))
-(setq default-frame-alist initial-frame-alist)
+(let ((font-size (if (string= system-type "darwin") "18" "14")))
+  (setq initial-frame-alist
+        `((fullscreen . maximized)
+          (font . ,(format "%s-%s" "Inconsolata for Powerline" font-size))))
+  (setq default-frame-alist initial-frame-alist))
 
 ;; Doom modeline
 (use-package doom-modeline

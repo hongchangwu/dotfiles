@@ -48,6 +48,7 @@ in
       coreutils
       curl
       fontconfig
+      ghc
       gnum4
       htop
       nix-prefetch-scripts
@@ -65,6 +66,10 @@ in
       silver-searcher
       tree
       wget
+    ]) ++ (with pkgs.haskellPackages; [
+      hindent
+      hlint
+      ormolu
     ]) ++ (with pkgs.nodePackages; [
       bash-language-server
     ]) ++ (with pkgs.ocamlPackages; [

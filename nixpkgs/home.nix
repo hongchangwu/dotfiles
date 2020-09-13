@@ -67,7 +67,6 @@ in
       tree
       wget
     ]) ++ (with pkgs.haskellPackages; [
-      hindent
       hlint
       ormolu
     ]) ++ (with pkgs.nodePackages; [

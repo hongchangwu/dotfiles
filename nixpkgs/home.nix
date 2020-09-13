@@ -157,7 +157,6 @@ in
           "npm"
           "ripgrep"
           "rust"
-          "rustup"
           "sbt"
           "scala"
           "stack"

@@ -1,7 +1,7 @@
 syntax on
 if has('unix')
   if system('uname') =~ 'Darwin'
-    set guifont=Inconsolata\ for\ Powerline:h16
+    set guifont=Inconsolata\ for\ Powerline\ 16
   else
     set guifont=Inconsolata\ for\ Powerline\ Medium\ 14
   endif

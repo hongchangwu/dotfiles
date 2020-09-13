@@ -1,12 +1,12 @@
 syntax on
 if has('unix')
   if system('uname') =~ 'Darwin'
-    set guifont=Inconsolata-g\ for\ Powerline:h16
+    set guifont=Inconsolata\ for\ Powerline:h16
   else
-    set guifont=Inconsolata-g\ for\ Powerline\ Medium\ 14
+    set guifont=Inconsolata\ for\ Powerline\ Medium\ 14
   endif
 elseif has('windows')
-  set guifont=Inconsolata-g_for_Powerline:h12
+  set guifont=Inconsolata_for_Powerline:h12
 endif
 set encoding=utf-8
 if exists('$TMUX')

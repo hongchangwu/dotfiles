@@ -159,7 +159,6 @@ in
           "osx"
           "ripgrep"
           "rust"
-          "rustup"
           "sbt"
           "scala"
           "stack"

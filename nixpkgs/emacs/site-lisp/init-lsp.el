@@ -16,12 +16,20 @@
 
 (use-package lsp-ui
   :commands lsp-ui-mode
+  :defer t
   :hook
   (lsp-mode . lsp-ui-mode)
   :bind
   (:map lsp-ui-mode-map
         ([remap xref-find-definitions] . lsp-ui-peek-find-definitions)
-        ([remap xref-find-references] . lsp-ui-peek-find-references)))
+        ([remap xref-find-references] . lsp-ui-peek-find-references))
+  :custom
+  (lsp-ui-doc-use-webkit t)
+  :custom-face
+  (lsp-ui-doc-background ((t :background "#2e3440")))
+  (lsp-ui-peek-header ((t :foreground "#d8dee9" :background "#2e3440")))
+  (lsp-ui-peek-highlight ((t :foreground "#2e3440" :background "#88c0d0")))
+  (lsp-ui-peek-selection ((t :foreground "#d8dee9" :background "#4c566a"))))
 
 (use-package company-lsp
   :commands company-lsp

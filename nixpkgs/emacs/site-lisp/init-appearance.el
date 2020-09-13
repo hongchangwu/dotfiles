@@ -2,8 +2,7 @@
 
 ;;; Commentary:
 
-;; Tango color theme is hands down the best color theme for Emacs.
-;; Also use `fill-column-indicator` to visually indicate the location of the
+;; Use `fill-column-indicator` to visually indicate the location of the
 ;; fill column, although I should switch to the native
 ;; `display-fill-column-indicator-mode` at some point.
 
@@ -78,10 +77,10 @@
   (show-trailing-whitespace t))
 
 ;; Color theme
-(use-package tangotango-theme
+(use-package nord-theme
   :defer t
   :init
-  (load-theme 'tangotango t))
+  (load-theme 'nord t))
 
 ;; Colorize compilation buffers
 (require 'ansi-color)

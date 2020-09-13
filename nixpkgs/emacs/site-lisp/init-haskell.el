@@ -10,9 +10,7 @@
 
 (use-package haskell-mode
   :ensure-system-package
-  ((ghcup . "curl https://get-ghcup.haskell.org -sSf | sh")
-   (stack . "curl -sSL https://get.haskellstack.org/ | sh")
-   (hasktags . "cabal install hasktags"))
+  (ghcup . "curl https://get-ghcup.haskell.org -sSf | sh")
   :init
   (autoload 'ghc-init "ghc" nil t)
   (autoload 'ghc-debug "ghc" nil t)

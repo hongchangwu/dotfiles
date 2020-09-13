@@ -9,9 +9,7 @@
 
 (use-package tuareg
   :ensure-system-package
-  (opam
-   (utop . "opam install utop")
-   (ocamllsp . "opam pin add ocaml-lsp-server https://github.com/ocaml/ocaml-lsp.git && opam install ocaml-lsp-server"))
+  (ocamllsp . "opam pin add ocaml-lsp-server https://github.com/ocaml/ocaml-lsp.git && opam install ocaml-lsp-server")
   :init
   ;; Add opam emacs directory to load path
   (let ((opam-share (ignore-errors (car (process-lines "opam" "config" "var" "share")))))
@@ -44,18 +42,15 @@
 
 ;; ocp-indent
 (use-package ocp-indent
-  :ensure-system-package (ocp-indent . "opam install ocp-indent")
   :after tuareg)
 
 ;; Dune
 (use-package dune
-  :straight nil
-  :ensure-system-package (dune . "opam install dune"))
+  :straight nil)
 
 ;; ocamlformat
 (use-package ocamlformat
   :straight nil
-  :ensure-system-package (ocamlformat . "opam install ocamlformat")
   :after tuareg
   :bind
   (:map tuareg-mode-map

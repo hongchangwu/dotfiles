@@ -105,7 +105,7 @@ in
       enable = true;
       userName  = "Hongchang Wu";
       userEmail = "wuhc85@gmail.com";
-      extraConfig = builtins.readFile ./git/config;
+      extraConfig = import ./git/config.nix;
       ignores = [ "*~" "*.swp" "\\#*\\#" ".\\#*" ];
     };
 

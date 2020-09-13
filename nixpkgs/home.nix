@@ -58,6 +58,7 @@ in
       openssl
       powerline-fonts
       powerline-go
+      python
       ripgrep
       rlwrap
       rnix-lsp
@@ -72,14 +73,12 @@ in
       merlin
       ocp-indent
       utop
-    ]) ++ [
-      python
-    ];
+    ]);
 
     sessionVariables = {
       EDITOR = "vim";
       LANG = "en_US.UTF-8";
-      LANGUAGE = "en_US";
+      LANGUAGE = "en_US:en_ES:en_FR";
       PAGER = "less";
       TERM = "xterm-256color";
     };
@@ -189,5 +188,4 @@ in
       ];
     };
   };
-
 }

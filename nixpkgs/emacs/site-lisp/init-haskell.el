@@ -22,7 +22,6 @@
   (:map haskell-mode-map
         ("{" . paredit-open-curly)
         ("}" . paredit-close-curly-and-newline)
-        ([f8] . haskell-navigate-imports)
         ("C-c C-h" . helm-hoogle))
   :custom
   (haskell-interactive-popup-errors nil)
@@ -33,32 +32,25 @@
   (haskell-tags-on-save t)
   (haskell-font-lock-symbols t))
 
-;; hindent
-(use-package hindent
-  :ensure-system-package (hindent . "cabal install hindent")
+;; Ormolu
+(use-package ormolu
   :after haskell-mode
   :hook
-  (haskell-mode . hindent-mode)
-  :custom
-  (hindent-reformat-buffer-on-save t))
+  (haskell-mode . ormolu-format-on-save-mode)
+  :bind
+  (:map haskell-mode-map
+        ("C-c C-f" . ormolu-format-buffer)))
 
 ;; HLint
 (use-package hs-lint
-  :straight nil
-  :ensure-system-package (hlint . "cabal install hlint")
+  :straight (:host github
+             :repo "ndmitchell/hlint"
+             :branch "master"
+             :files ("data/hs-lint.el"))
   :after haskell-mode
   :bind
   (:map haskell-mode-map
         ("C-c l" . hs-lint)))
-
-;; Intero
-(use-package intero
-  :after haskell-mode
-  :hook
-  (haskell-mode . intero-mode)
-  (haskell-mode . intero-mode-blacklist)
-  :custom
-  (intero-blacklist '("projecteuler")))
 
 (provide 'init-haskell)
 

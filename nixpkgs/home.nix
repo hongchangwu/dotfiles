@@ -48,7 +48,6 @@ in
       coreutils
       curl
       fontconfig
-      ghc
       glibcLocales
       gnum4
       htop
@@ -56,7 +55,6 @@ in
       nix-prefetch-scripts
       nixfmt
       nodejs
-      ocaml
       ocamlformat
       openssl
       powerline-fonts
@@ -69,7 +67,6 @@ in
       tree
       wget
     ]) ++ (with pkgs.haskellPackages; [
-      hindent
       hlint
       ormolu
     ]) ++ (with pkgs.nodePackages; [

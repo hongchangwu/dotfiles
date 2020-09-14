@@ -48,6 +48,7 @@
 	  au = "add -u";
 	  c = "commit -m";
 	  ca = "!git add -A && git commit -m";
+	  cf = "commit --fixup";
 	  cu = "!git add -u && git commit -m";
 	  wip = ''commit -am "WIP"'';
 	  undo = "reset --mixed HEAD~";

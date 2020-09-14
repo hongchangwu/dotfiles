@@ -126,7 +126,10 @@ in
       extraConfig = builtins.readFile ./tmux/tmux.conf;
       tmuxinator.enable = true;
       plugins = with pkgs.tmuxPlugins; [
-        continuum
+        {
+          plugin = continuum;
+          extraConfig = "set -g @continuum-restore 'on'";
+        }
         nord-tmux
         prefix-highlight
         resurrect

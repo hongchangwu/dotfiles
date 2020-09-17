@@ -23,6 +23,14 @@ let
       sha256 = "14xhh49izvjw4ycwq5gx4if7a0bcnvgsf3irywc3qps6jjcf5ymk";
     };
   };
+  vimPlugins = with pkgs.vimPlugins; [
+    nerdtree
+    nord-vim
+    fugitive
+    syntastic
+    taglist-vim
+    vim-airline
+  ];
 in
 {
   fonts.fontconfig.enable = true;
@@ -119,6 +127,12 @@ in
       path = "~/.nixpkgs";
     };
 
+    neovim = {
+      enable = true;
+      extraConfig = builtins.readFile vim/vimrc;
+      plugins = vimPlugins;
+    };
+
     opam.enable = true;
 
     tmux = {
@@ -140,14 +154,7 @@ in
     vim = {
       enable = true;
       extraConfig = builtins.readFile vim/vimrc;
-      plugins = with pkgs.vimPlugins; [
-        nerdtree
-        nord-vim
-        fugitive
-        syntastic
-        taglist-vim
-        vim-airline
-      ];
+      plugins = vimPlugins;
     };
 
     zsh = {

@@ -46,7 +46,7 @@ set ofu=syntaxcomplete#Complete
 nnoremap <silent> <F2> :TlistToggle<CR>
 
 " NERD tree
-nnoremap <silent> <F3> :NERDTreeToggle<CR>
+nnoremap <silent> <F8> :NERDTreeToggle<CR>
 
 " Syntastic
 set statusline+=%#warningmsg#

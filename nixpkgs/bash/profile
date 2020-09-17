@@ -1,6 +1,3 @@
-# dircolors based on the Nord color palette
-test -r ~/.dir_colors && eval $(dircolors ~/.dir_colors)
-
 # Homebrew
 PATH=$(sed -e 's#/usr/local/bin:##' <<<$PATH)
 export PATH=/usr/local/bin:$PATH
@@ -9,6 +6,9 @@ export PATH=/usr/local/bin:$PATH
 [[ -e "$HOME/.nix-profile/etc/profile.d/nix.sh" ]] && source "$HOME/.nix-profile/etc/profile.d/nix.sh"
 
 [[ -d "$HOME/.local" ]] && export PATH="$HOME/.local/bin:$PATH"
+
+# dircolors based on the Nord color palette
+test -r ~/.dir_colors && eval $(dircolors ~/.dir_colors)
 
 # Aliases
 [[ -r "$HOME/.aliases" ]] && source "$HOME/.aliases"

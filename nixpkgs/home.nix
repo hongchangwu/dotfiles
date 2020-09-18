@@ -30,6 +30,7 @@ let
     syntastic
     taglist-vim
     vim-airline
+    vim-easymotion
   ];
 in
 {

@@ -39,6 +39,7 @@
 
 (require 'init-ace)
 (require 'init-appearance)
+(require 'init-avy)
 (require 'init-c)
 (require 'init-clojure)
 (require 'init-company)

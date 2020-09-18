@@ -47,6 +47,7 @@
 (require 'init-elm)
 (require 'init-eshell)
 (require 'init-flycheck)
+(require 'init-flyspell)
 (require 'init-go)
 (require 'init-gtags)
 (require 'init-haskell)

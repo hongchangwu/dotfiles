@@ -1,17 +1,13 @@
-;;; init-ace.el --- init file ace-window and ace-jump-mode
+;;; init-ace.el --- init file ace-window
 
 ;;; Commentary:
 
-;; Use `M-o` to jump to the other window and `C-c SPC` to quickly move your
-;; cursor to any position based on the first character of a word.
+;; Use `M-o` to jump to the other window
 
 ;;; Code:
 
 (use-package ace-window
   :bind ("M-o" . ace-window))
-
-(use-package ace-jump-mode
-  :bind ("C-c SPC" . ace-jump-mode))
 
 (provide 'init-ace)
 

@@ -39,6 +39,7 @@
 
 (require 'init-ace)
 (require 'init-appearance)
+(require 'init-avy)
 (require 'init-c)
 (require 'init-clojure)
 (require 'init-company)
@@ -47,6 +48,7 @@
 (require 'init-elm)
 (require 'init-eshell)
 (require 'init-flycheck)
+(require 'init-flyspell)
 (require 'init-go)
 (require 'init-gtags)
 (require 'init-haskell)

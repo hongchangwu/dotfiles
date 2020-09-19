@@ -28,7 +28,6 @@ let
     nord-vim
     fugitive
     syntastic
-    taglist-vim
     vim-airline
     vim-easymotion
   ];
@@ -71,6 +70,7 @@ add-extra-dicts en_US-science.rws
       coreutils
       curl
       fontconfig
+      gitAndTools.gh
       gnum4
       htop
       nix-prefetch-scripts

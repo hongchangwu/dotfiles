@@ -71,6 +71,7 @@ add-extra-dicts en_US-science.rws
       coreutils
       curl
       fontconfig
+      gitAndTools.gh
       glibcLocales
       gnum4
       htop

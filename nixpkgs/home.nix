@@ -13,13 +13,13 @@ let
     yapf
   ];
   python = pkgs.python37.withPackages pythonPackages;
-  nord-tmux = pkgs.tmuxPlugins.mkDerivation {
+  nord-tmux = pkgs.tmuxPlugins.mkDerivation rec {
     pluginName = "nord";
     version = "0.3.0";
     src = pkgs.fetchFromGitHub {
       owner = "arcticicestudio";
       repo = "nord-tmux";
-      rev = "v0.3.0";
+      rev = "v${version}";
       sha256 = "14xhh49izvjw4ycwq5gx4if7a0bcnvgsf3irywc3qps6jjcf5ymk";
     };
   };
@@ -29,6 +29,7 @@ let
     fugitive
     syntastic
     vim-airline
+    vim-commentary
     vim-easymotion
   ];
 in
@@ -179,7 +180,6 @@ add-extra-dicts en_US-science.rws
           "cargo"
           "docker"
           "docker-compose"
-          "emacs"
           "git"
           "mix"
           "npm"

@@ -14,7 +14,6 @@
  ("eldoc" . "087a7ff67b12aff20038345e75bd022283baf47e")
  ("elm-mode" . "363da4b47c9de1ff091a8caf95fccc34188d59a3")
  ("emacs-async" . "36a10151e70e956e2f766ed9e65f4a9cfc8479b2")
- ("emacs-doom-themes" . "bd668b7687e862f12466a32e2779fb43aa66664c")
  ("emacs-elixir" . "01b332495d3f44addeb236428041c4ffa0c2ca3b")
  ("emacs-memoize" . "51b075935ca7070f62fae1d69fe0ff7d8fa56fdd")
  ("emacs-sbt-mode" . "4358ed862a1b1ec18ac9699afb4862146669eb79")

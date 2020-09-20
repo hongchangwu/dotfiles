@@ -29,6 +29,7 @@ let
     fugitive
     syntastic
     vim-airline
+    vim-commentary
     vim-easymotion
   ];
 in

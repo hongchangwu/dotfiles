@@ -182,7 +182,6 @@ add-extra-dicts en_US-science.rws
           "cargo"
           "docker"
           "docker-compose"
-          "emacs"
           "git"
           "mix"
           "npm"

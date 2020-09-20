@@ -23,20 +23,27 @@
           (font . ,(format "%s-%s" "Inconsolata for Powerline" font-size))))
   (setq default-frame-alist initial-frame-alist))
 
-;; Doom modeline
-(use-package doom-modeline
-  :init (doom-modeline-mode 1)
+;; Color theme
+;; Need to make sure the theme is loaded after the frame is created when
+;; Emacs is running in daemon mode.
+;; https://stackoverflow.com/a/23668935
+(use-package nord-theme
   :config
-  (setq doom-modeline-project-detection 'project))
+  (if (daemonp)
+      (add-hook 'after-make-frame-functions
+                (lambda (frame)
+                  (with-selected-frame frame
+                    (load-theme 'nord t))))
+      (load-theme 'nord t)))
 
-(use-package doom-themes
+;; Doom mode-line
+(use-package doom-modeline
   :config
-  ;; Global settings (defaults)
-  (setq doom-themes-enable-bold t    ; if nil, bold is universally disabled
-        doom-themes-enable-italic t) ; if nil, italics is universally disabled
-  (load-theme 'doom-vibrant t)
-  ;; Corrects (and improves) org-mode's native fontification.
-  (doom-themes-org-config))
+  (if (daemonp)
+      (add-hook 'after-make-frame-functions #'doom-modeline-mode)
+      (doom-modeline-mode 1))
+  (setq doom-modeline-icon t)
+  (setq doom-modeline-project-detection 'project))
 
 ;; Insert spaces instead of tabs
 (setq-default indent-tabs-mode nil)
@@ -75,12 +82,6 @@
   (whitespace-line-column 80) ;; limit line length
   (whitespace-style '(face lines-tail))
   (show-trailing-whitespace t))
-
-;; Color theme
-(use-package nord-theme
-  :defer t
-  :init
-  (load-theme 'nord t))
 
 ;; Colorize compilation buffers
 (require 'ansi-color)

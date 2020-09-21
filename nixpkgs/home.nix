@@ -131,7 +131,7 @@ add-extra-dicts en_US-science.rws
       userName  = "Hongchang Wu";
       userEmail = "wuhc85@gmail.com";
       extraConfig = import ./git/config.nix;
-      ignores = [ "*~" "*.swp" "\\#*\\#" ".\\#*" ];
+      ignores = [ "*~" "*.swp" "\\#*\\#" ".\\#*" "nohup.out" ];
     };
 
     home-manager = {

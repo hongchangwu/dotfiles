@@ -74,6 +74,7 @@ add-extra-dicts en_US-science.rws
       gitAndTools.gh
       glibcLocales
       gnum4
+      go
       htop
       locale
       nix-prefetch-scripts

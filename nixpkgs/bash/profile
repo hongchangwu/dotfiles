@@ -81,6 +81,10 @@ export PYENV_ROOT="$HOME/.pyenv"
 [[ -d $PYENV_ROOT ]] && export PATH="$PYENV_ROOT/bin:$PATH"
 exists pyenv && eval "$(pyenv init -)"
 
+# Go
+export GOPATH="$HOME/.go"
+[[ -d $GOPATH ]] && export PATH="$GOPATH/bin:$PATH"
+
 # ---------------------------------
 # End of language specific settings
 # ---------------------------------

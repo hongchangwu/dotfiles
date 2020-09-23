@@ -73,6 +73,7 @@ add-extra-dicts en_US-science.rws
       fontconfig
       gitAndTools.gh
       gnum4
+      go
       htop
       nix-prefetch-scripts
       nixfmt
@@ -128,7 +129,7 @@ add-extra-dicts en_US-science.rws
       userName  = "Hongchang Wu";
       userEmail = "wuhc85@gmail.com";
       extraConfig = import ./git/config.nix;
-      ignores = [ "*~" "*.swp" "\\#*\\#" ".\\#*" ];
+      ignores = [ "*~" "*.swp" "\\#*\\#" ".\\#*" "nohup.out" ];
     };
 
     home-manager = {

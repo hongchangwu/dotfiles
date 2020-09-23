@@ -7,6 +7,11 @@
 ;;; Code:
 
 (use-package lsp-mode
+  ;; https://github.com/emacs-lsp/lsp-mode/pull/2109
+  :straight (:host github
+             :repo "emacs-lsp/lsp-mode"
+             :branch "master"
+             :files (:defaults "clients/*.el"))
   :commands (lsp lsp-register-client)
   :init (setq lsp-keymap-prefix "C-c l")
   :bind

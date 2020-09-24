@@ -95,6 +95,7 @@ output=json
       rnix-lsp
       silver-searcher
       tree
+      tree-sitter
       wget
     ]) ++ (with pkgs.haskellPackages; [
       hlint

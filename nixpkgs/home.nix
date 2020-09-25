@@ -138,7 +138,7 @@ output=json
       userName  = "Hongchang Wu";
       userEmail = "wuhc85@gmail.com";
       extraConfig = import ./git/config.nix;
-      ignores = [ "*~" "*.swp" "\\#*\\#" ".\\#*" "nohup.out" ];
+      ignores = [ "*~" "*.swp" "\\#*\\#" ".\\#*" "nohup.out" ".vscode/" ];
     };
 
     home-manager = {

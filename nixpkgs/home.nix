@@ -103,6 +103,7 @@ output=json
       ormolu
     ]) ++ (with pkgs.nodePackages; [
       bash-language-server
+      dockerfile-language-server-nodejs
     ]) ++ (with pkgs.ocamlPackages; [
       dune_2
       findlib

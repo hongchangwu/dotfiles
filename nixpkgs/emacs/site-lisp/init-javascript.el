@@ -22,12 +22,13 @@
 (use-package npm-mode)
 
 (use-package js
-  :after (flycheck nodejs-repl)
   :delight npm-mode
   :hook
   (js-mode . npm-mode)
   (js-mode . paredit-nonlisp)
-  (js-mode . (lambda () (flycheck-mode t)))
+  (js-mode . flycheck-mode)
+  (js-mode . tree-sitter-mode)
+  (js-mode . tree-sitter-hl-mode)
   (flycheck-mode . my/use-eslint-from-node-modules)
   :bind
   (:map js-mode-map

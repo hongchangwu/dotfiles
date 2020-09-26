@@ -114,6 +114,7 @@ output=json
       EDITOR = "vim";
       LANG = "en_US.UTF-8";
       LANGUAGE = "en_US:es_ES:fr_FR:ja_JP:pt_BR:zh_CN";
+      LD_LIBRARY_PATH = "${pkgs.stdenv.cc.cc.lib.outPath}/lib";
       LOCALE_ARCHIVE = "${pkgs.glibcLocales.outPath}/lib/locale/locale-archive";
       PAGER = "less";
       TERM = "xterm-256color";

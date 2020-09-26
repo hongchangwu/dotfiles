@@ -13,11 +13,11 @@
   :hook
   (rust-mode . lsp)
   (rust-mode . flycheck-mode)
+  (rust-mode . tree-sitter-mode)
+  (rust-mode . tree-sitter-hl-mode)
   :bind
   (:map rust-mode-map
-        ("<tab>" . company-indent-or-complete-common))
-  :config
-  (require 'lsp-rust))
+        ("<tab>" . company-indent-or-complete-common)))
 
 (use-package cargo
   :hook

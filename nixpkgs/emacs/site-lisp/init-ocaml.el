@@ -8,8 +8,8 @@
 ;;; Code:
 
 (use-package tuareg
-  :ensure-system-package
-  (ocamllsp . "opam pin add ocaml-lsp-server https://github.com/ocaml/ocaml-lsp.git && opam install ocaml-lsp-server")
+  ;; :ensure-system-package
+  ;; (ocamllsp . "opam pin add ocaml-lsp-server https://github.com/ocaml/ocaml-lsp.git && opam install ocaml-lsp-server")
   :init
   ;; Add opam emacs directory to load path
   (let ((opam-share (ignore-errors (car (process-lines "opam" "config" "var" "share")))))
@@ -18,8 +18,8 @@
   (autoload 'utop-minor-mode "utop" "Minor mode for utop" t)
   :delight utop-minor-mode
   :hook
-  (tuareg-mode . lsp)
-  (tuareg-mode . lsp-lens-mode)
+  ;; (tuareg-mode . lsp)
+  ;; (tuareg-mode . lsp-lens-mode)
   (tuareg-mode . utop-minor-mode)
   (tuareg-mode
    .
@@ -39,6 +39,22 @@
   (utop-command "opam config exec -- utop -emacs")
   (tuareg-prettify-symbols-full t)
   (tuareg-match-clause-indent 0))
+
+;; Start merlin on ocaml files
+(use-package merlin
+  :straight nil
+  :load-path "~/.nix-profile/share/emacs/site-lisp"
+  :after tuareg
+  :hook
+  ((caml-mode tuareg-mode reason-mode) . merlin-mode)
+  :custom
+  (merlin-command "~/.nix-profile/bin/ocamlmerlin"))
+
+;; Merlin backend for eldoc
+(use-package merlin-eldoc
+  :after merlin
+  :hook
+  (merlin-mode . merlin-eldoc-setup))
 
 ;; ocp-indent
 (use-package ocp-indent

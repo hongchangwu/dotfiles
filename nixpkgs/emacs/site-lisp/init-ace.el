@@ -1,4 +1,4 @@
-;;; init-ace.el --- init file ace-window
+;;; init-ace.el --- init file for ace-window
 
 ;;; Commentary:
 

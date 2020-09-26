@@ -45,6 +45,11 @@ master en_US
 extra-dicts en-computers.rws
 add-extra-dicts en_US-science.rws
 '';
+      ".aws/config".text = ''
+[default]
+region=us-east-1
+output=json
+'';
       ".dir_colors".source = pkgs.fetchurl {
         url = "https://raw.githubusercontent.com/arcticicestudio/nord-dircolors/v0.2.0/src/dir_colors";
         sha256 = "0a6i9pvl4lj2k1snmc5ckip86akl6c0svzmc5x0vnpl4id0f3raw";
@@ -78,6 +83,7 @@ add-extra-dicts en_US-science.rws
       nix-prefetch-scripts
       nixfmt
       nodejs
+      ocaml
       ocamlformat
       openssl
       powerline-fonts
@@ -88,6 +94,7 @@ add-extra-dicts en_US-science.rws
       rnix-lsp
       silver-searcher
       tree
+      tree-sitter
       wget
     ]) ++ (with pkgs.haskellPackages; [
       hlint
@@ -106,6 +113,7 @@ add-extra-dicts en_US-science.rws
       EDITOR = "vim";
       LANG = "en_US.UTF-8";
       LANGUAGE = "en_US:es_ES:fr_FR:ja_JP:pt_BR:zh_CN";
+      LD_LIBRARY_PATH = "${pkgs.stdenv.cc.cc.lib.outPath}/lib";
       PAGER = "less";
       TERM = "xterm-256color";
     };
@@ -129,7 +137,7 @@ add-extra-dicts en_US-science.rws
       userName  = "Hongchang Wu";
       userEmail = "wuhc85@gmail.com";
       extraConfig = import ./git/config.nix;
-      ignores = [ "*~" "*.swp" "\\#*\\#" ".\\#*" "nohup.out" ];
+      ignores = [ "*~" "*.swp" "\\#*\\#" ".\\#*" "nohup.out" ".vscode/" ];
     };
 
     home-manager = {

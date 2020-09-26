@@ -24,6 +24,8 @@
   (python-mode . (lambda () (flymake-mode -1)))
   (python-mode . flycheck-mode)
   (python-mode . lsp)
+  (python-mode . tree-sitter-mode)
+  (python-mode . tree-sitter-hl-mode)
   (python-mode . pyenv-mode))
 
 (provide 'init-python)

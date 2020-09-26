@@ -8,12 +8,14 @@
 
 (use-package helm
   :delight helm-mode
+  :bind-keymap
+  ("C-c h" . helm-command-map)
   :bind
-  (("C-c h" . helm-command-prefix)
-   ;; ("C-c h o" . helm-occur)
-   ("C-x r b" . helm-filtered-bookmarks)
-   ("C-x C-f" . helm-find-files)
-   ("M-x" . 'helm-M-x))
+  ("C-x r b" . helm-filtered-bookmarks)
+  ("C-x C-f" . helm-find-files)
+  ("M-x" . 'helm-M-x)
+  (:map helm-command-map
+        ("o" . helm-occur))
   (:map helm-map
         ("<tab>" . helm-execute-persistent-action) ; rebind tab to run persistent action
         ("C-i" . helm-execute-persistent-action) ; make TAB work in terminal
@@ -32,7 +34,7 @@
   :ensure-system-package ag)
 
 (use-package helm-ag
-  :after (helm ag)
+  :after ag
   :custom
   (helm-ag-insert-at-point (quote symbol)))
 
@@ -40,7 +42,7 @@
   :ensure-system-package (rg . ripgrep))
 
 (use-package helm-rg
-  :after (helm ripgrep))
+  :after ripgrep)
 
 (provide 'init-helm)
 

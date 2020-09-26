@@ -20,6 +20,8 @@
   (("<f5>" . projectile-run-project)
    ("<f6>" . projectile-compile-project)
    ("<f7>" . projectile-test-project))
+  (:map projectile-command-map
+        ("t" . projectile-test-project))
   :custom
   (projectile-completion-system 'helm)
   (projectile-use-git-grep t))

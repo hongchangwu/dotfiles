@@ -85,6 +85,7 @@ output=json
       nix-prefetch-scripts
       nixfmt
       nodejs
+      ocaml
       ocamlformat
       openssl
       powerline-fonts

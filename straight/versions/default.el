@@ -19,7 +19,7 @@
  ("emacs-memoize" . "51b075935ca7070f62fae1d69fe0ff7d8fa56fdd")
  ("emacs-sbt-mode" . "4358ed862a1b1ec18ac9699afb4862146669eb79")
  ("emacs-scala-mode" . "1d08e885b1489313666c7f15a3962432a4f757ee")
- ("emacs-tree-sitter" . "9e0fc348ac7806a257a0f895f29df051241a7cfe")
+ ("emacs-tree-sitter" . "9d8c96185738e2fef74b1eb07ad6e9d2e7f4886b")
  ("emacsmirror-mirror" . "7eb3afd3883cab96d8325631bb6f6607136c59e1")
  ("epl" . "78ab7a85c08222cd15582a298a364774e3282ce6")
  ("eshell-git-prompt" . "48ee35774c9b8d0e2d96110e3ae84bac60f43dfd")

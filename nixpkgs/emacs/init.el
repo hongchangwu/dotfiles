@@ -43,6 +43,7 @@
 (require 'init-c)
 (require 'init-clojure)
 (require 'init-company)
+(require 'init-docker)
 (require 'init-eldoc)
 (require 'init-elixir)
 (require 'init-elm)

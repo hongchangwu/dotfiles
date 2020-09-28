@@ -12,7 +12,7 @@ let
     setuptools
     yapf
   ];
-  python = pkgs.python37.withPackages pythonPackages;
+  python = pkgs.python38.withPackages pythonPackages;
   nord-tmux = pkgs.tmuxPlugins.mkDerivation rec {
     pluginName = "nord";
     version = "0.3.0";

@@ -20,6 +20,8 @@
   :hook
   (tuareg-mode . lsp)
   (tuareg-mode . lsp-lens-mode)
+  (tuareg-mode . tree-sitter-mode)
+  (tuareg-mode . tree-sitter-hl-mode)
   (tuareg-mode . utop-minor-mode)
   (tuareg-mode
    .

@@ -32,6 +32,19 @@ let
     vim-commentary
     vim-easymotion
   ];
+  neovim = pkgs.neovim.override {
+    configure = {
+      packages.myVimPackage = with pkgs.vimPlugins; {
+        # see examples below how to use custom packages
+        start = [  ];
+        opt = [ nvim-lspconfig ];
+      };
+    };
+  };
+  # neovimPlugins = vimPlugins ++ (with pkgs.vimPlugins; [
+  #   nvim-lspconfig
+  #   nvim-treesitter
+  # ]);
 in
 {
   fonts.fontconfig.enable = true;
@@ -156,7 +169,7 @@ output=json
     neovim = {
       enable = true;
       extraConfig = builtins.readFile vim/vimrc;
-      plugins = vimPlugins;
+      package = neovim;
     };
 
     opam.enable = true;

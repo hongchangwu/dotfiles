@@ -12,7 +12,7 @@ let
     setuptools
     yapf
   ];
-  python = pkgs.python37.withPackages pythonPackages;
+  python = pkgs.python38.withPackages pythonPackages;
   nord-tmux = pkgs.tmuxPlugins.mkDerivation rec {
     pluginName = "nord";
     version = "0.3.0";
@@ -37,6 +37,10 @@ in
   fonts.fontconfig.enable = true;
 
   home = {
+    username = builtins.getEnv "USER";
+
+    homeDirectory = builtins.getEnv "HOME";
+
     file = {
       ".aliases".source = ./bash/aliases;
       ".aspell.conf".text = ''
@@ -119,7 +123,7 @@ output=json
       TERM = "xterm-256color";
     };
 
-    stateVersion = "20.03";
+    stateVersion = "20.09";
   };
 
   programs = {

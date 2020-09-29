@@ -5,14 +5,14 @@ set -euo pipefail
 # Install Nix
 sh <(curl -L https://nixos.org/nix/install) --no-channel-add
 . "$HOME/.nix-profile/etc/profile.d/nix.sh"
-nix-channel --add https://nixos.org/channels/nixpkgs-unstable nixpkgs
+nix-channel --add https://nixos.org/channels/nixos-20.09 nixpkgs
 
 DIR=$(dirname "$(greadlink -f "$0")")
 mkdir -p "$HOME/.config/"
 [[ ! -d "$HOME/.config/nixpkgs" ]] && ln -s "$DIR/nixpkgs/" "$HOME/.config/nixpkgs"
 
 # Install home-manager
-nix-channel --add https://github.com/rycee/home-manager/archive/master.tar.gz home-manager
+nix-channel --add https://github.com/rycee/home-manager/archive/release-20.09.tar.gz home-manager
 nix-channel --update
 nix-shell '<home-manager>' -A install
 

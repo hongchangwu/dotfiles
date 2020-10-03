@@ -16,6 +16,9 @@
 (line-number-mode t)
 (global-linum-mode t)
 
+;; Disable toolbar
+(tool-bar-mode -1)
+
 ;; Frame size and font
 (let ((font-size (if (string= system-type "darwin") "18" "14")))
   (setq initial-frame-alist

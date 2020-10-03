@@ -96,6 +96,7 @@ output=json
       gitAndTools.gh
       gnum4
       go
+      hanazono
       htop
       nix-prefetch-scripts
       nixfmt

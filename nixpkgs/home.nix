@@ -98,6 +98,7 @@ output=json
       glibcLocales
       gnum4
       go
+      hanazono
       htop
       locale
       nix-prefetch-scripts

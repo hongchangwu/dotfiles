@@ -91,6 +91,22 @@
 (add-hook 'compilation-mode-hook (lambda () (setq show-trailing-whitespace nil)))
 (add-hook 'compilation-filter-hook 'colorize-buffer)
 
+;; Tabs
+(use-package centaur-tabs
+  :demand
+  :config
+  (setq centaur-tabs-style "bar"
+	centaur-tabs-height 32
+	centaur-tabs-set-icons t
+	centaur-tabs-set-modified-marker t)
+  (centaur-tabs-mode t)
+  :bind
+  ("C-<prior>" . centaur-tabs-backward)
+  ("C-<next>" . centaur-tabs-forward)
+  ("C-c t s" . centaur-tabs-switch-group)
+  ("C-c t p" . centaur-tabs-group-by-projectile-project)
+  ("C-c t g" . centaur-tabs-group-buffer-groups))
+
 (provide 'init-appearance)
 
 ;;; init-appearance.el ends here

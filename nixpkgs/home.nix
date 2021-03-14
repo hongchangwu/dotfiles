@@ -122,7 +122,6 @@ output=json
     ]) ++ (with pkgs.ocamlPackages; [
       dune_2
       findlib
-      merlin
       ocp-indent
       utop
     ]);

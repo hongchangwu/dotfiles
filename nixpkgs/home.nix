@@ -30,17 +30,6 @@ let
     vim-commentary
     vim-easymotion
   ];
-  nvim-treesitter = pkgs.vimUtils.buildVimPluginFrom2Nix {
-    pname = "nvim-treesitter";
-    version = "2020-09-23";
-    src = pkgs.fetchFromGitHub {
-      owner = "nvim-treesitter";
-      repo = "nvim-treesitter";
-      rev = "98c12ec23a6df2f2f505304b61c4b2eefc0a568f";
-      sha256 = "138rsbk2kx929cih6r3rqmgrygamnc1l9kh62pqsrphi28jh5178";
-    };
-    meta.homepage = "https://github.com/nvim-treesitter/nvim-treesitter/";
-  };
   neovimPlugins = with pkgs.vimPlugins; [
     nvim-lspconfig
     nvim-treesitter

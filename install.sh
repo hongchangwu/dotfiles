@@ -5,7 +5,7 @@ set -euo pipefail
 # Install Nix
 sh <(curl -L https://nixos.org/nix/install) --no-channel-add --darwin-use-unencrypted-nix-store-volume
 . "$HOME/.nix-profile/etc/profile.d/nix.sh"
-nix-channel --add https://nixos.org/channels/nixos-20.09 nixpkgs
+nix-channel --add https://nixos.org/channels/nixpkgs-20.09-darwin nixpkgs
 
 DIR=$(dirname "$(greadlink -f "$0")")
 mkdir -p "$HOME/.config/"

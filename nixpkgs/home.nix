@@ -22,6 +22,28 @@ let
       sha256 = "14xhh49izvjw4ycwq5gx4if7a0bcnvgsf3irywc3qps6jjcf5ymk";
     };
   };
+  vim-airline = pkgs.vimUtils.buildVimPluginFrom2Nix {
+    pname = "vim-airline";
+    version = "2021-03-27";
+    src = pkgs.fetchFromGitHub {
+      owner = "vim-airline";
+      repo = "vim-airline";
+      rev = "ed60e1d36912f64fdbed5640532b1067e11557ca";
+      sha256 = "0yijan5nknkkxr36rncscm043badn49w6778nwyazi2fx4266jfn";
+    };
+    meta.homepage = "https://github.com/vim-airline/vim-airline/";
+  };
+  nvim-treesitter = pkgs.vimUtils.buildVimPluginFrom2Nix {
+    pname = "nvim-treesitter";
+    version = "2027-03-27";
+    src = pkgs.fetchFromGitHub {
+      owner = "nvim-treesitter";
+      repo = "nvim-treesitter";
+      rev = "0df7c4aa39a6097e112f001520d2cea257440ed7";
+      sha256 = "1pb3nvq8f1nvpp184gwqs386kimxvca3wjrdiz74mb5jkhz1khq1";
+    };
+    meta.homepage = "https://github.com/nvim-treesitter/nvim-treesitter/";
+  };
   vimPlugins = with pkgs.vimPlugins; [
     nerdtree
     nord-vim

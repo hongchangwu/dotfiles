@@ -1,4 +1,4 @@
-;;; init-lsp.el --- init file for Magit
+;;; init-magit.el --- init file for Magit
 
 ;;; Commentary:
 
@@ -8,7 +8,10 @@
 
 (use-package magit
   :bind
-  ("C-x g" . magit-status))
+  ("C-x g" . magit-status)
+  :custom
+  (magit-branch-prefer-remote-upstream '("master"))
+  (magit-branch-adjust-remote-upstream-alist '(("origin/master" "master"))))
 
 (provide 'init-magit)
 

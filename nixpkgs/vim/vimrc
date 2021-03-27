@@ -9,9 +9,6 @@ elseif has('windows')
   set guifont=Inconsolata_for_Powerline:h12
 endif
 set encoding=utf-8
-if exists('$TMUX')
-  set term=screen-256color
-endif
 colorscheme nord
 
 " Show line numbers

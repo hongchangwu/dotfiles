@@ -5,8 +5,8 @@ set -euo pipefail
 # Install Homebrew
 if [[ ! -f /opt/homebrew/bin/brew ]]; then
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-  /opt/homebrew/bin/brew install coreutils reattach-to-user-namespace
 fi
+/opt/homebrew/bin/brew update && /opt/homebrew/bin/brew install coreutils reattach-to-user-namespace
 
 # Install Nix
 sh <(curl -L https://nixos.org/nix/install) --no-channel-add --darwin-use-unencrypted-nix-store-volume

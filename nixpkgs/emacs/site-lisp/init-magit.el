@@ -11,7 +11,7 @@
   ("C-x g" . magit-status)
   :custom
   (magit-branch-prefer-remote-upstream '("master"))
-  (magit-branch-adjust-remote-upstream-alist '(("origin/master" "master"))))
+  (magit-branch-adjust-remote-upstream-alist '(("origin/master" "upstream/master" "master"))))
 
 (provide 'init-magit)
 

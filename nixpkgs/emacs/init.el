@@ -72,6 +72,7 @@
 (require 'init-scala)
 (require 'init-semantic)
 (require 'init-sh)
+(require 'init-tramp)
 (require 'init-tree-sitter)
 (require 'init-treemacs)
 (require 'init-undo-tree)

@@ -79,6 +79,7 @@
  ("system-packages" . "05add2fe051846e2ecb3c23ef22c41ecc59a1f36")
  ("tramp" . "6f69a0ba117f78265279dd418fa0bc042989f8d5")
  ("transient" . "cc16a5eaa73617a281b0bbf71b24432c38994e30")
+ ("tree-sitter-langs" . "5d362ce98dcf656d7a55fcad6ae21c0a2caca861")
  ("treemacs" . "b92d43aa6974c8581ea7a4f4b3586041a7f44f32")
  ("tuareg" . "37a673020152ae0dbcaa250118b155d84e448f68")
  ("undo-tree" . "e326c6135e62f5fe8536528d3acd5e798f847407")

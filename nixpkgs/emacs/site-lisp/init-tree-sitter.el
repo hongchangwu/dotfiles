@@ -5,20 +5,10 @@
 ;;; Code:
 
 (use-package tree-sitter
-  :straight (:host github
-             :repo "ubolonton/emacs-tree-sitter"
-             :branch "master"
-             :files ("lisp/*.el"))
   :config
-  (global-tree-sitter-mode)
-  ;; (add-hook 'rust-mode-hook #'tree-sitter-hl-mode)
-  )
+  (global-tree-sitter-mode))
 
-(use-package tree-sitter-langs
-  :straight (:host github
-             :repo "ubolonton/emacs-tree-sitter"
-             :branch "master"
-             :files ("langs/*.el" "langs/queries")))
+(use-package tree-sitter-langs)
 
 (provide 'init-tree-sitter)
 

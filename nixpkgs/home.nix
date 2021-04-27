@@ -90,6 +90,7 @@ output=json
       aspellDicts.en-computers
       aspellDicts.en-science
       autoconf
+      automake
       bzip2
       coreutils
       curl
@@ -107,6 +108,7 @@ output=json
       ocaml
       ocamlformat
       openssl
+      pkg-config
       powerline-fonts
       powerline-go
       python

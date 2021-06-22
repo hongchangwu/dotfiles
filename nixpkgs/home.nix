@@ -13,16 +13,6 @@ let
     yapf
   ];
   python = pkgs.python38.withPackages pythonPackages;
-  nord-tmux = pkgs.tmuxPlugins.mkTmuxPlugin rec {
-    pluginName = "nord";
-    version = "0.3.0";
-    src = pkgs.fetchFromGitHub {
-      owner = "arcticicestudio";
-      repo = "nord-tmux";
-      rev = "v${version}";
-      sha256 = "14xhh49izvjw4ycwq5gx4if7a0bcnvgsf3irywc3qps6jjcf5ymk";
-    };
-  };
   vim-airline = pkgs.vimUtils.buildVimPluginFrom2Nix {
     pname = "vim-airline";
     version = "2021-03-27";
@@ -194,7 +184,7 @@ output=json
           plugin = continuum;
           extraConfig = "set -g @continuum-restore 'on'";
         }
-        nord-tmux
+        nord
         prefix-highlight
         resurrect
       ];

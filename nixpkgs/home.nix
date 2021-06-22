@@ -13,7 +13,7 @@ let
     yapf
   ];
   python = pkgs.python38.withPackages pythonPackages;
-  nord-tmux = pkgs.tmuxPlugins.mkDerivation rec {
+  nord-tmux = pkgs.tmuxPlugins.mkTmuxPlugin rec {
     pluginName = "nord";
     version = "0.3.0";
     src = pkgs.fetchFromGitHub {

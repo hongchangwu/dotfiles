@@ -143,7 +143,7 @@ output=json
       TERM = "xterm-256color";
     };
 
-    stateVersion = "20.09";
+    stateVersion = "21.05";
   };
 
   programs = {

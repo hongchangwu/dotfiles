@@ -170,7 +170,7 @@ output=json
       enable = true;
       extraConfig = builtins.readFile vim/vimrc + builtins.readFile neovim/init.vim;
       package = pkgs.neovim-nightly;
-      plugins = vimPlugins ++ neovimPlugins;
+      plugins = builtins.filter (pkg: pkg.pname != "vim-fugitive") vimPlugins ++ neovimPlugins;
     };
 
     opam.enable = true;

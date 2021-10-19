@@ -18,7 +18,7 @@ nnoremap <silent> <leader>rn <cmd>lua vim.lsp.buf.rename()<CR>
 nnoremap <silent> gf         <cmd>lua vim.lsp.buf.formatting()<CR>
 lua <<EOF
 vim.cmd('packadd nvim-lspconfig')
-local nvim_lsp = require'nvim_lsp'
+local nvim_lsp = require'lspconfig'
 nvim_lsp.bashls.setup {}
 nvim_lsp.dockerls.setup {}
 nvim_lsp.ocamllsp.setup {

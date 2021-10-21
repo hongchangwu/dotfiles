@@ -2,15 +2,15 @@
 
 ;;; Commentary:
 
-;; Use `C-:` to jump to any position by entering 1 character and
-;; use `C-'` to jump to any position by entering 2 characters.
+;; Use `C-c SPC` to jump to any position by entering 1 character and
+;; use `C-c C-SPC` to jump to any position by entering 2 characters.
 
 ;;; Code:
 
 (use-package avy
   :bind
-  ("C-\"" . avy-goto-char)
-  ("C-'" . avy-goto-char-2)
+  ("C-c SPC" . avy-goto-char)
+  ("C-c C-SPC" . avy-goto-char-2)
   ("M-g f" . avy-goto-line))
 
 (provide 'init-avy)

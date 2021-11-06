@@ -64,6 +64,10 @@ add-extra-dicts en_US-science.rws
 region=us-east-1
 output=json
 '';
+      ".config/alacritty" = {
+        source = ./alacritty;
+        recursive = true;
+      };
       ".dir_colors".source = pkgs.fetchurl {
         url = "https://raw.githubusercontent.com/arcticicestudio/nord-dircolors/v0.2.0/src/dir_colors";
         sha256 = "0a6i9pvl4lj2k1snmc5ckip86akl6c0svzmc5x0vnpl4id0f3raw";

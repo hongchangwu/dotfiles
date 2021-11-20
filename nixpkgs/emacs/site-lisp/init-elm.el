@@ -9,9 +9,7 @@
 (use-package elm-mode
   :after company
   :custom
-  (elm-indent-offset 2)
-  :config
-  (push 'company-elm company-backends))
+  (elm-indent-offset 2))
 
 (provide 'init-elm)
 

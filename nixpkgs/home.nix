@@ -91,6 +91,7 @@ output=json
       coreutils
       curl
       fontconfig
+      git-lfs
       gitAndTools.gh
       glibcLocales
       gnum4

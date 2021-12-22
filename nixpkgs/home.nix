@@ -7,7 +7,7 @@ let
     pip
     pylint
     pytest
-    python-language-server
+    python-lsp-server
     rope
     setuptools
     yapf

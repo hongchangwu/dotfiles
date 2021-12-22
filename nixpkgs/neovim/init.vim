@@ -24,7 +24,7 @@ nvim_lsp.dockerls.setup {}
 nvim_lsp.ocamllsp.setup {
   root_dir = nvim_lsp.util.root_pattern('dune-project', '.git');
 }
-nvim_lsp.pyls.setup {}
+nvim_lsp.pylsp.setup {}
 nvim_lsp.rls.setup {}
 vim.cmd('packadd nvim-treesitter')
 require'nvim-treesitter.configs'.setup {

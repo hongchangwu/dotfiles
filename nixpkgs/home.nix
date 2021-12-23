@@ -38,12 +38,6 @@ let
   ];
 in
 {
-  nixpkgs.overlays = [
-    (import (builtins.fetchTarball {
-      url = https://github.com/nix-community/neovim-nightly-overlay/archive/master.tar.gz;
-    }))
-  ];
-
   fonts.fontconfig.enable = true;
 
   home = {
@@ -170,7 +164,6 @@ output=json
     neovim = {
       enable = true;
       extraConfig = builtins.readFile vim/vimrc + builtins.readFile neovim/init.vim;
-      package = pkgs.neovim-nightly;
       plugins = builtins.filter (pkg: pkg.pname != "vim-fugitive") vimPlugins ++ neovimPlugins;
     };
 

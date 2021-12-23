@@ -7,7 +7,7 @@ let
     pip
     pylint
     pytest
-    python-language-server
+    python-lsp-server
     rope
     setuptools
     yapf
@@ -38,12 +38,6 @@ let
   ];
 in
 {
-  nixpkgs.overlays = [
-    (import (builtins.fetchTarball {
-      url = https://github.com/nix-community/neovim-nightly-overlay/archive/master.tar.gz;
-    }))
-  ];
-
   fonts.fontconfig.enable = true;
 
   home = {
@@ -139,7 +133,7 @@ output=json
       TERM = "xterm-256color";
     };
 
-    stateVersion = "21.05";
+    stateVersion = "21.11";
   };
 
   programs = {
@@ -169,7 +163,6 @@ output=json
     neovim = {
       enable = true;
       extraConfig = builtins.readFile vim/vimrc + builtins.readFile neovim/init.vim;
-      package = pkgs.neovim-nightly;
       plugins = builtins.filter (pkg: pkg.pname != "vim-fugitive") vimPlugins ++ neovimPlugins;
     };
 

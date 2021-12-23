@@ -12,7 +12,7 @@ let
     setuptools
     yapf
   ];
-  python = pkgs.python38.withPackages pythonPackages;
+  python = pkgs.python39.withPackages pythonPackages;
   vim-airline = pkgs.vimUtils.buildVimPluginFrom2Nix {
     pname = "vim-airline";
     version = "2021-03-27";

@@ -9,7 +9,7 @@ fi
 /opt/homebrew/bin/brew update && /opt/homebrew/bin/brew install coreutils reattach-to-user-namespace
 
 # Install Nix
-sh <(curl -L https://nixos.org/nix/install) --no-channel-add --darwin-use-unencrypted-nix-store-volume
+sh <(curl -L https://releases.nixos.org/nix/nix-2.3.16/install) --no-channel-add --darwin-use-unencrypted-nix-store-volume
 . "$HOME/.nix-profile/etc/profile.d/nix.sh"
 nix-channel --add https://nixos.org/channels/nixpkgs-21.11-darwin nixpkgs
 

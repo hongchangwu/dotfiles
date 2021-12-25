@@ -36,6 +36,8 @@
         ("}" . paredit-close-curly-and-newline)
         ("M-n" . tuareg-next-phrase)
         ("M-p" . tuareg-previous-phrase))
+  :hook
+  (before-save . lsp-format-buffer)
   :custom
   ;; Use the opam installed utop
   (utop-command "opam config exec -- utop -emacs")
@@ -49,17 +51,6 @@
 ;; Dune
 (use-package dune
   :straight nil)
-
-;; ocamlformat
-(use-package ocamlformat
-  :straight nil
-  :after tuareg
-  :bind
-  (:map tuareg-mode-map
-        ("C-c C-f" . ocamlformat))
-  ;; :hook
-  ;; (before-save . ocamlformat-before-save)
-  )
 
 (provide 'init-ocaml)
 

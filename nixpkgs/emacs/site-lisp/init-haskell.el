@@ -10,13 +10,13 @@
 
 (use-package haskell-mode
   :ensure-system-package
-  (ghcup . "curl https://get-ghcup.haskell.org -sSf | sh")
+  (ghcup . "curl --proto '=https' --tlsv1.2 -sSf https://get-ghcup.haskell.org | sh")
   :init
   (autoload 'ghc-init "ghc" nil t)
   (autoload 'ghc-debug "ghc" nil t)
   :hook
   (haskell-mode . interactive-haskell-mode)
-  (haskell-mode . haskell-doc-mode)
+  (haskell-mode . lsp-deferred)
   (haskell-mode . paredit-nonlisp)
   :bind
   (:map haskell-mode-map
@@ -32,14 +32,8 @@
   (haskell-tags-on-save t)
   (haskell-font-lock-symbols t))
 
-;; Ormolu
-(use-package ormolu
-  :after haskell-mode
-  :hook
-  (haskell-mode . ormolu-format-on-save-mode)
-  :bind
-  (:map haskell-mode-map
-        ("C-c C-f" . ormolu-format-buffer)))
+(use-package lsp-haskell
+  :after haskell-mode)
 
 ;; HLint
 (use-package hs-lint

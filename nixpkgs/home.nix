@@ -47,16 +47,17 @@ in
 
     file = {
       ".aliases".source = ./bash/aliases;
-      ".aspell.conf".text = ''
-data-dir ${config.home.homeDirectory}/.nix-profile/lib/aspell
+      ".aspell.conf".text = ''data-dir ${config.home.homeDirectory}/.nix-profile/lib/aspell
 master en_US
 extra-dicts en-computers.rws
 add-extra-dicts en_US-science.rws
 '';
-      ".aws/config".text = ''
-[default]
+      ".aws/config".text = ''[default]
 region=us-east-1
 output=json
+'';
+      ".config/nix/nix.conf".text = ''substituters = https://cache.nixos.org https://iohk.cachix.org https://hydra.iohk.io
+trusted-public-keys = cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY= iohk.cachix.org-1:DpRUyj7h7V830dp/i6Nti+NEO2/nhblbov/8MW7Rqoo= hydra.iohk.io:f/Ea+s+dFdN+3Y/G+FDgSq+a5NEWhJGzdjvKNGv0/EQ=
 '';
       ".dir_colors".source = pkgs.fetchurl {
         url = "https://raw.githubusercontent.com/arcticicestudio/nord-dircolors/v0.2.0/src/dir_colors";

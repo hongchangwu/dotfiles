@@ -12,7 +12,7 @@
              :repo "emacs-lsp/lsp-mode"
              :branch "master"
              :files (:defaults "clients/*.el"))
-  :commands (lsp lsp-register-client)
+  :commands (lsp lsp-deferred lsp-register-client)
   :init (setq lsp-keymap-prefix "C-c l")
   :bind
   ("<f2>" . lsp-rename)

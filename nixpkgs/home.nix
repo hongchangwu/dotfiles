@@ -84,6 +84,7 @@ output=json
       bzip2
       coreutils
       curl
+      direnv
       fontconfig
       git-lfs
       gitAndTools.gh
@@ -92,7 +93,9 @@ output=json
       go
       hanazono
       htop
+      jq
       locale
+      niv
       nix-prefetch-scripts
       nixfmt
       nodejs
@@ -150,7 +153,7 @@ output=json
 
     git = {
       enable = true;
-      userName  = "Hongchang Wu";
+      userName = "Hongchang Wu";
       userEmail = "wuhc85@gmail.com";
       extraConfig = import ./git/config.nix;
       ignores = [ "*~" "*.swp" "\\#*\\#" ".\\#*" "*.bak" "*.tmp" "nohup.out" ".vscode/" ];

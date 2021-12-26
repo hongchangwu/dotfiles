@@ -21,3 +21,6 @@ function install_powerline_precmd() {
 if [ "$TERM" != "linux" ]; then
   install_powerline_precmd
 fi
+
+# Configure direnv
+eval "$(direnv hook zsh)"

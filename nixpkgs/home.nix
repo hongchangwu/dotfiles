@@ -7,7 +7,6 @@ let
     pip
     pylint
     pytest
-    python-lsp-server
     rope
     setuptools
     yapf
@@ -31,10 +30,6 @@ let
     vim-airline
     vim-commentary
     vim-easymotion
-  ];
-  neovimPlugins = with pkgs.vimPlugins; [
-    nvim-lspconfig
-    nvim-treesitter
   ];
 in
 {
@@ -134,7 +129,7 @@ output=json
       TERM = "xterm-256color";
     };
 
-    stateVersion = "21.11";
+    stateVersion = "21.05";
   };
 
   programs = {
@@ -164,7 +159,7 @@ output=json
     neovim = {
       enable = true;
       extraConfig = builtins.readFile vim/vimrc + builtins.readFile neovim/init.vim;
-      plugins = builtins.filter (pkg: pkg.pname != "vim-fugitive") vimPlugins ++ neovimPlugins;
+      plugins = builtins.filter (pkg: pkg.pname != "vim-fugitive") vimPlugins;
     };
 
     opam.enable = true;

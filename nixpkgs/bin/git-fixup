@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+usage() {
+  echo "Usage: `basename $0` COMMIT" >&2
+}
+
+main() {
+  local commit=$1
+  git commit --fixup "$commit"
+  GIT_SEQUENCE_EDITOR=: git rebase -i --autosquash "${commit}~"
+}
+
+if [ "$#" -ge 1 ]; then
+  main "$@"
+else
+  usage
+  exit 2
+fi

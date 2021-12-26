@@ -32,6 +32,9 @@
   (haskell-tags-on-save t)
   (haskell-font-lock-symbols t))
 
+(use-package lsp-haskell
+  :after haskell-mode)
+
 ;; HLint
 (use-package hs-lint
   :straight (:host github

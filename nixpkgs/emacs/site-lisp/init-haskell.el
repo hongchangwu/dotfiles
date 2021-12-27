@@ -22,7 +22,8 @@
   (:map haskell-mode-map
         ("{" . paredit-open-curly)
         ("}" . paredit-close-curly-and-newline)
-        ("C-c C-h" . helm-hoogle))
+        ("C-c C-h" . helm-hoogle)
+        ([remap haskell-mode-jump-to-def-or-tag] . lsp-ui-peek-find-definitions))
   :custom
   (haskell-interactive-popup-errors nil)
   (haskell-process-suggest-remove-import-lines t)

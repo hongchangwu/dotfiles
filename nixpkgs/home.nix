@@ -60,7 +60,8 @@ output=json
         source = ./alacritty;
         recursive = true;
       };
-      ".config/nix/nix.conf".text = ''substituters = https://cache.nixos.org https://iohk.cachix.org https://hydra.iohk.io https://hongchangwu.cachix.org
+      ".config/nix/nix.conf".text = ''trusted-users = root hongchangwu
+substituters = https://cache.nixos.org https://iohk.cachix.org https://hydra.iohk.io https://hongchangwu.cachix.org
 trusted-public-keys = cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY= iohk.cachix.org-1:DpRUyj7h7V830dp/i6Nti+NEO2/nhblbov/8MW7Rqoo= hydra.iohk.io:f/Ea+s+dFdN+3Y/G+FDgSq+a5NEWhJGzdjvKNGv0/EQ= hongchangwu.cachix.org-1:ghW2OFE/Uzj66IhcPdSLfprriPTHGypYdsWKyq1pQRg=
 '';
       ".dir_colors".source = pkgs.fetchurl {

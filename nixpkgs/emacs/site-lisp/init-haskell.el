@@ -15,6 +15,7 @@
   (autoload 'ghc-init "ghc" nil t)
   (autoload 'ghc-debug "ghc" nil t)
   :hook
+  (before-save . lsp-format-buffer)
   (haskell-mode . interactive-haskell-mode)
   (haskell-mode . lsp-deferred)
   (haskell-mode . paredit-nonlisp)

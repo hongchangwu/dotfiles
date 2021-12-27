@@ -10,6 +10,7 @@
   :commands (lsp lsp-deferred lsp-register-client)
   :init (setq lsp-keymap-prefix "C-c l")
   :bind
+  ("C-c C-f" . lsp-format-buffer)
   ("<f2>" . lsp-rename)
   :config
   (setq lsp-prefer-flymake nil))

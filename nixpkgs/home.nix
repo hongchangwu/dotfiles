@@ -83,6 +83,7 @@ trusted-public-keys = cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDS
       autoconf
       automake
       bzip2
+      cachix
       coreutils
       curl
       direnv

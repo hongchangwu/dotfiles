@@ -31,7 +31,6 @@
   (haskell-process-auto-import-loaded-modules t)
   (haskell-process-log t)
   (haskell-process-type 'auto)
-  (haskell-tags-on-save t)
   (haskell-font-lock-symbols t))
 
 (use-package lsp-haskell

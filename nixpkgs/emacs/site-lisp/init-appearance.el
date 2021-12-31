@@ -78,6 +78,8 @@
 ;; Visualize white spaces
 (use-package whitespace
   :delight whitespace-mode
+  :bind
+  ("C-c C-w" . delete-trailing-whitespace)
   :hook
   (prog-mode . whitespace-mode)
   (before-save . delete-trailing-whitespace)

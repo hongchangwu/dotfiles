@@ -5,6 +5,7 @@ let
     black
     pandas
     pip
+    poetry
     pylint
     pytest
     python-lsp-server

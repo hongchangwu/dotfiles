@@ -141,7 +141,7 @@ trusted-public-keys = cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDS
       TERM = "xterm-256color";
     };
 
-    stateVersion = "21.11";
+    stateVersion = "22.05";
   };
 
   programs = {

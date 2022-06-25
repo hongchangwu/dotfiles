@@ -11,14 +11,14 @@ fi
 # Install Nix
 sh <(curl -L https://releases.nixos.org/nix/nix-2.3.16/install) --no-channel-add --darwin-use-unencrypted-nix-store-volume
 . "$HOME/.nix-profile/etc/profile.d/nix.sh"
-nix-channel --add https://nixos.org/channels/nixpkgs-21.11-darwin nixpkgs
+nix-channel --add https://nixos.org/channels/nixpkgs-22.05-darwin nixpkgs
 
 DIR=$(dirname "$(greadlink -f "$0")")
 mkdir -p "$HOME/.config/"
 [[ ! -d "$HOME/.config/nixpkgs" ]] && ln -s "$DIR/nixpkgs/" "$HOME/.config/nixpkgs"
 
 # Install home-manager
-nix-channel --add https://github.com/rycee/home-manager/archive/release-21.11.tar.gz home-manager
+nix-channel --add https://github.com/nix-community/home-manager/archive/release-22.05.tar.gz home-manager
 nix-channel --update
 nix-shell '<home-manager>' -A install
 

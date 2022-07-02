@@ -208,7 +208,6 @@ trusted-public-keys = cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDS
         plugins = [
           "brew"
           "cabal"
-          "cargo"
           "docker"
           "docker-compose"
           "git"

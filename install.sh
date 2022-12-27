@@ -3,7 +3,7 @@
 set -euo pipefail
 
 # Install Nix
-sh <(curl -L https://releases.nixos.org/nix/nix-2.3.16/install) --no-channel-add
+sh <(curl -L https://releases.nixos.org/nix/nix-2.12.0/install) --no-channel-add
 . "$HOME/.nix-profile/etc/profile.d/nix.sh"
 nix-channel --add https://nixos.org/channels/nixos-22.11 nixpkgs
 

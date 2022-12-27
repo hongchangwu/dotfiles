@@ -9,16 +9,16 @@ fi
 /opt/homebrew/bin/brew update && /opt/homebrew/bin/brew install coreutils reattach-to-user-namespace
 
 # Install Nix
-sh <(curl -L https://releases.nixos.org/nix/nix-2.3.16/install) --no-channel-add --darwin-use-unencrypted-nix-store-volume
+sh <(curl -L https://releases.nixos.org/nix/nix-2.12.0/install) --no-channel-add --darwin-use-unencrypted-nix-store-volume
 . "$HOME/.nix-profile/etc/profile.d/nix.sh"
-nix-channel --add https://nixos.org/channels/nixpkgs-22.05-darwin nixpkgs
+nix-channel --add https://nixos.org/channels/nixpkgs-22.11-darwin nixpkgs
 
 DIR=$(dirname "$(greadlink -f "$0")")
 mkdir -p "$HOME/.config/"
 [[ ! -d "$HOME/.config/nixpkgs" ]] && ln -s "$DIR/nixpkgs/" "$HOME/.config/nixpkgs"
 
 # Install home-manager
-nix-channel --add https://github.com/nix-community/home-manager/archive/release-22.05.tar.gz home-manager
+nix-channel --add https://github.com/nix-community/home-manager/archive/release-22.11.tar.gz home-manager
 nix-channel --update
 nix-shell '<home-manager>' -A install
 

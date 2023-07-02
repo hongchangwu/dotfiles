@@ -15,10 +15,6 @@ nix-channel --add https://github.com/nix-community/home-manager/archive/release-
 nix-channel --update
 nix-shell '<home-manager>' -A install
 
-# Add system shells
-[[ ! $(grep "$HOME/.nix-profile/bin/bash" /etc/shells) ]] && sudo sh -c 'echo "$HOME/.nix-profile/bin/bash" >> /etc/shells'
-[[ ! $(grep "$HOME/.nix-profile/bin/zsh" /etc/shells) ]] && sudo sh -c 'echo "$HOME/.nix-profile/bin/zsh" >> /etc/shells'
-
 # Copy straight.el lockfiles
 mkdir -p "$HOME/.emacs.d/straight/"
 [[ ! -d "$HOME/.emacs.d/straight/versions" ]] && cp -r "$DIR/straight/versions/" "$HOME/.emacs.d/straight"

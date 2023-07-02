@@ -5,7 +5,6 @@ let
     black
     pandas
     pip
-    poetry
     pylint
     pytest
     python-lsp-server
@@ -107,6 +106,7 @@ trusted-public-keys = cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDS
       ocamlformat
       openssl
       pkg-config
+      poetry
       powerline-fonts
       powerline-go
       python

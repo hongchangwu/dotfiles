@@ -16,7 +16,7 @@
  ("docker-tramp.el" . "7bfbb55417e7d2aac53adf92cb0e3fd329c495c1")
  ("dockerfile-mode" . "5db94549ce8b000ae35adf511c820ad228178052")
  ("doom-modeline" . "6a312f7fe9ac093a6e5cf2b7c72c7fac6c7575e1")
- ("el-get" . "960f3fb962c35d3196bab20b2a3f6d6228119277")
+ ("el-get" . "960f3fb962c35d3196bab20b2a3f6d623.059277")
  ("eldoc" . "036b9478ca77b29733fa4405c89dae28d0894818")
  ("elisp-tree-sitter" . "2acca5c8d2e3dc66d4d0a99831b33140b5a5f973")
  ("elm-mode" . "f2e2d0053f3272d9fc0c2e16c8d17d97724cf524")

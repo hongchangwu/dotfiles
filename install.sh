@@ -7,13 +7,13 @@ if [[ ! -f /opt/homebrew/bin/brew ]]; then
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 fi
 /opt/homebrew/bin/brew update && /opt/homebrew/bin/brew install coreutils reattach-to-user-namespace
+export PATH="/opt/homebrew/opt/coreutils/libexec/gnubin:$PATH"
 
 # Install Nix
 sh <(curl -L https://releases.nixos.org/nix/nix-2.12.0/install) --no-channel-add --darwin-use-unencrypted-nix-store-volume
-. "$HOME/.nix-profile/etc/profile.d/nix.sh"
 nix-channel --add https://nixos.org/channels/nixpkgs-23.05-darwin nixpkgs
 
-DIR=$(dirname "$(greadlink -f "$0")")
+DIR=$(dirname "$(readlink -f "$0")")
 mkdir -p "$HOME/.config/"
 [[ ! -d "$HOME/.config/nixpkgs" ]] && ln -s "$DIR/nixpkgs/" "$HOME/.config/nixpkgs"
 

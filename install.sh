@@ -15,7 +15,7 @@ nix-channel --add https://nixos.org/channels/nixpkgs-23.05-darwin nixpkgs
 
 DIR=$(dirname "$(readlink -f "$0")")
 mkdir -p "$HOME/.config/"
-[[ ! -d "$HOME/.config/nixpkgs" ]] && ln -s "$DIR/nixpkgs/" "$HOME/.config/nixpkgs"
+[[ ! -d "$HOME/.config/home-manager" ]] && ln -s "$DIR/nixpkgs/" "$HOME/.config/home-manager"
 
 # Install home-manager
 nix-channel --add https://github.com/nix-community/home-manager/archive/release-23.05.tar.gz home-manager

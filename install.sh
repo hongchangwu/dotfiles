@@ -3,7 +3,7 @@
 set -euo pipefail
 
 # Install Nix
-sh <(curl -L https://releases.nixos.org/nix/nix-2.12.0/install) --no-channel-add
+sh <(curl -L https://releases.nixos.org/nix/nix-2.17.0/install) --no-channel-add
 nix-channel --add https://nixos.org/channels/nixos-23.05 nixpkgs
 
 DIR=$(dirname "$(readlink -f "$0")")

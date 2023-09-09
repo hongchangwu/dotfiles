@@ -10,7 +10,7 @@ fi
 export PATH="/opt/homebrew/opt/coreutils/libexec/gnubin:$PATH"
 
 # Install Nix
-sh <(curl -L https://releases.nixos.org/nix/nix-2.12.0/install) --no-channel-add --darwin-use-unencrypted-nix-store-volume
+sh <(curl -L https://releases.nixos.org/nix/nix-2.17.0/install) --no-channel-add
 nix-channel --add https://nixos.org/channels/nixpkgs-23.05-darwin nixpkgs
 
 DIR=$(dirname "$(readlink -f "$0")")

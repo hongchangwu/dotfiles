@@ -5,6 +5,7 @@ let
     black
     pandas
     pip
+    polars
     pylint
     pytest
     python-lsp-server
@@ -12,8 +13,8 @@ let
     setuptools
     yapf
   ];
-  python = pkgs.python310.withPackages pythonPackages;
-  vim-airline = pkgs.vimUtils.buildVimPluginFrom2Nix {
+  python = pkgs.python312.withPackages pythonPackages;
+  vim-airline = pkgs.vimUtils.buildVimPlugin {
     pname = "vim-airline";
     version = "2021-03-27";
     src = pkgs.fetchFromGitHub {
@@ -50,16 +51,15 @@ in
       ".aspell.conf".text = ''data-dir ${config.home.homeDirectory}/.nix-profile/lib/aspell
 master en_US
 extra-dicts en-computers.rws
-add-extra-dicts en_US-science.rws
 '';
       ".aws/config".text = ''[default]
 region=us-east-1
 output=json
 '';
-      ".config/nix/nix.conf".text = ''trusted-users = root hongchangwu
-substituters = https://cache.nixos.org https://iohk.cachix.org https://hydra.iohk.io https://hongchangwu.cachix.org
-trusted-public-keys = cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY= iohk.cachix.org-1:DpRUyj7h7V830dp/i6Nti+NEO2/nhblbov/8MW7Rqoo= hydra.iohk.io:f/Ea+s+dFdN+3Y/G+FDgSq+a5NEWhJGzdjvKNGv0/EQ= hongchangwu.cachix.org-1:ghW2OFE/Uzj66IhcPdSLfprriPTHGypYdsWKyq1pQRg=
-'';
+      ".config/alacritty" = {
+        source = ./alacritty;
+        recursive = true;
+      };
       ".dir_colors".source = pkgs.fetchurl {
         url = "https://raw.githubusercontent.com/arcticicestudio/nord-dircolors/v0.2.0/src/dir_colors";
         sha256 = "0a6i9pvl4lj2k1snmc5ckip86akl6c0svzmc5x0vnpl4id0f3raw";
@@ -80,17 +80,17 @@ trusted-public-keys = cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDS
       aspell
       aspellDicts.en
       aspellDicts.en-computers
-      aspellDicts.en-science
       autoconf
       automake
+      bash-language-server
       bzip2
       cachix
       coreutils
       curl
-      direnv
+      dockerfile-language-server
       fontconfig
+      gh
       git-lfs
-      gitAndTools.gh
       glibcLocales
       gnum4
       go
@@ -112,7 +112,6 @@ trusted-public-keys = cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDS
       python
       ripgrep
       rlwrap
-      rnix-lsp
       silver-searcher
       tree
       tree-sitter
@@ -120,9 +119,6 @@ trusted-public-keys = cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDS
     ]) ++ (with pkgs.haskellPackages; [
       hlint
       ormolu
-    ]) ++ (with pkgs.nodePackages; [
-      bash-language-server
-      dockerfile-language-server-nodejs
     ]) ++ (with pkgs.ocamlPackages; [
       dune_2
       findlib
@@ -144,11 +140,24 @@ trusted-public-keys = cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDS
     stateVersion = "23.05";
   };
 
+  nixpkgs.overlays = [
+    (final: prev: {
+      direnv = prev.direnv.overrideAttrs (_: {
+        doCheck = false;
+      });
+    })
+  ];
+
   programs = {
     bash = {
       enable = true;
       profileExtra = builtins.readFile ./bash/profile;
     };
+
+    direnv = {
+      enable = true;
+    };
+
 
     emacs = {
       enable = true;
@@ -157,9 +166,7 @@ trusted-public-keys = cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDS
 
     git = {
       enable = true;
-      userName = "Hongchang Wu";
-      userEmail = "wuhc85@gmail.com";
-      extraConfig = import ./git/config.nix;
+      settings = import ./git/config.nix;
       ignores = [ "*~" "*.swp" "\\#*\\#" ".\\#*" "*.bak" "*.tmp" "nohup.out" ".vscode/" ];
     };
 
@@ -203,7 +210,7 @@ trusted-public-keys = cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDS
       enableCompletion = true;
       envExtra = builtins.readFile ./zsh/zshenv;
       profileExtra = builtins.readFile ./zsh/zprofile;
-      initExtra = builtins.readFile ./zsh/zshrc;
+      initContent = builtins.readFile ./zsh/zshrc;
       oh-my-zsh = {
         enable = true;
         plugins = [
@@ -213,7 +220,6 @@ trusted-public-keys = cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDS
           "git"
           "mix"
           "npm"
-          "ripgrep"
           "rust"
           "sbt"
           "scala"

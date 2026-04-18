@@ -2,6 +2,9 @@
 
 set -euo pipefail
 
+NIX_VERSION="2.22.0"
+NIXOS_VERSION="25.11"
+
 # Install Homebrew
 if [[ ! -f /opt/homebrew/bin/brew ]]; then
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
@@ -10,15 +13,15 @@ fi
 export PATH="/opt/homebrew/opt/coreutils/libexec/gnubin:$PATH"
 
 # Install Nix
-NIX_FIRST_BUILD_UID="351" sh <(curl -L https://releases.nixos.org/nix/nix-2.20.0/install) --daemon --no-channel-add
-nix-channel --add https://nixos.org/channels/nixpkgs-23.05-darwin nixpkgs
+NIX_FIRST_BUILD_UID="351" sh <(curl -L "https://releases.nixos.org/nix/nix-${NIX_VERSION}/install") --daemon --no-channel-add
+nix-channel --add "https://nixos.org/channels/nixpkgs-${NIXOS_VERSION}-darwin" nixpkgs
 
 DIR=$(dirname "$(readlink -f "$0")")
 mkdir -p "$HOME/.config/"
 [[ ! -d "$HOME/.config/home-manager" ]] && ln -s "$DIR/home-manager/" "$HOME/.config/home-manager"
 
 # Install home-manager
-nix-channel --add https://github.com/nix-community/home-manager/archive/release-23.05.tar.gz home-manager
+nix-channel --add "https://github.com/nix-community/home-manager/archive/release-${NIXOS_VERSION}.tar.gz" home-manager
 nix-channel --update
 nix-shell '<home-manager>' -A install
 

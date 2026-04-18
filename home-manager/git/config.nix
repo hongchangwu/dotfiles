@@ -68,4 +68,9 @@
     undo = "reset --mixed HEAD~";
     wip = ''commit -am "WIP"'';
   };
+
+  user = {
+    email = "wuhc85@gmail.com";
+    name = "Hongchang Wu";
+  };
 }

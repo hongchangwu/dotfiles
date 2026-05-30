@@ -71,11 +71,13 @@ output=json
       autoconf
       automake
       bash-language-server
+      bat
       bzip2
       cachix
       coreutils
       curl
       dockerfile-language-server
+      fd
       fontconfig
       gh
       git-lfs
@@ -102,6 +104,7 @@ output=json
       ripgrep
       rlwrap
       rustup
+      shellcheck
       silver-searcher
       tree
       tree-sitter

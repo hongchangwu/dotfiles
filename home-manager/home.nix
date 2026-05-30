@@ -132,7 +132,7 @@ output=json
       TERM = "xterm-256color";
     };
 
-    stateVersion = "23.05";
+    stateVersion = "25.11";
   };
 
   nixpkgs.overlays = [

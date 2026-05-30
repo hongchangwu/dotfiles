@@ -12,6 +12,23 @@
 (setq straight-cache-autoloads t
       straight-repository-branch "develop"
       straight-use-package-by-default t)
+
+;; Older straight.el revisions reference this Emacs 28-era variable while
+;; bootstrapping. Emacs 30 removed it, so define it before loading straight.
+(defvar native-comp-deferred-compilation-deny-list nil)
+
+;; Some older major modes still register legacy Flymake backends at load time.
+(require 'flymake-proc nil t)
+
+;; Older Helm versions reference browser variables removed from Emacs 30.
+(defvar browse-url-firefox-program nil)
+(defvar browse-url-kde-program nil)
+(defvar browse-url-gnome-moz-program nil)
+(defvar browse-url-mozilla-program nil)
+(defvar browse-url-galeon-program nil)
+(defvar browse-url-netscape-program nil)
+(defvar browse-url-xterm-program nil)
+
 (defvar bootstrap-version)
 (let ((bootstrap-file
        (expand-file-name "straight/repos/straight.el/bootstrap.el" user-emacs-directory))

@@ -14,7 +14,7 @@
 ;; Line numbers and column numbers
 (column-number-mode t)
 (line-number-mode t)
-(global-linum-mode t)
+(global-display-line-numbers-mode t)
 
 ;; Disable toolbar
 (tool-bar-mode -1)
@@ -97,20 +97,13 @@
 (add-hook 'compilation-filter-hook 'colorize-buffer)
 
 ;; Tabs
-(use-package centaur-tabs
-  :demand
+(use-package tab-line
+  :straight nil
   :config
-  (setq centaur-tabs-style "bar"
-	centaur-tabs-height 32
-	centaur-tabs-set-icons t
-	centaur-tabs-set-modified-marker t)
-  (centaur-tabs-mode t)
+  (global-tab-line-mode t)
   :bind
-  ("C-<prior>" . centaur-tabs-backward)
-  ("C-<next>" . centaur-tabs-forward)
-  ("C-c t s" . centaur-tabs-switch-group)
-  ("C-c t p" . centaur-tabs-group-by-projectile-project)
-  ("C-c t g" . centaur-tabs-group-buffer-groups))
+  ("C-<prior>" . tab-line-switch-to-prev-tab)
+  ("C-<next>" . tab-line-switch-to-next-tab))
 
 (provide 'init-appearance)
 

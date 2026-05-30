@@ -2,12 +2,11 @@
 
 ;;; Commentary:
 
-;; Tree-sitter is a parser generator tool and an incremental parsing library.
+;; Emacs 30 has built-in tree-sitter support via `treesit'. The old
+;; third-party tree-sitter packages depend on a dynamic module that can easily
+;; get out of sync with the machine architecture, so don't load them here.
 
 ;;; Code:
-
-(use-package tree-sitter)
-(use-package tree-sitter-langs)
 
 (provide 'init-tree-sitter)
 

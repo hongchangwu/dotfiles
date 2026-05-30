@@ -73,7 +73,7 @@ output=json
         source = ./bin;
         recursive = true;
       };
-      ".tmux.conf.osx".source = ./tmux/tmux.conf.osx;
+      ".config/tmux/tmux.conf.osx".source = ./tmux/tmux.conf.osx;
     };
 
     packages = (with pkgs; [

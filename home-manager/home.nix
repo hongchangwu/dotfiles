@@ -99,7 +99,6 @@ output=json
       python
       ripgrep
       rlwrap
-      rustc
       rustup
       silver-searcher
       tree
@@ -108,7 +107,7 @@ output=json
       hlint
       ormolu
     ]) ++ (with pkgs.ocamlPackages; [
-      dune_2
+      dune_3
       findlib
       ocp-indent
       utop
@@ -223,8 +222,8 @@ output=json
           src = pkgs.fetchFromGitHub {
             owner = "spwhitt";
             repo = "nix-zsh-completions";
-            rev = "0.4.4";
-            sha256 = "1n9whlys95k4wc57cnz3n07p7zpkv796qkmn68a50ygkx6h3afqf";
+            rev = "0.5.1";
+            sha256 = "0pzqng23z21h5w9b3mv53b1jaivdjvq7pm2bfsh0m2pah5rwq1kf";
           };
         }
         {
@@ -232,8 +231,8 @@ output=json
           src = pkgs.fetchFromGitHub {
             owner = "chisui";
             repo = "zsh-nix-shell";
-            rev = "v0.1.0";
-            sha256 = "0snhch9hfy83d4amkyxx33izvkhbwmindy0zjjk28hih1a9l2jmx";
+            rev = "v0.8.0";
+            sha256 = "1lzrn0n4fxfcgg65v0qhnj7wnybybqzs4adz7xsrkgmcsr0ii8b7";
           };
         }
       ];

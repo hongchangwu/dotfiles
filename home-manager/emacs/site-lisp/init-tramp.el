@@ -12,8 +12,7 @@
 ;; where
 ;;   user           is the user that you want to use (optional)
 ;;   container      is the id or name of the container
-(use-package docker-tramp
-  :after tramp)
+;; This is provided by TRAMP's built-in tramp-container package.
 
 (provide 'init-tramp)
 

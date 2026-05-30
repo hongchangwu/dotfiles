@@ -32,11 +32,6 @@
   (lsp-ui-peek-highlight ((t :foreground "#2e3440" :background "#88c0d0")))
   (lsp-ui-peek-selection ((t :foreground "#d8dee9" :background "#4c566a"))))
 
-(use-package company-lsp
-  :commands company-lsp
-  :config
-  (push 'company-lsp company-backends))
-
 (use-package helm-lsp
   :commands helm-lsp-workspace-symbol)
 

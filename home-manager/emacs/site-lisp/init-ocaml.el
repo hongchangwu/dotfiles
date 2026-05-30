@@ -27,8 +27,6 @@
      ;; Enable the representation of some keywords using fonts
      (when (functionp 'prettify-symbols-mode)
        (prettify-symbols-mode))))
-  (tuareg-mode . tree-sitter-mode)
-  (tuareg-mode . tree-sitter-hl-mode)
   (tuareg-mode . paredit-nonlisp)
   :bind
   (:map tuareg-mode-map

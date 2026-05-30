@@ -27,8 +27,6 @@
   (js-mode . npm-mode)
   (js-mode . paredit-nonlisp)
   (js-mode . flycheck-mode)
-  (js-mode . tree-sitter-mode)
-  (js-mode . tree-sitter-hl-mode)
   (flycheck-mode . my/use-eslint-from-node-modules)
   :bind
   (:map js-mode-map
@@ -74,11 +72,12 @@
   :config
   ;; for better jsx syntax-highlighting in web-mode
   ;; - courtesy of Patrick @halbtuerke
-  (defadvice web-mode-highlight-part (around tweak-jsx activate)
+  (defun my/web-mode-highlight-part-tweak-jsx (orig-fun &rest args)
     (if (equal web-mode-content-type "jsx")
         (let ((web-mode-enable-part-face nil))
-          ad-do-it)
-      ad-do-it)))
+          (apply orig-fun args))
+      (apply orig-fun args)))
+  (advice-add 'web-mode-highlight-part :around #'my/web-mode-highlight-part-tweak-jsx))
 
 (use-package web-beautify
   :config

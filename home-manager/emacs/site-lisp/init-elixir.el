@@ -1,19 +1,15 @@
-;;; init-company.el --- init file for Elixir
+;;; init-elixir.el --- init file for Elixir
 
 ;;; Commentary:
 
-;; Install `elixir-mode` and `alchemist`.
+;; Use `elixir-mode' with LSP. `alchemist' is obsolete.
 
 ;;; Code:
 
-;; Elixir
-(use-package elixir-mode)
-(use-package alchemist
-  :after elixir-mode
+(use-package elixir-mode
   :hook
-  (elixir-mode . alchemist-mode)
-  :custom
-  (alchemist-hooks-test-on-save t))
+  (elixir-mode . lsp)
+  (elixir-mode . flycheck-mode))
 
 (provide 'init-elixir)
 

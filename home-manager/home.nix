@@ -8,7 +8,6 @@ let
     polars
     pylint
     pytest
-    python-lsp-server
     rope
     setuptools
     yapf
@@ -107,9 +106,12 @@ output=json
       poetry
       powerline-fonts
       powerline-go
+      pyright
       python
       ripgrep
       rlwrap
+      rustc
+      rustup
       silver-searcher
       tree
       wget
@@ -172,7 +174,8 @@ output=json
 
     neovim = {
       enable = true;
-      extraConfig = builtins.readFile vim/vimrc + builtins.readFile neovim/init.vim;
+      extraConfig = builtins.readFile vim/vimrc;
+      extraLuaConfig = builtins.readFile neovim/init.lua;
       plugins = builtins.filter (pkg: pkg.pname != "vim-fugitive") vimPlugins ++ neovimPlugins;
     };
 

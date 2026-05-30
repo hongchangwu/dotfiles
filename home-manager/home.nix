@@ -163,7 +163,6 @@ output=json
 
     home-manager = {
       enable = true;
-      path = "~/.nixpkgs";
     };
 
     neovim = {

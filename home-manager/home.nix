@@ -13,17 +13,6 @@ let
     yapf
   ];
   python = pkgs.python312.withPackages pythonPackages;
-  vim-airline = pkgs.vimUtils.buildVimPlugin {
-    pname = "vim-airline";
-    version = "2021-03-27";
-    src = pkgs.fetchFromGitHub {
-      owner = "vim-airline";
-      repo = "vim-airline";
-      rev = "ed60e1d36912f64fdbed5640532b1067e11557ca";
-      sha256 = "0yijan5nknkkxr36rncscm043badn49w6778nwyazi2fx4266jfn";
-    };
-    meta.homepage = "https://github.com/vim-airline/vim-airline/";
-  };
   vimPlugins = with pkgs.vimPlugins; [
     nerdtree
     nord-vim
@@ -128,7 +117,7 @@ output=json
     sessionVariables = {
       EDITOR = "vim";
       LANG = "en_US.UTF-8";
-      LANGUAGE = "en_US:es_ES:fr_FR:ja_JP:pt_BR:zh_CN";
+      LANGUAGE = "en_US";
       LD_LIBRARY_PATH = "${pkgs.stdenv.cc.cc.lib}/lib";
       PAGER = "less";
       TERM = "xterm-256color";
@@ -169,7 +158,6 @@ output=json
 
     home-manager = {
       enable = true;
-      path = "~/.nixpkgs";
     };
 
     neovim = {

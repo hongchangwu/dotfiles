@@ -34,9 +34,9 @@
        (expand-file-name "straight/repos/straight.el/bootstrap.el" user-emacs-directory))
       (bootstrap-version 5))
   (unless (file-exists-p bootstrap-file)
-    (with-current-buffer
+      (with-current-buffer
 	(url-retrieve-synchronously
-	 "https://raw.githubusercontent.com/raxod502/straight.el/develop/install.el"
+	 "https://raw.githubusercontent.com/radian-software/straight.el/develop/install.el"
 	 'silent 'inhibit-cookies)
       (goto-char (point-max))
       (eval-print-last-sexp)))
@@ -44,7 +44,6 @@
 
 ;; https://github.com/raxod502/straight.el#integration-with-use-package
 (straight-use-package 'use-package)
-(use-package use-package-ensure-system-package)
 (use-package delight)
 
 ;; Configure load path
@@ -88,7 +87,6 @@
 (require 'init-ruby)
 (require 'init-rust)
 (require 'init-scala)
-(require 'init-semantic)
 (require 'init-sh)
 (require 'init-tramp)
 (require 'init-tree-sitter)

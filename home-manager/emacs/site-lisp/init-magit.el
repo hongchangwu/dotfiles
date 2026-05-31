@@ -6,6 +6,13 @@
 
 ;;; Code:
 
+(straight-use-package
+ '(git-commit :type git
+              :host github
+              :repo "magit/magit"
+              :local-repo "magit"
+              :files ("lisp/git-commit.el" "docs/AUTHORS.md" "LICENSE")))
+
 (use-package magit
   :bind
   ("C-x g" . magit-status)

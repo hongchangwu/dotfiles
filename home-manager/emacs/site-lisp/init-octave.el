@@ -7,6 +7,7 @@
 ;;; Code:
 
 (use-package octave
+  :straight nil
   :init
   (add-to-list 'auto-mode-alist '("\\.m$" . octave-mode)))
 

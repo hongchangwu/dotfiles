@@ -8,8 +8,6 @@
 ;;; Code:
 
 (use-package tuareg
-  :ensure-system-package
-  (ocamllsp . "opam install ocaml-lsp-server")
   :init
   ;; Add opam emacs directory to load path
   (let ((opam-share (ignore-errors (car (process-lines "opam" "config" "var" "share")))))

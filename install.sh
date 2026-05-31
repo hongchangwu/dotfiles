@@ -27,4 +27,5 @@ nix-shell '<home-manager>' -A install
 
 # Copy straight.el lockfiles
 mkdir -p "$HOME/.emacs.d/straight/"
-[[ ! -d "$HOME/.emacs.d/straight/versions" ]] && cp -r "$DIR/straight/versions/" "$HOME/.emacs.d/straight"
+rm -rf "$HOME/.emacs.d/straight/versions"
+cp -r "$DIR/straight/versions/" "$HOME/.emacs.d/straight"

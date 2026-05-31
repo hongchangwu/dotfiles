@@ -9,8 +9,6 @@
 ;;; Code:
 
 (use-package haskell-mode
-  :ensure-system-package
-  (ghcup . "curl --proto '=https' --tlsv1.2 -sSf https://get-ghcup.haskell.org | sh")
   :init
   (autoload 'ghc-init "ghc" nil t)
   (autoload 'ghc-debug "ghc" nil t)

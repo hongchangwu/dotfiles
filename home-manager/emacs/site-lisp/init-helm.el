@@ -24,22 +24,19 @@
   :custom
   (helm-M-x-fuzzy-match t)
   :config
-  (require 'helm-config)
   (define-key global-map [remap list-buffers] 'helm-buffers-list)
   (unless (boundp 'completion-in-region-function)
     (define-key lisp-interaction-mode-map [remap completion-at-point] 'helm-lisp-completion-at-point)
     (define-key emacs-lisp-mode-map       [remap completion-at-point] 'helm-lisp-completion-at-point)))
 
-(use-package ag
-  :ensure-system-package ag)
+(use-package ag)
 
 (use-package helm-ag
   :after ag
   :custom
   (helm-ag-insert-at-point (quote symbol)))
 
-(use-package ripgrep
-  :ensure-system-package (rg . ripgrep))
+(use-package ripgrep)
 
 (use-package helm-rg
   :after ripgrep)

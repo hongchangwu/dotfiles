@@ -2,9 +2,8 @@
 
 ;;; Commentary:
 
-;; Use `fill-column-indicator` to visually indicate the location of the
-;; fill column, although I should switch to the native
-;; `display-fill-column-indicator-mode` at some point.
+;; Use Emacs' built-in display-fill-column-indicator-mode to visually indicate
+;; the preferred line width.
 
 ;;; Code:
 
@@ -56,11 +55,12 @@
 (setq auto-fill-mode t)
 
 ;; Visually show the fill column
-(use-package fill-column-indicator
+(use-package display-fill-column-indicator
+  :straight nil
   :hook
-  (prog-mode . fci-mode)
+  (prog-mode . display-fill-column-indicator-mode)
   :custom
-  (fci-rule-column 90))
+  (display-fill-column-indicator-column 90))
 
 ;; Abbrev mode
 (use-package abbrev

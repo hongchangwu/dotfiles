@@ -7,8 +7,7 @@
 ;;; Code:
 
 (use-package sh-script
-  :ensure-system-package
-  (bash-language-server . "npm i -g bash-language-server")
+  :straight nil
   :hook
   (sh-mode . lsp)
   :custom

@@ -5,6 +5,7 @@
 ;;; Code:
 
 (use-package tramp
+  :straight nil
   :custom
   (vs-handled-backends '(Git)))
 

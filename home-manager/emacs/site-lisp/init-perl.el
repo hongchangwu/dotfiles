@@ -7,6 +7,7 @@
 ;;; Code:
 
 (use-package cperl-mode
+  :straight nil
   :init
   ;; Use cperl mode instead of the default perl mode
   (defalias 'perl-mode 'cperl-mode)

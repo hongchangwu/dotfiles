@@ -6,13 +6,6 @@
 
 ;;; Code:
 
-;; Fix compatibility issue with fill-column-indicator
-(defun on-off-fci-before-company(command)
-  (when (string= "show" command)
-    (turn-off-fci-mode))
-  (when (string= "hide" command)
-    (turn-on-fci-mode)))
-
 (use-package company
   :delight company-mode
   :hook
@@ -22,7 +15,6 @@
   :custom
   (company-tooltip-align-annotations t)
   :config
-  (advice-add 'company-call-frontends :before #'on-off-fci-before-company)
   ;; Based on the Nord color palette https://www.nordtheme.com/
   (custom-set-faces
    `(company-echo-common ((t (:underline t))))

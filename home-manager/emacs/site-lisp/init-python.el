@@ -2,29 +2,16 @@
 
 ;;; Commentary:
 
-;; Enable `pyls` for language server support.
+;; Use Emacs' built-in Python mode with LSP.
 
 ;;; Code:
 
-(defun projectile-pyenv-mode-set ()
-  "Set pyenv version matching project name."
-  (let ((project (projectile-project-name)))
-    (if (member project (pyenv-mode-versions))
-        (pyenv-mode-set project)
-      (pyenv-mode-unset))))
-
-(use-package pyenv-mode
-  :ensure-system-package
-  (pyenv . "curl https://pyenv.run | bash")
-  :init
-  (add-hook 'projectile-after-switch-project-hook 'projectile-pyenv-mode-set))
-
-(use-package python-mode
+(use-package python
+  :straight nil
   :hook
   (python-mode . (lambda () (flymake-mode -1)))
   (python-mode . flycheck-mode)
-  (python-mode . lsp)
-  (python-mode . pyenv-mode))
+  (python-mode . lsp))
 
 (provide 'init-python)
 

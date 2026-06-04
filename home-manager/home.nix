@@ -176,13 +176,13 @@ output=json
       extraConfig = builtins.readFile ./tmux/tmux.conf;
       tmuxinator.enable = true;
       plugins = with pkgs.tmuxPlugins; [
+        nord
+        prefix-highlight
+        resurrect
         {
           plugin = continuum;
           extraConfig = "set -g @continuum-restore 'on'";
         }
-        nord
-        prefix-highlight
-        resurrect
       ];
       secureSocket = false;
     };

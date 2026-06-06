@@ -77,6 +77,7 @@ output=json
       coreutils
       curl
       dockerfile-language-server
+      entr
       fd
       fontconfig
       gh

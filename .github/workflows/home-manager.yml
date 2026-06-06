@@ -1,0 +1,92 @@
+name: Home Manager
+
+on:
+  push:
+    branches:
+      - main
+      - mac
+  pull_request:
+    branches:
+      - main
+      - mac
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: home-manager-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  linux:
+    if: >-
+      github.event_name == 'workflow_dispatch' ||
+      github.ref_name == 'main' ||
+      github.base_ref == 'main'
+    name: Linux
+    runs-on: ubuntu-24.04
+
+    steps:
+      - name: Check out event commit
+        if: github.event_name != 'workflow_dispatch'
+        uses: actions/checkout@v6
+
+      - name: Check out main
+        if: github.event_name == 'workflow_dispatch'
+        uses: actions/checkout@v6
+        with:
+          ref: main
+
+      - name: Install Nix
+        uses: cachix/install-nix-action@v31
+
+      - name: Configure channels
+        run: |
+          nix-channel --add "https://nixos.org/channels/nixos-25.11" nixpkgs
+          nix-channel --add \
+            "https://github.com/nix-community/home-manager/archive/release-25.11.tar.gz" \
+            home-manager
+          nix-channel --update
+
+      - name: Build Home Manager configuration
+        run: |
+          nix-shell '<home-manager>' -A home-manager --run \
+            'home-manager build -f home-manager/home.nix'
+
+  macos:
+    if: >-
+      github.event_name == 'workflow_dispatch' ||
+      github.ref_name == 'mac' ||
+      github.base_ref == 'mac'
+    name: macOS
+    runs-on: macos-15
+
+    steps:
+      - name: Check out event commit
+        if: github.event_name != 'workflow_dispatch'
+        uses: actions/checkout@v6
+
+      - name: Check out mac
+        if: github.event_name == 'workflow_dispatch'
+        uses: actions/checkout@v6
+        with:
+          ref: mac
+
+      - name: Install Nix
+        uses: cachix/install-nix-action@v31
+
+      - name: Configure channels
+        run: |
+          nix-channel --add \
+            "https://nixos.org/channels/nixpkgs-25.11-darwin" \
+            nixpkgs
+          nix-channel --add \
+            "https://github.com/nix-community/home-manager/archive/release-25.11.tar.gz" \
+            home-manager
+          nix-channel --update
+
+      - name: Build Home Manager configuration
+        run: |
+          nix-shell '<home-manager>' -A home-manager --run \
+            'home-manager build -f home-manager/home.nix'

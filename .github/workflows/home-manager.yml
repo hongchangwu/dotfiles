@@ -51,8 +51,8 @@ jobs:
 
       - name: Build Home Manager configuration
         run: |
-          nix-shell '<home-manager>' -A home-manager --run \
-            'home-manager build -f home-manager/home.nix'
+          home_manager=$(nix-build '<home-manager>' -A home-manager --no-out-link)
+          "$home_manager/bin/home-manager" build -f home-manager/home.nix
 
   macos:
     if: >-
@@ -88,5 +88,5 @@ jobs:
 
       - name: Build Home Manager configuration
         run: |
-          nix-shell '<home-manager>' -A home-manager --run \
-            'home-manager build -f home-manager/home.nix'
+          home_manager=$(nix-build '<home-manager>' -A home-manager --no-out-link)
+          "$home_manager/bin/home-manager" build -f home-manager/home.nix

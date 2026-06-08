@@ -11,11 +11,17 @@
     ui = "auto";
   };
 
+  init = {
+    defaultBranch = "main";
+  };
+
   pull = {
+    autoStash = true;
     ff = "only";
   };
 
   push = {
+    autoSetupRemote = true;
     default = "current";
   };
 
@@ -31,7 +37,7 @@
   merge = {
     tool = "vimdiff";
     guitool = "gvimdiff";
-    conflictstyle = "diff3";
+    conflictstyle = "zdiff3";
   };
 
   mergetool = {
@@ -39,9 +45,14 @@
     keepBackup = false;
   };
 
+  rebase = {
+    autoStash = true;
+  };
+
   alias = {
     a = "add";
     aa = "add -A";
+    an = "add -N";
     abandon = ''!git add -A && git commit -qm "Abandoned" && git reset --hard HEAD~'';
     amend = "commit -a --amend";
     au = "add -u";
@@ -62,7 +73,9 @@
     lu = "!git lg -u HEAD";
     review = "diff --cached";
     reword = "commit --amend";
+    s = "switch";
     st = "status --short -uno";
+    submodule-sync = "!git submodule sync --recursive && git submodule update --init --recursive";
     sync-merge = "!git fetch upstream master && git merge FETCH_HEAD";
     sync-rebase = "!git fetch upstream master && git rebase FETCH_HEAD";
     undo = "reset --mixed HEAD~";

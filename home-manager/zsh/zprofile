@@ -1,2 +1,5 @@
+# Nix
+[[ -e /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh ]] && source /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh
+
 # Source common profile
 [[ -r "$HOME/.profile" ]] && source "$HOME/.profile"

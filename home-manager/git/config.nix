@@ -73,6 +73,8 @@
     lu = "!git lg -u HEAD";
     review = "diff --cached";
     reword = "commit --amend";
+    rh = "reset --hard";
+    rs = "reset --soft";
     s = "switch";
     st = "status --short -uno";
     submodule-sync = "!git submodule sync --recursive && git submodule update --init --recursive";

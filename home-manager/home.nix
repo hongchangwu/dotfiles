@@ -1,6 +1,7 @@
 { config, pkgs, ... }:
 
 let
+  isGitHubActions = builtins.getEnv "GITHUB_ACTIONS" == "true";
   pythonPackages = packages: with packages; [
     black
     pandas
@@ -10,7 +11,7 @@ let
     rope
     setuptools
     yapf
-  ] ++ pkgs.lib.optionals (!pkgs.stdenv.isDarwin) [
+  ] ++ pkgs.lib.optionals (!(pkgs.stdenv.isDarwin && isGitHubActions)) [
     polars
   ];
   python = pkgs.python312.withPackages pythonPackages;

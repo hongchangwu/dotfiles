@@ -5,12 +5,13 @@ let
     black
     pandas
     pip
-    polars
     pylint
     pytest
     rope
     setuptools
     yapf
+  ] ++ pkgs.lib.optionals (!pkgs.stdenv.isDarwin) [
+    polars
   ];
   python = pkgs.python312.withPackages pythonPackages;
   vimPlugins = with pkgs.vimPlugins; [

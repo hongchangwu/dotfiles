@@ -43,9 +43,9 @@ jobs:
 
       - name: Configure channels
         run: |
-          nix-channel --add "https://nixos.org/channels/nixos-25.11" nixpkgs
+          nix-channel --add "https://nixos.org/channels/nixos-26.05" nixpkgs
           nix-channel --add \
-            "https://github.com/nix-community/home-manager/archive/release-25.11.tar.gz" \
+            "https://github.com/nix-community/home-manager/archive/release-26.05.tar.gz" \
             home-manager
           nix-channel --update
 
@@ -79,10 +79,10 @@ jobs:
       - name: Configure channels
         run: |
           nix-channel --add \
-            "https://nixos.org/channels/nixpkgs-25.11-darwin" \
+            "https://nixos.org/channels/nixpkgs-26.05-darwin" \
             nixpkgs
           nix-channel --add \
-            "https://github.com/nix-community/home-manager/archive/release-25.11.tar.gz" \
+            "https://github.com/nix-community/home-manager/archive/release-26.05.tar.gz" \
             home-manager
           nix-channel --update
 

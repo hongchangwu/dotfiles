@@ -16,7 +16,7 @@ let
   vimPlugins = with pkgs.vimPlugins; [
     nerdtree
     nord-vim
-    fugitive
+    vim-fugitive
     vim-airline
     vim-commentary
     vim-easymotion
@@ -127,7 +127,7 @@ output=json
       TERM = "xterm-256color";
     };
 
-    stateVersion = "25.11";
+    stateVersion = "26.05";
   };
 
   nixpkgs.overlays = [
@@ -171,7 +171,7 @@ output=json
     neovim = {
       enable = true;
       extraConfig = builtins.readFile vim/vimrc;
-      extraLuaConfig = builtins.readFile neovim/init.lua;
+      initLua = builtins.readFile neovim/init.lua;
       plugins = builtins.filter (pkg: pkg.pname != "vim-fugitive") vimPlugins ++ neovimPlugins;
     };
 

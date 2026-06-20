@@ -3,7 +3,7 @@
 set -euo pipefail
 
 NIX_VERSION="2.22.0"
-NIXOS_VERSION="25.11"
+NIXOS_VERSION="26.05"
 
 # Install Nix
 sh <(curl -L "https://releases.nixos.org/nix/nix-${NIX_VERSION}/install") --daemon --no-channel-add

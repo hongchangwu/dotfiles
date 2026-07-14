@@ -98,7 +98,6 @@ output=json
       poetry
       powerline
       powerline-fonts
-      powerline-go
       pyright
       python
       ripgrep
@@ -148,6 +147,11 @@ output=json
   programs = {
     bash = {
       enable = true;
+      initExtra = ''
+        if [[ "$TERM" != "linux" ]]; then
+          source ${pkgs.powerline}/share/bash/powerline.sh
+        fi
+      '';
       profileExtra = builtins.readFile ./bash/profile;
     };
 
@@ -209,7 +213,12 @@ output=json
       enableCompletion = true;
       envExtra = builtins.readFile ./zsh/zshenv;
       profileExtra = builtins.readFile ./zsh/zprofile;
-      initContent = builtins.readFile ./zsh/zshrc;
+      initContent = builtins.readFile ./zsh/zshrc + ''
+
+        if [[ "$TERM" != "linux" ]]; then
+          source ${pkgs.powerline}/share/zsh/powerline.zsh
+        fi
+      '';
       oh-my-zsh = {
         enable = true;
         plugins = [

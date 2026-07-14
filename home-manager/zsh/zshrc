@@ -4,23 +4,5 @@ alias ll='ls -l --color=auto'
 alias la='ls -la --color=auto'
 alias zmv='noglob zmv -W'
 
-# Powerline
-function powerline_precmd() {
-  PS1="$(powerline-go -error $? -shell zsh -cwd-max-depth 4 -hostname-only-if-ssh)"
-}
-
-function install_powerline_precmd() {
-  for s in "${precmd_functions[@]}"; do
-    if [ "$s" = "powerline_precmd" ]; then
-      return
-    fi
-  done
-  precmd_functions+=(powerline_precmd)
-}
-
-if [ "$TERM" != "linux" ]; then
-  install_powerline_precmd
-fi
-
 # Configure direnv
 eval "$(direnv hook zsh)"

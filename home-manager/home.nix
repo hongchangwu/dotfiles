@@ -96,6 +96,7 @@ output=json
       openssl
       pkg-config
       poetry
+      powerline
       powerline-fonts
       powerline-go
       pyright
@@ -181,10 +182,12 @@ output=json
 
     tmux = {
       enable = true;
-      extraConfig = builtins.readFile ./tmux/tmux.conf;
+      extraConfig = builtins.readFile ./tmux/tmux.conf + ''
+
+        source-file ${pkgs.powerline}/share/tmux/powerline.conf
+      '';
       tmuxinator.enable = true;
       plugins = with pkgs.tmuxPlugins; [
-        nord
         prefix-highlight
         resurrect
         {

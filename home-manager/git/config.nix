@@ -71,6 +71,7 @@
     lg = "log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit HEAD";
     ls = "ls-files";
     lu = "!git lg -u HEAD";
+    pushf = "push --force-with-lease";
     review = "diff --cached";
     reword = "commit --amend";
     rh = "reset --hard";
